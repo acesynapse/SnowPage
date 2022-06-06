@@ -62,7 +62,6 @@ foreach ($helpers as $file) {
 }
 
 require_once 'snowpage-activation.php';
-require_once '/plugins/page-links-to/page-links-to.php';
 
 
 /*
