@@ -1,6 +1,14 @@
 ***CURRENT***
+Version - 0.0.1
+
 Gantry - 5.5.12
 UIkit - 3.14.3
+
+***20220606***
+1. Initial commit to GitHub
+2. Cleaned up TGM activation files
+3. Added OMEC and WP Pusher to plugins file
+4. Updated version to 0.0.1
 
 ***20220531***
 1. Updated uikit-3.14.3
