@@ -1,0 +1,251 @@
+#g-navigation {
+    background: $off-white;
+    color: $greyscale-4;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+
+    .g-container {
+        position: relative;
+    }
+
+    a {
+        color: $greyscale-4;
+
+        &:hover {
+            color: $greyscale-4;
+        }
+    }
+
+    .g-social {
+        a {
+            background: darken($tetradic-color-4, 6%);
+            border: none;
+            text-decoration: none;
+            color: $white;
+            transition: background 0.2s;
+
+            &:hover {
+                background: lighten($tetradic-color-4, 6%);
+            }
+        }
+    }
+
+    .g-main-nav {
+        margin: -($content-padding + $content-margin);
+        @include main-nav-colors($tetradic-color-4, $white, $main-background, $main-text-color);
+
+        .g-toplevel {
+            display: flex;
+            flex-direction: column;
+            color: $greyscale-4;
+        }
+    }
+
+    @include main-nav-indicators($tetradic-color-4, $white);
+
+    .search {
+        input {
+            color: $main-text-color;
+        }
+    }
+}
+
+.g-main-nav {
+    .g-standard {
+        .g-dropdown {
+            @extend %dropdown-column;
+        }
+    }
+
+    .g-toplevel {
+        font-weight: $font-weight-medium;
+
+        > li {
+
+            > .g-menu-item-container {
+                text-decoration: none;
+                padding: 1.2rem $content-padding;
+            }
+
+            > .g-menu-item-container {
+                > .g-menu-item-content {
+                    line-height: normal;
+                }
+            }
+        }
+
+        i {
+            opacity: 0.6;
+        }
+    }
+
+    .g-dropdown {
+        text-align: left;
+
+        .dir-rtl & {
+            text-align: right;
+        }
+    }
+
+    .g-sublevel {
+        > li {
+            > .g-menu-item-container {
+                padding: ($content-padding + $content-margin)/2 1rem;
+            }
+        }
+    }
+}
+
+// Hide on Mobile Menu Breakpoint
+@if $menu-hide-on-mobile == 1 {
+    @media only all and (max-width: $breakpoints-mobile-menu-breakpoint) {
+        [data-g-mobile-target] {
+            display: none;
+            visibility: hidden;
+            pointer-events: none;
+        }
+    }
+}
+
+#g-navigation, #g-header {
+    .align-left {
+        .g-toplevel {
+            justify-content: flex-start;
+            -webkit-justify-content: flex-start;
+        }
+    }
+
+    .align-right {
+        .g-toplevel {
+            justify-content: flex-end;
+            -webkit-justify-content: flex-end;
+        }
+    }
+}
+
+// Subtitle
+.g-menu-item-subtitle {
+    opacity: 0.7;
+}
+
+// Nav Overlay
+.g-nav-overlay, .g-menu-overlay {
+    background: $greyscale-4;
+}
+
+@media print {
+    #g-navigation {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}
+
+.uk-offcanvas-bar {
+  background: $off-white !important;
+}
+
+.uk-offcanvas-overlay {
+    &:before {
+        background: rgba(0,0,0,0.2) !important;
+    }
+
+}
+
+#sp-nav {
+  color: $primary_color;
+  padding: 0 0.5rem;
+  &:hover {
+    color: $complementary-color-2;
+  }
+}
+
+#sp-nav-bar {
+  color: $greyscale-4;
+}
+
+#sp-toplevel {
+  & > li {
+    display: flex;
+  }
+}
+
+#sp-icons {
+  @media only all and (min-width: 65.01rem) {
+    flex: 0 30%;
+    width: 30%;
+  }
+
+  @media only all and (min-width: 55.01rem) and (max-width: 65rem) {
+    flex: 0 35%;
+    width: 35%;
+  }
+  @media only all and (min-width: 48rem) and (max-width: 55rem) {
+    flex: 0 40%;
+    width: 40%;
+  }
+  @include breakpoint(mobile-only) {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+#sp-hamburger {
+    display: flex;
+    align-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    @media only all and (min-width: 55.01rem) and (max-width: 65rem) {
+      flex: 0 25%;
+      width: 25%;
+    }
+    @media only all and (min-width: 48rem) and (max-width: 55rem) {
+      flex: 0 20%;
+      width: 20%;
+    }
+    @include breakpoint(mobile-only) {
+      flex: 0 15%;
+      max-width: unset;
+    }
+    .g-content {
+      @include breakpoint(mobile-only) {
+        margin: ($content-margin/2);
+        padding: ($content-padding/2);
+      }
+    }
+}
+
+#sp-logo {
+  @include breakpoint(mobile-only) {
+    flex: 0 85%;
+    max-width: unset;
+  }
+  .g-content {
+    @include breakpoint(mobile-only) {
+      margin: ($content-margin/2);
+      padding: ($content-padding/2);
+    }
+    & > a {
+      & > svg {
+        @include breakpoint(mobile-only) {
+          max-height: 3rem;
+        }
+      }
+    }
+  }
+}
+
+.sp-iconnav {
+  display: flex;
+  justify-content: flex-end;
+  .uk-iconnav {
+    margin-left: unset;
+    & > * {
+        padding-left: unset;
+    }
+  }
+}
+
+#opacsearch {
+    margin: 0.5rem 1rem 1.5rem 1rem;
+}

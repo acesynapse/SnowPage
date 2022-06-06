@@ -1,0 +1,26 @@
+#g-books {
+	background: $books-background;
+	color: $books-text-color;
+	position: relative;
+	z-index: 3;
+
+	a {
+		color: lighten($books-background, 40%);
+		&:hover {
+			color: $books-text-color;
+		}
+	}
+
+	.search {
+		input {
+			color: $main-text-color;
+		}
+	}
+}
+
+@media print {
+	#g-books {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

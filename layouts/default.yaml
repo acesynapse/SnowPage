@@ -1,0 +1,86 @@
+version: 2
+
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: default
+
+layout:
+  /header/:
+    -
+      - 'menu 30'
+      - 'logo 40'
+      - 'iconnav 30'
+
+  /messages/:
+    -
+      - message
+
+  /breadcrumbs/:
+    - copyright
+
+  /footer/:
+    -
+      - 'spacer-spacer 42'
+      - 'logo 16'
+      - 'spacer-spacer 42'
+
+  /copyright/:
+    - copyright
+
+structure:
+  header:
+    attributes:
+      boxed: '0'
+      extra:
+        -
+          uk-sticky: 'media: 768'
+  messages:
+    type: section
+    attributes:
+      boxed: ''
+  breadcrumbs:
+    type: section
+    attributes:
+      boxed: ''
+  footer:
+    attributes:
+      boxed: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+content:
+  menu:
+    attributes:
+      menu: main-menu
+    block:
+      id: sp-hamburger
+      variations: align-left
+  logo:
+    block:
+      id: sp-logo
+      variations: center
+  iconnav:
+    title: 'Icon Nav'
+    attributes:
+      css:
+        class: ''
+      items:
+        -
+          icon: heart
+          text: Donate
+          link: '#'
+          target: ''
+          name: Donate
+    block:
+      id: sp-icons
+      variations: align-right
+  message:
+    attributes:
+      message:
+        text: 'SnowPage is awesome! You should totally use it on your site!'
+    block:
+      variations: 'center'
+  copyright:
+    block:
+      variations: 'center nopaddingall nomarginall'

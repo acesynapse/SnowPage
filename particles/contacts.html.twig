@@ -1,0 +1,107 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% set attr_extra = '' %}
+{% if particle.extra %}
+    {% for attributes in particle.extra %}
+        {% for key, value in attributes %}
+            {% set attr_extra = attr_extra ~ ' ' ~ key|e ~ '="' ~ value|e('html_attr') ~ '"' %}
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+
+{% set contactitems %}
+    {% for item in particle.items %}
+        {% set attr_extra_item = '' %}
+        {% for extra in item.extra %}
+            {% set attr_extra_item = attr_extra_item ~ ' ' ~ extra|keys|first|e ~ '="' ~ extra|values|first|e('html_attr') ~ '"' %}
+        {% endfor %}
+
+        {% set style1 %}
+            <div class="g-contacts-item{% if item.class %} {{ item.class|e }}{% endif %}{% if particle.layout|default('vertical') == 'horizontal' and particle.equal|default(0) %} g-block{% endif %}" {% if item.extra %}{{ attr_extra_item|raw }}{% endif %}>
+                {% if particle.layout|default('vertical') == 'horizontal' and particle.equal|default(0) %}
+                    <div class="g-content">
+                {% endif %}
+
+                {% if item.link %}
+                    <a target="{{ item.target|default('_parent')|e }}" href="{{ item.link|e }}">
+                {% endif %}
+
+                {% if item.icon %}
+                    <span class="g-contacts-icon {{ item.icon|e }}"></span>
+                {% endif %}
+
+                {% if item.title %}
+                    <span class="g-contact-title">{{ item.title|raw }}</span>
+                {% endif %}
+
+                {% if item.value %}
+                    <span class="g-contact-value">{{ item.value|raw }}</span>
+                {% endif %}
+                    
+                {% if item.link %}
+                    </a>
+                {% endif %}
+
+                {% if particle.layout|default('vertical') == 'horizontal' and particle.equal|default(0) %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endset %}
+
+        {% set style2 %}
+            <div class="g-contacts-item{% if item.class %} {{ item.class|e }}{% endif %}{% if particle.layout|default('vertical') == 'horizontal' and particle.equal|default(0) %} g-block{% endif %}" {% if item.extra %}{{ attr_extra_item|raw }}{% endif %}>
+                {% if particle.layout|default('vertical') == 'horizontal' and particle.equal|default(0) %}
+                    <div class="g-content">
+                {% endif %}
+
+                {% if item.icon %}
+                    <div class="g-contacts-icon">
+                        <span class="{{ item.icon|e }}"></span>
+                    </div>
+                {% endif %}
+
+                {% if item.title or item.value%}
+                    <div class="g-title-value-container">
+                        {% if item.title %}
+                            <h4 class="g-contact-title">
+                                {{- item.title|raw -}}
+                            </h4>
+                        {% endif %}
+
+                        {% if item.value %}
+                            <div class="g-contact-value">
+                                {%- if item.link -%}
+                                    <a target="{{ item.target|default('_parent')|e }}" href="{{ item.link|e }}">
+                                {%- endif -%}
+                                {{- item.value|raw -}}
+                                {%- if item.link -%}
+                                    </a>
+                                {%- endif -%}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+
+                {% if particle.layout|default('vertical') == 'horizontal' and particle.equal|default(0) %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endset %}
+
+        {% if particle.style|default("style1") == "style1" %}{{ style1 }}{% endif %}
+        {% if particle.style|default("style1") == "style2" %}{{ style2 }}{% endif %}
+
+    {% endfor %}
+{% endset %}
+
+{% block particle %}
+    <div class="g-contacts {{ particle.style|default("style1")|e }} {{ particle.layout|default("vertical")|e }}{% if particle.css.class %} {{ particle.css.class|e }}{% endif %}" {% if particle.extra %}{{ attr_extra|raw }}{% endif %}>
+        {% if particle.layout|default('vertical') == 'horizontal' and particle.equal|default(0) %}
+            <div class="g-grid">
+        {% endif %}
+            {{ contactitems }}
+        {% if particle.layout|default('vertical') == 'horizontal' and particle.equal|default(0) %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block stylesheets %}
+	{% if gantry.page.direction == 'rtl' %}
+		<link rel="stylesheet" type="text/css" href="gantry-theme://uikit/css/uikit-rtl.min.css" />
+	{% else %}
+		<link rel="stylesheet" type="text/css" href="gantry-theme://uikit/css/uikit.min.css" />
+	{% endif %}
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{ url('gantry-theme://uikit/js/uikit.min.js') }}"></script>
+    <script src="{{ url('gantry-theme://uikit/js/uikit-icons.min.js') }}"></script>
+{% endblock %}

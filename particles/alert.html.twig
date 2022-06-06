@@ -1,0 +1,40 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block javascript %}
+{% if particle.closebutton == '1' and particle.expires is not empty %}
+{% do gantry.load('jquery') %}
+<script src="{{ url('gantry-theme://js/js.cookie.min.js') }}"></script>
+{% endif %}
+{% endblock %}
+
+{% block particle %}
+{% if particle.alertcontent is not empty %}
+<div id="el-{{ id }}" style="
+{% if particle.background_color is not empty %}background:{{ particle.background_color|raw }};{% endif %}{% if particle.content_color is not empty %}color:{{ particle.content_color|raw }};{% endif %}{% if particle.content_fontsize is not empty %}font-size:{{ particle.content_fontsize|raw }}rem;{% endif %}{% if particle.content_text_transform is not empty %}text-transform:{{ particle.content_text_transform|raw }};{% endif %}{% if particle.align is not empty %}text-align: {{ particle.align|raw }};{% endif %}{% if particle.content_padding is not empty %}padding:{{ particle.content_padding|raw }}rem 0;{% endif %}">
+{{ particle.closebutton ? '<a class="alert-close" close></a>' : '' }}
+{{ particle.alertcontent|striptags }}
+</div>
+{% endif %}
+{% endblock %}
+
+{% block javascript_footer %}
+{% if particle.closebutton == '1' and particle.expires is not empty %}
+<script type="text/javascript">
+    (function($){
+        $(document).ready(function () {
+            Alert()
+        });
+        if ( Cookies.get('{{id}}-particle') == 'true') {
+            var el = '#{{id}}-particle';
+            $(el).hide();
+        }
+        function Alert(){
+            $('#{{id}} .alert-close').on('click',function(){
+                Cookies.set('{{id}}-particle', true, { expires: {{ particle.expires|e }} });
+                $('#{{id}}-particle').fadeOut();
+            });
+        }
+    })(jQuery);
+</script>
+{% endif %}
+{% endblock %}

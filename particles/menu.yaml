@@ -1,0 +1,23 @@
+name: Menu
+description: SnowPage menu
+type: particle
+icon: fa-bars
+
+form:
+  fields:
+
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable the menu particle.
+      default: true
+
+    menu:
+      type: menu.list
+      label: Menu
+      description: Select menu to be used with the particle.
+      default: ''
+      selectize:
+          allowEmptyOption: true
+      options:
+        '': Please Select Menu

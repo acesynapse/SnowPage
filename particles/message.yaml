@@ -1,0 +1,21 @@
+name: Message
+description: Display a message.
+type: particle
+icon: fa-info-circle
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable the particle.
+      default: true
+
+    message.text:
+      type: input.text
+      label: Message Text
+      description: Input the message would you like to display.

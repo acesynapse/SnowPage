@@ -1,0 +1,29 @@
+{% try %}
+    {% set menu = gantry.menu.instance(particle) %}
+{% catch %}
+    <div class="alert alert-error">{{ e.getMessage }}</div>
+{% endtry %}
+
+<button id="sp-nav" class="uk-button uk-button-link" type="button" uk-toggle="target: #offcanvas-nav-primary"><span uk-icon="icon: table; ratio: 1.5"></span><br>Menu</button>
+
+<div id="offcanvas-nav-primary" uk-offcanvas="overlay: true">
+    <div class="uk-offcanvas-bar uk-flex uk-flex-column">
+        <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
+          {% for item in menu.root %}
+            {% if not item.children %}
+            <li class="uk-active"><a href="{{ item.link }}">{{ item.title }}</a></li>
+            {% endif %}
+            {% if item.children %}
+            <li class="uk-parent">
+                <a href="{{ item.link }}">{{ item.title }}</a>
+                {% for child in item.children %}
+                <ul class="uk-nav-sub">
+                    <li><a href="{{ child.link }}">{{ child.title }}</a></li>
+                </ul>
+                {% endfor %}
+            </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+    </div>
+</div>

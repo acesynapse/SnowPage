@@ -1,0 +1,3 @@
+preset1:
+  image: 'gantry-admin://images/preset1.png'
+  description: SnowPage theme default settings.

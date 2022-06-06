@@ -1,0 +1,117 @@
+version: 2
+
+preset:
+  image: 'gantry-admin://images/layouts/home.png'
+  name: Home
+
+layout:
+  header: {  }
+  messages: {  }
+
+  /hero/:
+    -
+      - custom
+
+  /news/:
+    -
+      - news
+
+  /books/:
+    - bookshelves
+
+  /programs/:
+    - copyright
+
+  /subscribe/:
+    -
+      - subscribe
+
+  /resources/:
+    - copyright
+
+  footer: {  }
+  copyright: {  }
+
+structure:
+  header:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  messages:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  hero:
+    type: section
+    attributes:
+      boxed: '2'
+  news:
+    type: section
+    attributes:
+      boxed: ''
+  books:
+    type: section
+    attributes:
+      boxed: ''
+  programs:
+    type: section
+    attributes:
+      boxed: ''
+  subscribe:
+    type: section
+    attributes:
+      boxed: ''
+  resources:
+    type: section
+    attributes:
+      boxed: ''
+  footer:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  custom:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"uk-background-contain\">\n  <div>\n    <div class=\"uk-inline\">\n      <img src=\"https://picsum.photos/2000/400\" width=\"2000\" height=\"400\" alt=\"\">\n      <div class=\"uk-overlay uk-overlay-default uk-position-center-left uk-box-shadow-small uk-width-2-3\">\n        <div class=\"uk-child-width-expand@m uk-grid-large uk-grid-match\" uk-grid>\n          <div>\n            <div>\n              <h1 class=\"sp-text-bold uk-text-capitalize\">Information Here</h1>\n              <p>Cras a urna finibus, fringilla diam non, eleifend lectus. Etiam porttitor porttitor viverra. Mauris varius orci vel fermentum molestie. Vivamus venenatis, enim luctus sollicitudin pellentesque, dui metus dignissim elit, vitae fermentum augue diam et lectus. In varius blandit massa, nec luctus leo.</p>\n            </div>\n          </div>\n          <div class=\"uk-position-bottom-right uk-width-auto\">\n            <button class=\"uk-button uk-button-primary sp-button-hero\">Button<span class=\"uk-position-center-right\" uk-icon=\"arrow-right\"></span></button>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>"
+    block:
+      variations: 'nopaddingall nomarginall'
+  bookshelves:
+    attributes:
+      isbn:
+        one: '9781338299199'
+        two: '9780545582926'
+        three: '0786296658'
+        four: '0786229276'
+        five: '9780545582971'
+        six: '9780545582889'
+      title:
+        one: 'Harry Potter and the Half-Blood Prince'
+        two: 'Harry Potter and the Chamber of Secrets'
+        three: 'Harry Potter and the Deathly Hallows'
+        four: 'Harry Potter and the Goblet of Fire'
+        five: 'Harry Potter and the Order of the Phoenix'
+        six: 'Harry Potter and the Sorcerer''s Stone'
+      author:
+        one: 'J.K. Rowling'
+        two: 'J.K. Rowling'
+        three: 'J.K. Rowling'
+        four: 'J.K. Rowling'
+        five: 'J.K. Rowling'
+        six: 'J.K. Rowling'

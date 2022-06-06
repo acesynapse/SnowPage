@@ -1,0 +1,139 @@
+name: Bookshelves
+description: Display custom Library Bookshelf shortcode.
+type: particle
+icon: fa-book
+
+configuration:
+  caching:
+    type: config_matches
+    values:
+      twig: '0'
+      filter: '1'
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable the particle.
+      default: true
+
+    isbn.one:
+      type: input.text
+      label: ISBN 1
+      description: Enter the first ISBN here.
+      overridable: false
+
+    title.one:
+      type: input.text
+      label: Title 1
+      description: Enter the first title here.
+      overridable: false
+
+    author.one:
+      type: input.text
+      label: Author 1
+      description: Enter the first author here.
+      overridable: false
+
+    isbn.two:
+      type: input.text
+      label: ISBN 2
+      description: Enter the second ISBN here.
+      overridable: false
+
+    title.two:
+      type: input.text
+      label: Title 2
+      description: Enter the second title here.
+      overridable: false
+
+    author.two:
+      type: input.text
+      label: Author 2
+      description: Enter the second author here.
+      overridable: false
+
+    isbn.three:
+      type: input.text
+      label: ISBN 3
+      description: Enter the third ISBN here.
+      overridable: false
+
+    title.three:
+      type: input.text
+      label: Title 3
+      description: Enter the third title here.
+      overridable: false
+
+    author.three:
+      type: input.text
+      label: Author 3
+      description: Enter the third author here.
+      overridable: false
+
+    isbn.four:
+      type: input.text
+      label: ISBN 4
+      description: Enter the fourth ISBN here.
+      overridable: false
+
+    title.four:
+      type: input.text
+      label: Title 4
+      description: Enter the fourth title here.
+      overridable: false
+
+    author.four:
+      type: input.text
+      label: Author 4
+      description: Enter the fourth author here.
+      overridable: false
+
+    isbn.five:
+      type: input.text
+      label: ISBN 5
+      description: Enter the fifth ISBN here.
+      overridable: false
+
+    title.five:
+      type: input.text
+      label: Title 5
+      description: Enter the fifth title here.
+      overridable: false
+
+    author.five:
+      type: input.text
+      label: Author 5
+      description: Enter the fifth author here.
+      overridable: false
+
+    isbn.six:
+      type: input.text
+      label: ISBN 6
+      description: Enter the sixth ISBN here.
+      overridable: false
+
+    title.six:
+      type: input.text
+      label: Title 6
+      description: Enter the sixth title here.
+      overridable: false
+
+    author.six:
+      type: input.text
+      label: Author 6
+      description: Enter the sixth author here.
+      overridable: false
+
+    twig:
+       type: input.checkbox
+       label: Process Twig
+       description: Enable Twig template processing in the content. Twig will be processed before shortcodes.
+       default: '0'
+
+    filter:
+      type: input.checkbox
+      label: Process shortcodes
+      description: Enable shortcode processing / filtering in the content.
+      default: '1'

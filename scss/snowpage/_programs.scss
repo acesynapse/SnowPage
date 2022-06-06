@@ -1,0 +1,27 @@
+#g-programs {
+	background: $programs-background;
+	color: $programs-text-color;
+	position: relative;
+	z-index: 3;
+
+	a {
+		color: lighten($programs-background, 40%);
+		&:hover {
+			color: $programs-text-color;
+		}
+	}
+
+
+	.search {
+		input {
+			color: $main-text-color;
+		}
+	}
+}
+
+@media print {
+	#g-programs {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

@@ -1,0 +1,4 @@
+context:
+  -
+    is_front_page: true
+    is_home_page: true

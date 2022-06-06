@@ -1,0 +1,26 @@
+#g-breadcrumbs {
+	background: $breadcrumbs-background;
+	color: $breadcrumbs-text-color;
+	position: relative;
+	z-index: 3;
+
+	a {
+		color: lighten($breadcrumbs-background, 40%);
+		&:hover {
+			color: $breadcrumbs-text-color;
+		}
+	}
+
+	.search {
+		input {
+			color: $main-text-color;
+		}
+	}
+}
+
+@media print {
+	#g-breadcrumbs {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

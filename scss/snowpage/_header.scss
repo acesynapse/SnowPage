@@ -1,0 +1,26 @@
+#g-header {
+	background: $header-background;
+	color: $header-text-color;
+	position: relative;
+	z-index: 980;
+
+	a {
+		color: $primary-color;
+		&:hover {
+			color: $complementary-color-2;
+		}
+	}
+
+	.search {
+		input {
+			color: $main-text-color;
+		}
+	}
+}
+
+@media print {
+	#g-header {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

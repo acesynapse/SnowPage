@@ -1,0 +1,11 @@
+name: Primary Color
+description: The primary color for your color scheme
+type: core
+
+form:
+  fields:
+
+    color:
+      type: input.colorpicker
+      label: Primary Color
+      default: "#bea7ff"

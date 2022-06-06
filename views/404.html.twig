@@ -1,0 +1,10 @@
+{% extends "partials/page.html.twig" %}
+{% set twigTemplate = '404.html.twig' %}
+{% set scope = '404' %}
+
+{% block content %}
+
+    <h1>{{ __('404 Not Found', 'snowpage') }}</h1>
+    <p>{{ __('Sorry, we couldn\'t find what you\'re looking for.', 'snowpage') }}</p>
+
+{% endblock %}

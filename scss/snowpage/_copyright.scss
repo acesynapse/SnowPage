@@ -1,0 +1,20 @@
+#g-copyright {
+	background: $copyright-background;
+	color: $copyright-text-color;
+	position: relative;
+	font-size: 0.8rem;
+	padding: 0.25rem 0;
+	a {
+		color: $copyright-text-color;
+		&:hover {
+			color: lighten($copyright-text-color, 40%);
+		}
+	}
+}
+
+@media print {
+	#g-copyright {
+		background: #000 !important;
+		color: #fff !important;
+	}
+}

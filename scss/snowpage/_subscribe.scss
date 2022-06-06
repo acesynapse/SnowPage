@@ -1,0 +1,26 @@
+#g-subscribe {
+	background: $subscribe-background;
+	color: $subscribe-text-color;
+	position: relative;
+	z-index: 3;
+
+	a {
+		color: lighten($subscribe-background, 40%);
+		&:hover {
+			color: $subscribe-text-color;
+		}
+	}
+
+	.search {
+		input {
+			color: $main-text-color;
+		}
+	}
+}
+
+@media print {
+	#g-subscribe {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

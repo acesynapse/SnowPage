@@ -1,0 +1,42 @@
+#g-hero {
+	background: $hero-background;
+	color: $hero-text-color;
+	position: relative;
+	z-index: 3;
+
+	a {
+		color: lighten($hero-background, 40%);
+		&:hover {
+			color: $hero-text-color;
+		}
+	}
+
+	.search {
+		input {
+			color: $main-text-color;
+		}
+	}
+}
+
+@media print {
+	#g-hero {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}
+
+.sp-button-hero {
+	background-color: $complementary-color-2 !important;
+	letter-spacing: 0.05rem !important;
+	&:hover {
+		background-color: $primary_color !important;
+	}
+}
+
+.sp-button-news {
+	background-color: $triadic-color-2 !important;
+	letter-spacing: 0.05rem !important;
+	&:hover {
+		background-color: $triadic-color-3 !important;
+	}
+}

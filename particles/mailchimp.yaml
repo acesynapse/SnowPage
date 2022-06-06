@@ -1,0 +1,124 @@
+name: Ajax Mailchimp
+description: Display Mailchimp subscription form.
+type: particle
+icon: fa-envelope-o
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable the particle.
+      default: true
+    info_url:
+      type: separator.note
+      class: alert alert-info
+      content: Follow this <a href="https://kb.mailchimp.com/lists/signup-forms/host-your-own-signup-forms" target="_blank"> http://kb.mailchimp.com/lists/signup-forms/host-your-own-signup-forms</a><br>And get your <strong>Form Action URL</strong>, <strong>User ID</strong> and <strong>List ID</strong> described under 'Edit your Custom Signup Form'
+
+    actionurl:
+      type: textarea.textarea
+      label: Form Action URL
+      description: Add your form action URL
+      placeholder: 'https://mailchimp.us8.list-manage.com/subscribe/post'
+    userid:
+      type: input.text
+      label: User ID
+      description: Add your Mailchimp User ID
+      placeholder: 'a123cd45678ef90g7h1j7k9lm'
+    listid:
+      type: input.text
+      label: List ID
+      description: Add your Mailchimp List ID
+      placeholder: 'ab2c468d10'
+
+    headline:
+      type: input.text
+      label: Headline
+
+    description:
+      type: textarea.textarea
+      label: Description
+      placeholder: Enter your email address
+
+    info_email:
+      type: separator.note
+      class: alert alert-info
+      content: Email field settings.
+    emailName:
+      type: input.text
+      label: Email Field Name
+      description: Get it from mailchimp form.
+      default: EMAIL
+    emailPlaceholder:
+      type: input.text
+      label: Email Field Placeholder
+      default: Email*
+
+    info_fname:
+      type: separator.note
+      class: alert alert-info
+      content: First name field settings.
+    fname:
+      type: enable.enable
+      label: Show First Name
+      default: true
+
+    fnameName:
+      type: input.text
+      label: First Name Field Name
+      description: Get it from mailchimp form.
+      default: FNAME
+    fnamePlaceholder:
+      type: input.text
+      label: First Name Field Placeholder
+      default: First Name
+
+    info_lname:
+      type: separator.note
+      class: alert alert-info
+      content: Last name field settings.
+    lname:
+      type: enable.enable
+      label: Show Last Name
+      default: true
+
+    lnameName:
+      type: input.text
+      label: Last Name Field Name
+      description: Get it from mailchimp form.
+      default: LNAME
+    lnamePlaceholder:
+      type: input.text
+      label: Last Name Field Placeholder
+      default: Last Name
+    
+    btntext:
+      type: input.text
+      label: Button Text
+      default: Subscribe
+    
+    btnclass:
+      type: input.text
+      label: Button Class
+      default: button
+
+    info_result:
+      type: separator.note
+      class: alert alert-info
+      content: Result text translations.
+    trans1:
+      type: textarea.textarea
+      label: Email Error
+      default: 'A valid email address must be provided.'
+    trans3:
+      type: textarea.textarea
+      label: Unable to Subscribe
+      default: 'Sorry. Unable to subscribe. Please try again later.'
+    trans4:
+      type: textarea.textarea
+      label: Already Subscribed
+      default: You're already subscribed. Thank you.
+    trans5:
+      type: textarea.textarea
+      label: Thank You Message
+      default: 'Thank you!<br>You must confirm the subscription in your inbox.'

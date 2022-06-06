@@ -1,0 +1,46 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+<div class="sp_new_books">
+  <div class="sp_individual_books">
+    <img src="https://secure.syndetics.com/index.aspx?isbn={{ particle.isbn.one|e }}/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc="><br>
+    <div class="sp_books_title">{{ particle.title.one|e }}</div>
+    <div class="sp_books_author">{{ particle.author.one|e }}</div>
+  </div>
+  <div class="sp_individual_books">
+    <img src="https://secure.syndetics.com/index.aspx?isbn={{ particle.isbn.two|e }}/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc="><br>
+    <div class="sp_books_title">{{ particle.title.two|e }}</div>
+    <div class="sp_books_author">{{ particle.author.two|e }}</div>
+  </div>
+  <div class="sp_individual_books">
+    <img src="https://secure.syndetics.com/index.aspx?isbn={{ particle.isbn.three|e }}/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc="><br>
+    <div class="sp_books_title">{{ particle.title.three|e }}</div>
+    <div class="sp_books_author">{{ particle.author.three|e }}</div>
+  </div>
+  <div class="sp_books_text">
+    <div class="sp_books_inside_text">New & Noteable</div>
+  </div>
+  <div class="sp_individual_books">
+    <img src="https://secure.syndetics.com/index.aspx?isbn={{ particle.isbn.four|e }}/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc="><br>
+    <div class="sp_books_title">{{ particle.title.four|e }}</div>
+    <div class="sp_books_author">{{ particle.author.four|e }}</div>
+  </div>
+  <div class="sp_individual_books">
+    <img src="https://secure.syndetics.com/index.aspx?isbn={{ particle.isbn.five|e }}/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc="><br>
+    <div class="sp_books_title">{{ particle.title.five|e }}</div>
+    <div class="sp_books_author">{{ particle.author.five|e }}</div>
+  </div>
+  <div class="sp_individual_books">
+    <img src="https://secure.syndetics.com/index.aspx?isbn={{ particle.isbn.six|e }}/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc="><br>
+    <div class="sp_books_title">{{ particle.title.six|e }}</div>
+    <div class="sp_books_author">{{ particle.author.six|e }}</div>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript_footer %}
+    <script src="{{ url('gantry-theme://js/particles.min.js') }}"></script>
+    <script type="text/javascript">
+        particlesJS("g-feature", {"particles":{"number":{"value":150,"density":{"enable":true,"value_area":160}},"color":{"value":"#ffffff"},"shape":{"type":"circle","stroke":{"width":0}},"opacity":{"value":1,"random":true,"anim":{"enable":true,"speed":1,"opacity_min":0,"sync":false}},"size":{"value":3,"random":true,"anim":{"enable":false,"speed":4,"size_min":0.3,"sync":false}},"line_linked":{"enable":false},"move":{"enable":true,"speed":1,"direction":"none","random":true,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":600}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":false,"mode":"bubble"},"onclick":{"enable":false,"mode":"repulse"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":250,"size":0,"duration":2,"opacity":0,"speed":3},"repulse":{"distance":400,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});
+    </script>
+{% endblock %}

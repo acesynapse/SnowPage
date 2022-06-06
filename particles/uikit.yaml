@@ -1,0 +1,10 @@
+name: UIkit for Gantry 5
+description: The UIkit Framework for Gantry 5.
+type: atom
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable atom.
+      default: true

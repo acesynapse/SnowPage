@@ -1,0 +1,86 @@
+name: Alert
+description: Display an alert message at the top of the site.
+type: particle
+icon: fa-warning
+configuration:
+  caching:
+    type: static
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable to the particles.
+      default: true
+
+    alertcontent:
+      type: textarea.textarea
+      label: Content
+      description: Customize the content of alert.
+
+    closebutton:
+      type: input.checkbox
+      label: Close Button
+      description: Enable or disable close button of alert.
+      overridable: false
+      default: false
+
+    expires:
+      type: input.number
+      label: Expires Date
+      description: Visibility duration until a notification disappears. Use 0 to remove the timeout duration.
+      overridable: false
+      min: 0
+      placeholder: 365
+
+    background_color:
+      type: input.colorpicker
+      label: Background Color
+      description: Customize the background color.
+
+    content_color:
+      type: input.colorpicker
+      label: Font Color
+      description: Customize the description color.
+
+    content_fontsize:
+      type: input.number
+      label: Font Size
+      min: 0
+      max: 2
+      step: 0.0625
+      description: Customize the description font size
+
+    content_padding:
+      type: input.number
+      label: Padding
+      min: 0
+      max: 2
+      step: 0.0625
+      description: Customize the upper and lower padding.
+
+    content_text_transform:
+      type: select.select
+      label: Transform
+      description: The following options will transform text into uppercased, capitalized or lowercased characters.
+      default: ''
+      selectize:
+        allowEmptyOption: true
+      options:
+       '': Inherit
+       uppercase: UPPERCASE
+       capitalize: Capitalize
+       lowercase: lowercase
+
+    align:
+      type: select.select
+      label: Text Alignment
+      description: Center, left and right alignment may depend on a breakpoint and require a fallback.
+      default: inherit
+      options:
+        inherit: None
+        left: Left
+        center: Center
+        right: Right
+        justify: Justify

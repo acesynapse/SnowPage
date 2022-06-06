@@ -1,0 +1,26 @@
+#g-resources {
+	background: $resources-background;
+	color: $resources-text-color;
+	position: relative;
+	z-index: 3;
+
+	a {
+		color: lighten($resources-background, 40%);
+		&:hover {
+			color: $resources-text-color;
+		}
+	}
+
+	.search {
+		input {
+			color: $main-text-color;
+		}
+	}
+}
+
+@media print {
+	#g-resources {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

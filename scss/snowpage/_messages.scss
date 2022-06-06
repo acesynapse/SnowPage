@@ -1,0 +1,26 @@
+#g-messages {
+	background: $messages-background;
+	color: $messages-text-color;
+	position: relative;
+	z-index: 3;
+
+	a {
+		color: lighten($messages-background, 40%);
+		&:hover {
+			color: $messages-text-color;
+		}
+	}
+
+	.search {
+		input {
+			color: $main-text-color;
+		}
+	}
+}
+
+@media print {
+	#g-messages {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

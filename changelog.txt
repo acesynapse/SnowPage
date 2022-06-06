@@ -1,0 +1,16 @@
+***CURRENT***
+Gantry - 5.5.12
+UIkit - 3.14.3
+
+***20220531***
+1. Updated uikit-3.14.3
+2. Updated views/single.html.twig, gantry-5.5.13
+3. Rejected remaining views/ gantry-5.5.13 updates as superfluous
+
+
+***20220411***
+1. Updated uikit-3.13.7
+
+***20220329***
+1. Updated uikit-3.13.5
+2. Checked Gantry update 5.5.12 for changes to Hydrogen theme. None found.

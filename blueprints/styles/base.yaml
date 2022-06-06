@@ -1,0 +1,15 @@
+name: Site Fonts
+description: Base fonts for the SnowPage theme
+type: core
+
+form:
+  fields:
+
+    body-font:
+      type: input.fonts
+      label: Body Font
+      default: 'roboto, sans-serif'
+    heading-font:
+      type: input.fonts
+      label: Heading Font
+      default: 'roboto, sans-serif'
