@@ -40,7 +40,7 @@
 {% block particle %}
 
   {# All Posts #}
-<div class="sp-news-title"><span class="sp-news-title-icon" uk-icon="icon: more-vertical; ratio: 2"></span>Latest News</div>
+<div class="sp-databases-title"><span class="sp-databases-title-icon" uk-icon="icon: more-vertical; ratio: 2"></span>Digital Resources</div>
   <div>
 
     {% for column in posts | batch(limit.columns) %}
@@ -56,7 +56,7 @@
               </div>
               <div class="uk-position-bottom-left">
                 <h3>
-                  <a href="{{ post.link|raw }}" class="uk-button uk-button-primary sp-button-news">
+                  <a href="{{ post.link|raw }}" class="uk-button uk-button-primary sp-button-databases">
                     {{ display.title.limit ? post.title|raw : post.title|raw }}
                   </a>
                 </h3>
