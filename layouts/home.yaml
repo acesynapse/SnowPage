@@ -20,7 +20,8 @@ layout:
     - bookshelves
 
   /programs/:
-    - copyright
+    -
+      - programs
 
   /subscribe/:
     -
