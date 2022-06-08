@@ -116,3 +116,17 @@ content:
         four: 'J.K. Rowling'
         five: 'J.K. Rowling'
         six: 'J.K. Rowling'
+  databases:
+    attributes:
+      post:
+        filter:
+          categories: ''
+          sticky: show
+        limit:
+          total: '8'
+          columns: '4'
+        display:
+          pagination_buttons: ''
+        sort:
+          orderby: rand
+          ordering: DESC
