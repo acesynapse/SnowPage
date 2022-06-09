@@ -66,35 +66,6 @@ form:
                 6: 6
               overridable: false
 
-            post.sort.orderby:
-              type: select.select
-              label: Order By
-              description: Select how the posts should be ordered by.
-              default: date
-              options:
-                date: Published Date
-                modified: Last Modified Date
-                name: Post Name (Slug)
-                title: Title
-                author: Author
-                comment_count: Comment Count
-                type: Post Type
-                ID: ID
-                parent: Parent ID
-                rand: Random
-                none: None
-              overridable: false
-
-            post.sort.ordering:
-              type: select.select
-              label: Ordering Direction
-              description: Select the direction the posts should be ordered by.
-              default: DESC
-              options:
-                ASC: Ascending
-                DESC: Descending
-              overridable: false
-
             post.display.image.enabled:
               type: select.select
               label: Image

@@ -18,8 +18,9 @@
   'post_type': 'mec-events',
   'posts_per_page': limit.total | default('8'),
   'offset': start,
-  'orderby': sort.orderby,
-  'order': sort.ordering,
+  'orderby': meta_value_num,
+  'order': ASC,
+  'meta_key': mec_start_day_seconds,
   'ignore_sticky_posts': sticky_posts
 } %}
 
