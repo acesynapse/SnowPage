@@ -15,7 +15,7 @@
 
 {# Query Posts #}
 {% set query_parameters = {
-  'post_type': 'mec-events',
+  'mec_post_type_name', 'mec-events',
   'posts_per_page': limit.total | default('8'),
   'offset': start,
   'orderby': meta_value_num,
