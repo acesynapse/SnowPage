@@ -16,8 +16,7 @@
 {# Query Posts #}
 {% set query_parameters = {
   'post_type': 'mec-events',
-  'mec_post_type_name': 'mec-events',
-  'posts_per_page': limit.total | default('8'),
+  'posts_per_page': limit.total | default('1'),
   'offset': start,
   'orderby': meta_value_num,
   'order': ASC,
@@ -42,6 +41,7 @@
 {% block particle %}
 
   {# All Posts #}
+THIS RIGHT HERE PLEASE WORK!!!!  {{ post.id }}
 <div class="sp-databases-title"><span class="sp-databases-title-icon" uk-icon="icon: more-vertical; ratio: 2"></span>Digital Resources</div>
   <div>
 
