@@ -1,70 +1,24 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
-{% set attr_extra = particle.extra | attribute_array %}
-{% set post_settings = particle.post %}
-{% set filter = post_settings.filter %}
-{% set sort = post_settings.sort %}
-{% set limit = post_settings.limit %}
-{% set start = limit.start + max(0, ajax.start | int) %}
-{% set display = post_settings.display %}
+  {# Query Posts #}
+  {% set query_parameters = {
+    'post_type': 'mec_calendars',
+	'orderby': 'date',
+	'order': 'asc',
+	'posts_per_page': 1
+  } %}
 
-{# Sticky Posts #}
-{% set sticky_posts = filter.sticky
-  ? false
-  : true %}
 
-{# Query Posts #}
-{% set query_parameters = {
-  'post_type': 'mec-calendars',
-  'post_name': 'Homepage Events'
-  'posts_per_page': '1'
-} %}
+  {% set posts = wordpress.query_posts(query_parameters) %}
 
-{% if filter.posts %}
-  {% set query_parameters = query_parameters | merge({
-    'post__in': filter.posts | replace({' ': ',', ', ': ','}) | split(',')
-  }) %}
-{% else %}
-  {% set query_parameters = query_parameters | merge({
-    'cat': filter.categories | replace({' ': ',', ', ': ','})
-  }) %}
-{% endif %}
+  {% set id = post.id %}
+  {% set one = '[MEC id="' %}
+  {% set two = '"]' %}
 
-{% set posts = wordpress.query_posts(query_parameters) %}
-{% set total = posts.get_pagination([]).total | abs %}
-{% set total = max(posts | length, (total * max(0, limit.total))) %}
+  {% block particle %}
 
-{% block particle %}
 
-  {# All Posts #}
-THIS RIGHT HERE PLEASE WORK!!!!  {{ post.id }}
-<div class="sp-databases-title"><span class="sp-databases-title-icon" uk-icon="icon: more-vertical; ratio: 2"></span>Digital Resources</div>
-  <div>
-
-    {% for column in posts | batch(limit.columns) %}
-      <div class="uk-child-width-1-4 uk-grid-large" uk-grid="uk-grid">
-        {% for post in column %}
-
-          <div>
-            <div class="uk-inline uk-transition-toggle sp-overflow-hidden" tabindex="0">
-              <div class="uk-transition-scale-up uk-transition-opaque">
-                <a href="{{ post.link|raw }}">
-                  <img src="{{ url(post.thumbnail.src) }}"/>
-                </a>
-              </div>
-              <div class="uk-position-bottom-left">
-                <h3>
-                  <a href="{{ post.link|raw }}" class="uk-button uk-button-primary sp-button-databases">
-                    {{ display.title.limit ? post.title|raw : post.title|raw }}
-                  </a>
-                </h3>
-              </div>
-            </div>
-          </div>
-
-        {% endfor %}
-      </div>
-    {% endfor %}
-  </div>
-
+<div class="sp-news-title"><span class="sp-news-title-icon" uk-icon="icon: more-vertical; ratio: 2"></span>Upcoming Programs</div>
+{{ posts|join(', ') }}
+{{ one ~ id ~ two }}
 {% endblock %}
