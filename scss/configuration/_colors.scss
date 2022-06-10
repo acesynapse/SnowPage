@@ -54,8 +54,8 @@ $lum-map: (255:1,254:0.991102,253:0.98225,252:0.973445,251:0.964686,250:0.955973
     @while $color-contrast > 0.142857 {
       $color-d: adjust-color($color-d, $red: -1, $green: -1, $blue: -1);
       $color-contrast: color-lum($color-d);
-      @if ($color-d = #000000) {
-        $color-contrast: 0.142857;
+      @if ($color-d == #000000) {
+        $color-contrast: 0.1428576;
       }
     }
     @return $color-d;
@@ -63,8 +63,8 @@ $lum-map: (255:1,254:0.991102,253:0.98225,252:0.973445,251:0.964686,250:0.955973
     @while $color-contrast < 7 {
       $color-d: adjust-color($color-d, $red: 1, $green: 1, $blue: 1);
       $color-contrast: contrast-color($color-d);
-      @if ($color-d = #ffffff) {
-        $color-contrast: 7;
+      @if ($color-d == #ffffff) {
+        $color-contrast: 7.0001;
       }
     }
     @return $color-d;
@@ -75,12 +75,12 @@ $lum-map: (255:1,254:0.991102,253:0.98225,252:0.973445,251:0.964686,250:0.955973
 
 // Brings primary colors into contrast requirements
 @function primary-color-fix($color-p) {
-  $color-contrast: compare-color-2($color-p, #f7f7f7);
+  $color-contrast: compare-color($color-p, #f7f7f7);
   $color-o: $color-p;
   @if (($color-contrast) < 7) {
     @while ($color-contrast) < 7 {
       $color-p: adjust-color($color-p, $red: -1, $green: -1, $blue: -1);
-      $color-contrast: compare-color-2($color-p, #f7f7f7);
+      $color-contrast: compare-color($color-p, #f7f7f7);
     }
     @return $color-p;
   } @else {
@@ -117,7 +117,7 @@ $lum-map: (255:1,254:0.991102,253:0.98225,252:0.973445,251:0.964686,250:0.955973
   }
 }
 
-$primary-color-fixed: $primary-color;
+$primary-color-fixed: primary-color-fix($primary-color);
 $complementary-color-1: $primary-color-fixed;
 $complementary-color-2-pre: ryb-adjust-hue($primary-color-fixed, 180);
 $complementary-color-2: $complementary-color-2-pre;
@@ -162,17 +162,17 @@ $base-border-color: $grey;
 
 // Header
 $header-background: #f7f7f7;
-$header-text-color: $monochromatic-color-2;
+$header-text-color: wcag-color($monochromatic-color-2, 7);
 $header-link-color: $monochromatic-color-2;
 $header-link-hover: $monochromatic-color-1;
 
 // Messages
 $messages-background: $monochromatic-color-1;
-$messages-text-color: $monochromatic-color-1;
+$messages-text-color: wcag-color($monochromatic-color-1, 7);
 
 // Breadcrumbs
 $breadcrumbs-background: $greyscale-4;
-$breadcrumbs-text-color: $greyscale-4;
+$breadcrumbs-text-color: wcag-color($greyscale-4, 7);
 $breadcrumbs-link-color: $greyscale-4;
 $breadcrumbs-link-hover: $greyscale-3;
 
@@ -198,7 +198,7 @@ $books-text-color: $greyscale-5;
 
 // Programs
 $programs-background: $white;
-$programs-text-color:	$white;
+$programs-text-color:	$off-black;
 $programs-link-color: $white;
 $programs-link-hover: $off-white;
 $programs-button: $square-color-1;
