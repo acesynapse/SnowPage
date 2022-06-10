@@ -2,6 +2,6 @@
 
 {% block particle %}
 <div class="breadcrumbs" typeof="BreadcrumbList" vocab="http://schema.org/">
-    {{ gantry.platform.call('bcn_display') }}
+    {% do gantry.platform.call('bcn_display') %}
 </div>
 {% endblock %}

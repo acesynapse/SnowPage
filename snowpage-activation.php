@@ -126,6 +126,12 @@ function snowpage_required_plugins() {
 			'required'           => false,
 		),
 
+		array(
+			'name'               => 'Breadcrumb NavXT',
+			'slug'               => 'breadcrumb-navxt',
+			'required'           => true,
+		),
+
 	);
 
 	$config = array(

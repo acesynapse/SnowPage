@@ -1,5 +1,5 @@
-name: Subscribe
-description: Display newsletter subscription block.
+name: Hero
+description: Display Hero block.
 type: particle
 icon: fa-mailbox
 
@@ -17,8 +17,6 @@ form:
       label: Enabled
       description: Globally enable the particle.
       default: true
-
-
 
     twig:
        type: input.checkbox
