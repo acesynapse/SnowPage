@@ -22,5 +22,3 @@ UIkit - 3.14.3
 ***20220329***
 1. Updated uikit-3.13.5
 2. Checked Gantry update 5.5.12 for changes to Hydrogen theme. None found.
-
-And Chad is Awesome!
