@@ -5,9 +5,9 @@
 	z-index: 3;
 
 	a {
-		color: lighten($programs-background, 40%);
+		color: $programs-link-color;
 		&:hover {
-			color: $programs-text-color;
+			color: $programs-link-hover;
 		}
 	}
 
@@ -24,4 +24,14 @@
 		background: #fff !important;
 		color: #000 !important;
 	}
+}
+
+.sp-programs-title {
+	font-weight: 700;
+	font-size: 1.5rem;
+	margin-bottom: 1rem;
+}
+
+.sp-programs-title-icon {
+	color: $square-color-4 !important;
 }

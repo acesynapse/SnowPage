@@ -76,11 +76,13 @@ $lum-map: (255:1,254:0.991102,253:0.98225,252:0.973445,251:0.964686,250:0.955973
 // Brings primary colors into contrast requirements
 @function primary-color-fix($color-p) {
   $color-contrast: compare-color($color-p, #f7f7f7);
-  $color-o: $color-p;
-  @if (($color-contrast) < 7) {
-    @while ($color-contrast) < 7 {
+  @if $color-contrast < 7 {
+    @while $color-contrast < 7 {
       $color-p: adjust-color($color-p, $red: -1, $green: -1, $blue: -1);
       $color-contrast: compare-color($color-p, #f7f7f7);
+	  @if ($color-p == #000000) {
+        $color-contrast: 8;
+      }
     }
     @return $color-p;
   } @else {
@@ -90,7 +92,6 @@ $lum-map: (255:1,254:0.991102,253:0.98225,252:0.973445,251:0.964686,250:0.955973
 
 // Returns a greyscale color meeting declared contrast requirements
 @function wcag-color($color-e, $standard) {
-  $color-e: color-fix($color-e);
   $color-contrast: color-lum($color-e);
   $text: desaturate($color-e, 100%);
   @if $color-contrast < 1 {
@@ -101,10 +102,12 @@ $lum-map: (255:1,254:0.991102,253:0.98225,252:0.973445,251:0.964686,250:0.955973
     @while $color-contrast < $standard {
       $text: adjust-color($text, $red: 1, $green: 1, $blue: 1);
       $color-contrast: compare-color($color-e, $text);
+      @if ($text == #ffffff) {
+        $color-contrast: ($standard + 1);
+      }
     }
     @return $text;
-  } @else
-  if $color-contrast >= 1 {
+  } @else if $color-contrast >= 1 {
     @if ($text == $color-e) {
         $text: adjust-color($text, $red: -1, $green: -1, $blue: -1);
     }
@@ -112,9 +115,14 @@ $lum-map: (255:1,254:0.991102,253:0.98225,252:0.973445,251:0.964686,250:0.955973
     @while $color-contrast < $standard {
       $text: adjust-color($text, $red: -1, $green: -1, $blue: -1);
       $color-contrast: compare-color($color-e, $text);
+      @if ($text == #000000) {
+        $color-contrast: ($standard + 1);
+      }
     }
     @return $text;
-  }
+	} @else {
+		@return $text;
+	}
 }
 
 $primary-color-fixed: primary-color-fix($primary-color);
@@ -199,10 +207,10 @@ $books-text-color: $greyscale-5;
 // Programs
 $programs-background: $white;
 $programs-text-color:	$off-black;
-$programs-link-color: $white;
-$programs-link-hover: $off-white;
+$programs-link-color: $off-black;
+$programs-link-hover: $off-black;
 $programs-button: $square-color-1;
-$programs-button-hover: $square-color-1;
+$programs-button-hover: $square-color-2;
 
 // Subscribe
 $subscribe-background:	$greyscale-2;
@@ -210,10 +218,10 @@ $subscribe-text-color:	$greyscale-5;
 
 // Resources
 $resources-background:	$white;
-$resources-text-color:	$greyscale-4;
-$resources-link-color: $white;
-$resources-link-hover: $off-white;
-$resources-button: $complementary-color-2;
+$resources-text-color:	$off-black;
+$resources-link-color: $off-black;
+$resources-link-hover: $off-black;
+$resources-button: $complementary-color-1;
 $resources-button-hover: $complementary-color-2;
 
 // Main
