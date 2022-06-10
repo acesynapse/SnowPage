@@ -10,7 +10,7 @@ layout:
 
   /hero/:
     -
-      - custom
+      - hero
 
   /news/:
     -
@@ -88,12 +88,6 @@ structure:
         - attributes
         - children
 content:
-  custom:
-    title: 'Custom HTML'
-    attributes:
-      html: "<div class=\"uk-background-contain\">\n  <div>\n    <div class=\"uk-inline\">\n      <img src=\"https://picsum.photos/2000/400\" width=\"2000\" height=\"400\" alt=\"\">\n      <div class=\"uk-overlay uk-overlay-default uk-position-center-left uk-box-shadow-small uk-width-2-3\">\n        <div class=\"uk-child-width-expand@m uk-grid-large uk-grid-match\" uk-grid>\n          <div>\n            <div>\n              <h1 class=\"sp-text-bold uk-text-capitalize\">Information Here</h1>\n              <p>Cras a urna finibus, fringilla diam non, eleifend lectus. Etiam porttitor porttitor viverrtas. Mauris varius orci vel fermentum molestie. Vivamus venenatis, enim luctus sollicitudin pellentesque, dui metus dignissim elit, vitae fermentum augue diam et lectus. In varius blandit massa, nec luctus leo.</p>\n            </div>\n          </div>\n          <div class=\"uk-position-bottom-right uk-width-auto\">\n            <button class=\"uk-button uk-button-primary sp-button-hero\">Button<span class=\"uk-position-center-right\" uk-icon=\"arrow-right\"></span></button>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>"
-    block:
-      variations: 'nopaddingall nomarginall'
   bookshelves:
     attributes:
       isbn:

@@ -1,24 +1,25 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
-  {# Query Posts #}
-  {% set query_parameters = {
-    'post_type': 'mec_calendars',
-	'orderby': 'date',
-	'order': 'asc',
-	'posts_per_page': 1
-  } %}
+{# Query Posts #}
+{% set query_parameters = {
+  'post_type': 'mec_calendars',
+  'orderby': 'date',
+  'order': 'asc',
+  'posts_per_page': 1
+} %}
 
+{% set posts = wordpress.query_posts(query_parameters) %}
+{% for column in posts | batch(1) %}
+  {% for post in column %}
+    {% set id = post.id %}
+  {% endfor %}
+{% endfor %}
+{% set one = '[MEC id="' %}
+{% set two = '"]' %}
 
-  {% set posts = wordpress.query_posts(query_parameters) %}
+{% block particle %}
 
-  {% set id = post.id %}
-  {% set one = '[MEC id="' %}
-  {% set two = '"]' %}
-
-  {% block particle %}
-
-
-<div class="sp-news-title"><span class="sp-news-title-icon" uk-icon="icon: more-vertical; ratio: 2"></span>Upcoming Programs</div>
-{{ posts|join(', ') }}
-{{ one ~ id ~ two }}
+  <div class="sp-programs-title">
+    <span class="sp-programs-title-icon" uk-icon="icon: more-vertical; ratio: 2"></span>Upcoming Programs</div>
+  {{ gantry.platform.filter(one ~ id ~ two)|html|raw }}
 {% endblock %}
