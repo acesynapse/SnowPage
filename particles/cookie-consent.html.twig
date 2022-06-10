@@ -1,0 +1,57 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    {% do gantry.document.addStyle(url('https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css'), 0) %}
+    {% do gantry.document.addScript(url('https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js'), 0, 'footer') %}
+
+    {% assets in 'footer' with { priority: 0 } %}
+        <script type="text/javascript">
+            window.addEventListener("load", function(){
+            window.cookieconsent.initialise({
+                "palette": {
+                    "popup": {
+                        "background": "{{ particle.cookie_consent_cbgColor|default('#000000') }}",
+                        "text": "{{ particle.cookie_consent_ctextColor|default('#fff') }}"
+                    },
+                    "button": {
+                        {% if particle.cookie_consent_layout == 'wire' %}
+                        "background": "transparent",
+                        "text": "{{ particle.cookie_consent_cbuttonColor|default('#000') }}",
+                        "border": "{{ particle.cookie_consent_cbuttonColor|default('#000') }}"
+                        {% else %}
+                        "background": "{{ particle.cookie_consent_cbuttonBg|default('#f1d600') }}",
+                        "text": "{{ particle.cookie_consent_cbuttonColor|default('#000') }}"
+                        {% endif %}
+                    }
+                },
+                {% if particle.cookie_consent_position == 'top' %}
+                "position": "top",
+                {% elseif particle.cookie_consent_position == 'pushdown' %}
+                "position": "top",
+                "static": true,
+                {% elseif particle.cookie_consent_position == 'bottom-left' %}
+                "position": "bottom-left",
+                {% elseif particle.cookie_consent_position == 'bottom-right' %}
+                "position": "bottom-right",
+                {% endif %}
+                {% if particle.cookie_consent_layout == 'edgeless' %}
+                "theme": "edgeless",
+                {% elseif particle.cookie_consent_layout == 'classic' %}
+                "theme": "classic",
+                {% elseif particle.cookie_consent_layout == 'wire' %}
+                "theme": "wire",
+                {% endif %}
+                "content": {
+                    "message": "{{ particle.cookie_consent_displayText|e('js') }}",
+                    "dismiss": "{{ particle.cookie_consent_dismissText|e('js') }}",
+                    {% if particle.cookie_consent_policyText %}
+                    "link": "{{ particle.cookie_consent_policyText|e('js') }}",
+                    {% endif %}
+                    {% if particle.cookie_consent_policyURL %}
+                    "href": "{{ particle.cookie_consent_policyURL|e('js') }}"
+                    {% endif %}
+                }
+            })});
+        </script>
+    {% endassets -%}
+{% endblock %}

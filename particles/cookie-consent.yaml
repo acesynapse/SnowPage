@@ -1,0 +1,73 @@
+name: Cookie Consent
+description: Disply customized Cookie Consent.
+type: atom
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable to the particles.
+      default: true
+
+    _note_cookie_item:
+      type: separator.note
+      class: alert alert-info
+      content: <span style="font-size:16px; font-weight:bold;">Cookie Consent - Options</span>
+    cookie_consent:
+      type: enable.enable
+      label: Enable Cookie Consent
+      default: false
+    cookie_consent_position:
+      type: select.select
+      label: Position
+      default: bottom
+      options:
+        bottom: Banner Bottom
+        top: Banner Top
+        pushdown: Banner top (pushdown)
+        bottom-left: Floating Left
+        bottom-right: Floating Right
+    cookie_consent_layout:
+      type: select.select
+      label: Layout
+      default: block
+      options:
+        block: Block
+        edgeless: Edgeless
+        classic: Classic
+        wire: Wire
+    cookie_consent_cbgColor:
+      type: input.colorpicker
+      label: Background Color
+      default: '#000000'
+    cookie_consent_ctextColor:
+      type: input.colorpicker
+      label: Text Color
+      default: '#ffffff'
+    cookie_consent_cbuttonBg:
+      type: input.colorpicker
+      label: Button Background
+      default: '#f1d600'
+    cookie_consent_cbuttonColor:
+      type: input.colorpicker
+      label: Button Text Color
+      default: '#000000'
+    cookie_consent_displayText:
+      type: textarea.textarea
+      label: Description
+      default: We use cookies to ensure you get the best experience on our website.
+    cookie_consent_policyText:
+      type: input.text
+      label: Link Text
+      default: Learn more
+      description: Leave empty if you don't need.
+    cookie_consent_policyURL:
+      type: input.text
+      label: Link URL
+      placeholder: 'cookie-policy'
+      description: Leave empty if you don't need.
+    cookie_consent_dismissText:
+      type: input.text
+      label: Dismiss Button Text
+      default: Got It!
