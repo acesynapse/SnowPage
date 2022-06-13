@@ -20,4 +20,5 @@ if (defined('ICEJAM')) {
     $wpdb->delete( 'wp_posts', array( 'post_parent' => $val ) );
     $wpdb->delete( 'wp_postmeta', array( 'post_id' => $val ) );
   }
+  exit();
 }
