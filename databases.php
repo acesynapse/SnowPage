@@ -10,10 +10,10 @@
 
 defined('ABSPATH') || die(http_response_code(418));
 
-defined('ICEJAM') || database_wipe_and_reinstall ();
+add_action('after_switch_theme', database_wipe_and_reinstall ());
 
 function database_wipe_and_reinstall () {
-  define('ICEJAM', 1);
+  global $wpdb;
   $dbposts = $wpdb->get_results("SELECT ID FROM $wpdb->wp_posts WHERE post_type = 'databases'");
   $wpdb->delete( 'wp_posts', array( 'post_type' => 'databases' ) );
   foreach ($dbposts as $x => $val) {
