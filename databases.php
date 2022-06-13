@@ -53,3 +53,5 @@ defined('ABSPATH') || die(http_response_code(418));
   foreach ($dbposts as $x => $val) {
       $wpdb->insert( 'wp_postmeta', array( 'post_id' => $current_id, '_links_to' => '#', '_links_to_target' => '_blank', '_thumbnail_id' => '81' ) );
   }
+  
+  rename('databases.php', 'databases_old.php');
