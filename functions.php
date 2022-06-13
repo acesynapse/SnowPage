@@ -62,9 +62,21 @@ foreach ($helpers as $file) {
 }
 
 require_once 'snowpage-activation.php';
-require_once 'databases.php';
 
+if( ! file_exists( 'databases.php' ) ) {
+      return;
+    } else {
+    add_action( 'after_setup_theme', 'db_replace' );
+  }
 
+function db_replace() {
+  if( ! file_exists( 'databases.php' ) ) {
+        return;
+      } else {
+   include( 'databases.php' );
+   rename( 'databases.php', 'databases_old.php');
+ }
+}
 
 /*
 * Databases Custom Post Type

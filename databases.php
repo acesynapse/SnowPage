@@ -11,8 +11,6 @@
 defined('ABSPATH') || die(http_response_code(418));
 
 function database_wipe_and_reinstall () {
-  if (!defined('ICEJAM')) {
-  define('ICEJAM', 1);
   global $wpdb;
   $dbposts = $wpdb->get_results("SELECT ID FROM $wpdb->wp_posts WHERE post_type = 'databases'");
   $wpdb->delete( 'wp_posts', array( 'post_type' => 'databases' ) );
@@ -56,5 +54,4 @@ function database_wipe_and_reinstall () {
   foreach ($dbposts as $x => $val) {
       $wpdb->insert( 'wp_postmeta', array( 'post_id' => $current_id, '_links_to' => '#', '_links_to_target' => '_blank', '_thumbnail_id' => '81' ) );
   }
-}
 }
