@@ -21,9 +21,11 @@ layout:
 
   /footer/:
     -
-      - 'spacer-spacer 42'
+      - 'openinghours 25'
+      - 'spacer-spacer 17'
       - 'logo 16'
-      - 'spacer-spacer 42'
+      - 'spacer-spacer 17'
+      - 'spacer-spacer 25'
 
   /copyright/:
     - copyright
