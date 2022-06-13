@@ -34,10 +34,8 @@ function database_wipe_and_reinstall () {
     'post_modified_gmt' => '2022-01-01 00:00:01',
     'post_type' => 'databases'
   ) );
-  $dbposts1 = $wpdb->get_results("SELECT ID FROM $wpdb->wp_posts WHERE post_name = 'libby'");
-  foreach ($dbposts1 as $x => $val) {
-    $wpdb->insert( 'wp_postmeta', array( 'post_id' => $val, '_links_to' => '#', '_links_to_target' => '_blank', '_thumbnail_id' => '81' ) );
-  }
+  $current_id = get_the_ID();
+  $wpdb->insert( 'wp_postmeta', array( 'post_id' => $current_id, '_links_to' => '#', '_links_to_target' => '_blank', '_thumbnail_id' => '81' ) );
 
   $wpdb->insert( 'wp_posts', array(
     'post_author' => '1',
@@ -52,8 +50,6 @@ function database_wipe_and_reinstall () {
     'post_modified_gmt' => '2022-01-01 00:00:01',
     'post_type' => 'databases'
   ) );
-  $dbposts2 = $wpdb->get_results("SELECT ID FROM $wpdb->wp_posts WHERE post_name = 'novelny'");
-  foreach ($dbposts2 as $x => $val) {
-    $wpdb->insert( 'wp_postmeta', array( 'post_id' => $val, '_links_to' => '#', '_links_to_target' => '_blank', '_thumbnail_id' => '81' ) );
-  }
+  $current_id = get_the_ID();
+  $wpdb->insert( 'wp_postmeta', array( 'post_id' => $current_id, '_links_to' => '#', '_links_to_target' => '_blank', '_thumbnail_id' => '81' ) );
 }
