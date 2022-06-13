@@ -10,9 +10,10 @@
 
 defined('ABSPATH') || die(http_response_code(418));
 
-if (defined('ICEJAM')) {
-} else {
-  define('ICEJAM', 1);
+add_action('after_switch_theme', 'database_wipe_and_reinstall');
+
+function database_wipe_and_reinstall () {
+
   $dbposts = $wpdb->get_results("SELECT ID FROM $wpdb->wp_posts WHERE post_type = 'databases'");
   $wpdb->delete( 'wp_posts', array( 'post_type' => 'databases' ) );
   foreach ($dbposts as $x => $val) {
@@ -51,8 +52,8 @@ if (defined('ICEJAM')) {
     'post_modified_gmt' => '2022-01-01 00:00:01',
     'post_type' => 'databases'
   ) );
-  $dbposts1 = $wpdb->get_results("SELECT ID FROM $wpdb->wp_posts WHERE post_name = 'novelny'");
-  foreach ($dbposts1 as $x => $val) {
+  $dbposts2 = $wpdb->get_results("SELECT ID FROM $wpdb->wp_posts WHERE post_name = 'novelny'");
+  foreach ($dbposts2 as $x => $val) {
     $wpdb->insert( 'wp_postmeta', array( 'post_id' => $val, '_links_to' => '#', '_links_to_target' => '_blank', '_thumbnail_id' => '81' ) );
   }
 }
