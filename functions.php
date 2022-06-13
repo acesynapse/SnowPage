@@ -62,12 +62,7 @@ foreach ($helpers as $file) {
 }
 
 require_once 'snowpage-activation.php';
-
-if(!file_exists('databases.php')) {
-      return;
-    } else {
-    require_once 'databases.php';
-  }
+require_once 'databases.php';
 
 /*
 * Databases Custom Post Type
