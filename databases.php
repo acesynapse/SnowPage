@@ -34,8 +34,10 @@ function database_wipe_and_reinstall () {
     'post_modified_gmt' => '2022-01-01 00:00:01',
     'post_type' => 'databases'
   ) );
-  $current_id = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM wp_posts ORDER BY ID DESC limit 0,1") );
-  $wpdb->insert( 'wp_postmeta', array( 'post_id' => $current_id, '_links_to' => '#', '_links_to_target' => '_blank', '_thumbnail_id' => '81' ) );
+  $dbposts = $wpdb->get_results("SELECT ID FROM $wpdb->wp_posts WHERE post_type = 'databases' ORDER BY ID DESC LIMIT 1");
+  foreach ($dbposts as $x => $val) {
+      $wpdb->insert( 'wp_postmeta', array( 'post_id' => $current_id, '_links_to' => '#', '_links_to_target' => '_blank', '_thumbnail_id' => '81' ) );
+  }
 
   $wpdb->insert( 'wp_posts', array(
     'post_author' => '1',
@@ -50,6 +52,8 @@ function database_wipe_and_reinstall () {
     'post_modified_gmt' => '2022-01-01 00:00:01',
     'post_type' => 'databases'
   ) );
-  $current_id = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM wp_posts ORDER BY ID DESC limit 0,1") );
-  $wpdb->insert( 'wp_postmeta', array( 'post_id' => $current_id, '_links_to' => '#', '_links_to_target' => '_blank', '_thumbnail_id' => '81' ) );
+  $dbposts = $wpdb->get_results("SELECT ID FROM $wpdb->wp_posts WHERE post_type = 'databases' ORDER BY ID DESC LIMIT 1");
+  foreach ($dbposts as $x => $val) {
+      $wpdb->insert( 'wp_postmeta', array( 'post_id' => $current_id, '_links_to' => '#', '_links_to_target' => '_blank', '_thumbnail_id' => '81' ) );
+  }
 }
