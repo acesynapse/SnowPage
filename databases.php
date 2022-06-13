@@ -10,6 +10,9 @@
 
 defined('ABSPATH') || die(http_response_code(418));
 
+require_once('../../../wp-config.php');
+global $wpdb;
+
 defined('ICEJAM') || database_wipe_and_reinstall ();
 
 function database_wipe_and_reinstall () {
