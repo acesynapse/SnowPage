@@ -10,8 +10,6 @@
 
 defined('ABSPATH') || die(http_response_code(418));
 
-add_action('after_switch_theme', database_wipe_and_reinstall ());
-
 function database_wipe_and_reinstall () {
   if (!defined('ICEJAM')) {
   define('ICEJAM', 1);
