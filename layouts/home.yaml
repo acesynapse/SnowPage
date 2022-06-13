@@ -88,29 +88,6 @@ structure:
         - attributes
         - children
 content:
-  bookshelves:
-    attributes:
-      isbn:
-        one: '9781338299199'
-        two: '9780545582926'
-        three: '0786296658'
-        four: '0786229276'
-        five: '9780545582971'
-        six: '9780545582889'
-      title:
-        one: 'Harry Potter and the Half-Blood Prince'
-        two: 'Harry Potter and the Chamber of Secrets'
-        three: 'Harry Potter and the Deathly Hallows'
-        four: 'Harry Potter and the Goblet of Fire'
-        five: 'Harry Potter and the Order of the Phoenix'
-        six: 'Harry Potter and the Sorcerer''s Stone'
-      author:
-        one: 'J.K. Rowling'
-        two: 'J.K. Rowling'
-        three: 'J.K. Rowling'
-        four: 'J.K. Rowling'
-        five: 'J.K. Rowling'
-        six: 'J.K. Rowling'
   databases:
     attributes:
       post:
