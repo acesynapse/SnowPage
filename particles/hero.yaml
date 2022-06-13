@@ -18,6 +18,26 @@ form:
       description: Globally enable the particle.
       default: true
 
+    boxtitle:
+      type: input.text
+      label: Title
+      description: Add Title for information Block
+
+    boxinformation:
+      type: input.text
+      label: Information
+      description: Add text for information Block
+
+    buttonlink:
+      type: input.text
+      label: Link
+      description: Add link for information Block Button
+
+    buttontext:
+      type: input.text
+      label: Text
+      description: Add text for information Block Button
+
     twig:
        type: input.checkbox
        label: Process Twig

@@ -16,7 +16,8 @@ layout:
       - message
 
   /breadcrumbs/:
-    - copyright
+    -
+      - breadcrumbs
 
   /footer/:
     -

@@ -9,12 +9,12 @@
         <div class="uk-child-width-expand@m uk-grid-large uk-grid-match" uk-grid>
           <div>
             <div>
-              <h1 class="sp-text-bold uk-text-capitalize">Information Here</h1>
-              <p>Cras a urna finibus, fringilla diam non, eleifend lectus. Etiam porttitor porttitor viverrtas. Mauris varius orci vel fermentum molestie. Vivamus venenatis, enim luctus sollicitudin pellentesque, dui metus dignissim elit, vitae fermentum augue diam et lectus. In varius blandit massa, nec luctus leo.</p>
+              <h1 class="sp-text-bold uk-text-capitalize">{{ particle.boxtitle|e }}</h1>
+              <p>{{ particle.boxinformation|e }}</p>
             </div>
           </div>
           <div class="uk-position-bottom-right uk-width-auto">
-            <button class="uk-button uk-button-primary sp-button-hero">Button<span class="uk-position-center-right" uk-icon="arrow-right"></span></button>
+            <a href="{{ particle.buttonlink|e }}"><button class="uk-button uk-button-primary sp-button-hero">{{ particle.buttontext|e }}<span class="uk-position-center-right" uk-icon="arrow-right"></span></button></a>
           </div>
         </div>
       </div>

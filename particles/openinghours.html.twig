@@ -1,0 +1,24 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{# Query Posts #}
+{% set query_parameters = {
+  'post_type': 'op-set',
+  'orderby': 'date',
+  'order': 'asc',
+  'posts_per_page': 1
+} %}
+
+{% set posts = wordpress.query_posts(query_parameters) %}
+{% for column in posts | batch(1) %}
+  {% for post in column %}
+    {% set id = post.id %}
+  {% endfor %}
+{% endfor %}
+{% set one = '[op-overview set_id="' %}
+{% set two = '" title="Hours" show_closed_days="true" include_io="true" include_holidays="true"]' %}
+
+{% block particle %}
+<div class="sp-hours">
+  {{ gantry.platform.filter(one ~ id ~ two)|html|raw }}
+</div>
+{% endblock %}
