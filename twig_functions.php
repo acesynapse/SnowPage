@@ -10,6 +10,8 @@
 
 defined('ABSPATH') || die(http_response_code(418));
 
+use Timber\Timber;
+
   global $wpdb;
   $dbpostsobject = $wpdb->get_results("SELECT ID FROM wp_posts WHERE post_type = 'bookshelves' ORDER BY ID DESC LIMIT 1");
   $dbpostsarrayss = json_decode(json_encode($dbpostsobject), true);
@@ -48,21 +50,3 @@ defined('ABSPATH') || die(http_response_code(418));
 
   $isbn6 = $bookshelves3[5];
   $title6 = $bookshelves4[5];
-
-  $twig->addGlobal('isbn1', $isbn1);
-  $twig->addGlobal('title1', $title1);
-
-  $twig->addGlobal('isbn2', $isbn2);
-  $twig->addGlobal('title2', $title2);
-
-  $twig->addGlobal('isbn3', $isbn3);
-  $twig->addGlobal('title3', $title3);
-
-  $twig->addGlobal('isbn4', $isbn4);
-  $twig->addGlobal('title4', $title4);
-
-  $twig->addGlobal('isbn5', $isbn5);
-  $twig->addGlobal('title5', $title5);
-
-  $twig->addGlobal('isbn6', $isbn6);
-  $twig->addGlobal('title6', $title6);
