@@ -1,41 +1,135 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
+{# Query Posts #}
+{% set query_parameters = {
+  'post_type': 'bookshelves',
+  'orderby': 'date',
+  'order': 'asc',
+  'posts_per_page': 1
+} %}
+
+{% set isbn = [] %}
+{% set alt = [] %}
+{% set posts = wordpress.query_posts(query_parameters) %}
+{% for column in posts | batch(1) %}
+  {% for post in column %}
+    {% set id = post.id %}
+    {% set isbn = isbn | merge(post.meta('isbn')) %}
+    {% set alt = alt | merge(post.meta('alt')) %}
+  {% endfor %}
+{% endfor %}
+
 {% block particle %}
-<div class="sp_new_books">
-  <div class="sp_individual_books">
-    <img src="https://secure.syndetics.com/index.aspx?isbn={{ isbn1|e }}/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc="><br>
-    <div class="sp_books_title">{{ title1|e }}</div>
-    <div class="sp_books_author">author</div>
+  <div class="uk-child-width-expand" uk-grid="uk-grid">
+    <div>
+      <div class="uk-card uk-card-hover">
+        <div class="uk-card-media-top uk-padding-small">
+          {% set syndetics = 'https://secure.syndetics.com/index.aspx?isbn=' ~ isbn[0]|e ~ '/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc=' %}
+          {% set openlibrary = 'https://covers.openlibrary.org/b/isbn/' ~ isbn[0]|e ~ '-L.jpg' %}
+          {% if is_url( syndetics ) %}
+            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[0]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ syndetics }}"></a>
+          {% else %}
+            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[0]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ openlibrary }}"></a>
+          {% endif %}
+        </div>
+        <div class="uk-card-body uk-padding-small uk-text-center">
+          <p class="uk-text-default uk-text-bold">{{ alt[0]|e }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="uk-card uk-card-hover">
+        <div class="uk-card-media-top uk-padding-small">
+          {% set syndetics = "https://secure.syndetics.com/index.aspx?isbn={{ isbn[1]|e }}/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc=" %}
+          {% set openlibrary = "https://covers.openlibrary.org/b/isbn/-{{ isbn[1]|e }}L.jpg" %}
+          {% if is_absolute( syndetics ) %}
+            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[1]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ syndetics }}"></a>
+          {% else %}
+            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[1]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ openlibrary }}"></a>
+          {% endif %}
+        </div>
+        <div class="uk-card-body uk-padding-small uk-text-center">
+          <p class="uk-text-default uk-text-bold">{{ alt[1]|e }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="uk-card uk-card-hover">
+        <div class="uk-card-media-top uk-padding-small">
+          {% set syndetics = "https://secure.syndetics.com/index.aspx?isbn={{ isbn[2]|e }}/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc=" %}
+          {% set openlibrary = "https://covers.openlibrary.org/b/isbn/-{{ isbn[2]|e }}L.jpg" %}
+          {% if is_absolute( syndetics ) %}
+            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[2]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ syndetics }}"></a>
+          {% else %}
+            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[2]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ openlibrary }}"></a>
+          {% endif %}
+        </div>
+        <div class="uk-card-body uk-padding-small uk-text-center">
+          <p class="uk-text-default uk-text-bold">{{ alt[2]|e }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="uk-flex uk-flex-middle uk-flex-center">
+      <div class="uk-card">
+        <span class="uk-text-large uk-text-bold">New &amp; Noteable</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="uk-card uk-card-hover">
+        <div class="uk-card-media-top uk-padding-small">
+          {% set syndetics = "https://secure.syndetics.com/index.aspx?isbn={{ isbn[3]|e }}/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc=" %}
+          {% set openlibrary = "https://covers.openlibrary.org/b/isbn/-{{ isbn[3]|e }}L.jpg" %}
+          {% if is_absolute( syndetics ) %}
+            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[3]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ syndetics }}"></a>
+          {% else %}
+            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[3]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ openlibrary }}"></a>
+          {% endif %}
+        </div>
+        <div class="uk-card-body uk-padding-small uk-text-center">
+          <p class="uk-text-default uk-text-bold uk-flex-middle">{{ alt[3]|e }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="uk-card uk-card-hover">
+        <div class="uk-card-media-top uk-padding-small">
+          {% set syndetics = "https://secure.syndetics.com/index.aspx?isbn={{ isbn[4]|e }}/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc=" %}
+          {% set openlibrary = "https://covers.openlibrary.org/b/isbn/-{{ isbn[4]|e }}L.jpg" %}
+          {% if is_absolute( syndetics ) %}
+            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[4]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ syndetics }}"></a>
+          {% else %}
+            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[4]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ openlibrary }}"></a>
+          {% endif %}
+        </div>
+        <div class="uk-card-body uk-padding-small uk-text-center">
+          <p class="uk-text-default uk-text-bold">{{ alt[4]|e }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="uk-card uk-card-hover">
+        <div class="uk-card-media-top uk-padding-small">
+          {% set syndetics = "https://secure.syndetics.com/index.aspx?isbn={{ isbn[5]|e }}/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc=" %}
+          {% set openlibrary = "https://covers.openlibrary.org/b/isbn/-{{ isbn[5]|e }}L.jpg" %}
+          {% if is_absolute( syndetics ) %}
+            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[5]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ syndetics }}"></a>
+          {% else %}
+            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[5]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ openlibrary }}"></a>
+          {% endif %}
+        </div>
+        <div class="uk-card-body uk-padding-small uk-text-center">
+          <p class="uk-text-default uk-text-bold">{{ alt[5]|e }}</p>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="sp_individual_books">
-    <img src="https://secure.syndetics.com/index.aspx?isbn={{ isbn2|e }}/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc="><br>
-    <div class="sp_books_title">{{ title2|e }}</div>
-    <div class="sp_books_author">author</div>
-  </div>
-  <div class="sp_individual_books">
-    <img src="https://secure.syndetics.com/index.aspx?isbn={{ isbn3|e }}/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc="><br>
-    <div class="sp_books_title">{{ title3|e }}</div>
-    <div class="sp_books_author">author</div>
-  </div>
-  <div class="sp_books_text">
-    <div class="sp_books_inside_text">New & Noteable</div>
-  </div>
-  <div class="sp_individual_books">
-    <img src="https://secure.syndetics.com/index.aspx?isbn={{ isbn4|e }}/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc="><br>
-    <div class="sp_books_title">{{ title4|e }}</div>
-    <div class="sp_books_author">author</div>
-  </div>
-  <div class="sp_individual_books">
-    <img src="https://secure.syndetics.com/index.aspx?isbn={{ isbn5|e }}/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc="><br>
-    <div class="sp_books_title">{{ title5|e }}</div>
-    <div class="sp_books_author">author</div>
-  </div>
-  <div class="sp_individual_books">
-    <img src="https://secure.syndetics.com/index.aspx?isbn={{ isbn6|e }}/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc="><br>
-    <div class="sp_books_title">{{ title6|e }}</div>
-    <div class="sp_books_author">author</div>
-  </div>
-</div>
+
 {% endblock %}
 
 {% block javascript_footer %}

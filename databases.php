@@ -36,6 +36,7 @@ if ($dbversion != $currentversion) {
   }
 }
 
+// Libby
   $wpdb->insert( 'wp_posts', array(
     'post_author' => '1',
     'post_date' => '2022-01-01 00:00:01',
@@ -59,6 +60,7 @@ if ($dbversion != $currentversion) {
       $wpdb->insert( 'wp_term_relationships', array( 'object_id' => $val, 'term_taxonomy_id' => $taxid, 'term_order' => '0' ) );
   }
 
+// NovelNY
   $wpdb->insert( 'wp_posts', array(
     'post_author' => '1',
     'post_date' => '2022-01-01 00:00:01',
@@ -81,6 +83,11 @@ if ($dbversion != $currentversion) {
       $wpdb->insert( 'wp_postmeta', array( 'post_id' => $val, 'meta_key' => '_thumbnail_id', 'meta_value' => '81' ) );
       $wpdb->insert( 'wp_term_relationships', array( 'object_id' => $val, 'term_taxonomy_id' => $taxid, 'term_order' => '0' ) );
   }
+
+// New Database
+
+
+
 
   $wpdb->update( 'wp_options', array('option_value' => $dbversion) , array('option_name' => 'sp_db_version') );
 
