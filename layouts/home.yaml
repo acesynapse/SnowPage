@@ -88,7 +88,7 @@ structure:
         - attributes
         - children
 content:
-  hero-9548:
+  hero:
     attributes:
       boxtitle: 'This Information'
       boxinformation: 'Aliquam sit amet leo neque. Vivamus luctus urna in ante condimentum aliquet. Duis laoreet luctus neque sit amet congue. Suspendisse egestas enim sed elementum suscipit. Sed lobortis ultrices sapien iaculis sollicitudin. Fusce quis tellus eu turpis eleifend hendrerit a sed orci. Nam pretium feugiat lectus eu faucibus.'
