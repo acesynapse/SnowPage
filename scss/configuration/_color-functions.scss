@@ -1,0 +1,164 @@
+$primary-color: #bea7ff !default;
+$white: white;
+$black: black;
+$off-white: darken(white, 3%);
+$off-black: lighten(black, 3%);
+$grey: grey;
+
+// Map of luminescence without using exponents
+$lum-map: (255:1,254:0.991102,253:0.98225,252:0.973445,251:0.964686,250:0.955973,249:0.947306,248:0.938685,247:0.93011,246:0.921581,245:0.913098,244:0.904661,243:0.896269,242:0.887923,241:0.879622,240:0.871367,239:0.863157,238:0.854992,237:0.846873,236:0.838799,235:0.830769,234:0.822785,233:0.814846,232:0.806952,231:0.799102,230:0.791297,229:0.783537,228:0.775822,227:0.768151,226:0.760524,225:0.752942,224:0.745404,223:0.73791,222:0.73046,221:0.723055,220:0.715693,219:0.708375,218:0.701101,217:0.693871,216:0.686685,215:0.679542,214:0.672443,213:0.665387,212:0.658374,211:0.651405,210:0.644479,209:0.637596,208:0.630757,207:0.62396,206:0.617206,205:0.610495,204:0.603827,203:0.597201,202:0.590618,201:0.584078,200:0.57758,199:0.571124,198:0.564711,197:0.55834,196:0.552011,195:0.545724,194:0.539479,193:0.533276,192:0.527115,191:0.520995,190:0.514917,189:0.508881,188:0.502886,187:0.496932,186:0.49102,185:0.485149,184:0.47932,183:0.473531,182:0.467783,181:0.462076,180:0.456411,179:0.450785,178:0.445201,177:0.439657,176:0.434153,175:0.42869,174:0.423267,173:0.417885,172:0.412542,171:0.40724,170:0.401977,169:0.396755,168:0.391572,167:0.386429,166:0.381326,165:0.376262,164:0.371237,163:0.366252,162:0.361306,161:0.3564,160:0.351532,159:0.346704,158:0.341914,157:0.337163,156:0.332451,155:0.327778,154:0.323143,153:0.318546,152:0.313988,151:0.309468,150:0.304987,149:0.300543,148:0.296138,147:0.29177,146:0.28744,145:0.283148,144:0.278894,143:0.274677,142:0.270497,141:0.266355,140:0.26225,139:0.258182,138:0.254152,137:0.250158,136:0.246201,135:0.242281,134:0.238397,133:0.23455,132:0.23074,131:0.226965,130:0.223227,129:0.219526,128:0.21586,127:0.21223,126:0.208636,125:0.205078,124:0.201556,123:0.198069,122:0.194617,121:0.191201,120:0.18782,119:0.184474,118:0.181164,117:0.177888,116:0.174647,115:0.171441,114:0.168269,113:0.165132,112:0.162029,111:0.15896,110:0.155926,109:0.152926,108:0.149959,107:0.147027,106:0.144128,105:0.141263,104:0.138431,103:0.135633,102:0.132868,101:0.130136,100:0.127437,99:0.124771,98:0.122138,97:0.119538,96:0.11697,95:0.114435,94:0.111932,93:0.109461,92:0.107023,91:0.104616,90:0.102241,89:0.099898,88:0.097587,87:0.095307,86:0.093058,85:0.090841,84:0.088655,83:0.0865,82:0.084376,81:0.082282,80:0.080219,79:0.078187,78:0.076185,77:0.074213,76:0.072271,75:0.07036,74:0.068478,73:0.066625,72:0.064803,71:0.06301,70:0.061246,69:0.059511,68:0.057805,67:0.056128,66:0.05448,65:0.05286,64:0.051269,63:0.049706,62:0.048171,61:0.046665,60:0.045186,59:0.043735,58:0.042311,57:0.040915,56:0.039546,55:0.038204,54:0.036889,53:0.035601,52:0.034339,51:0.033104,50:0.031896,49:0.030713,48:0.029556,47:0.028426,46:0.02732,45:0.026241,44:0.025186,43:0.024157,42:0.023153,41:0.022173,40:0.021219,39:0.020288,38:0.019382,37:0.0185,36:0.017641,35:0.016807,34:0.015996,33:0.015208,32:0.014443,31:0.013702,30:0.012983,29:0.012286,28:0.011612,27:0.01096,26:0.010329,25:0.009721,24:0.009134,23:0.008568,22:0.008023,21:0.007499,20:0.006995,19:0.006512,18:0.006048,17:0.005605,16:0.005181,15:0.004776,14:0.004391,13:0.004024,12:0.003676,11:0.003346,10:0.003035,9:0.002731,8:0.002428,7:0.002124,6:0.001821,5:0.001517,4:0.001214,3:0.00091,2:0.000607,1:0.000303,0:0);
+
+// Returns raw luminescence calculation of a single color
+@function color-lum($color-a) {
+  $r: red($color-a);
+  $g: green($color-a);
+  $b: blue($color-a);
+  $rr: round($r);
+  $gr: round($g);
+  $br: round($b);
+  $rm: map-get($lum-map, $rr);
+  $gm: map-get($lum-map, $gr);
+  $bm: map-get($lum-map, $br);
+  $lum: ($rm * 0.2126) + ($gm * 0.7152) + ($bm * 0.0722);
+  @return $lum;
+}
+
+@function compare-color($color-b, $color-c) {
+  $lum1: color-lum($color-b);
+  $lum2: color-lum($color-c);
+  $bl: ($lum1 + 0.05) / ($lum2 + 0.05);
+  $wh: ($lum2 + 0.05) / ($lum1 + 0.05);
+  @if ($bl > $wh) {
+      @return $bl;
+  } @else if ($wh > $bl){
+      @return $wh;
+  }
+}
+
+@function compare-color-bw($color-b) {
+  $lum1: color-lum($color-b);
+  $bl: ($lum1 + 0.05) / (0.00242 + 0.05);
+  $wh: (0.93011 + 0.05) / ($lum1 + 0.05);
+  @if ($bl > $wh) {
+      @return #080808;
+  } @else if ($wh > $bl){
+      @return #f7f7f7;
+  }
+}
+
+// Brings outlying colors into declared contrast requirements
+@function color-fix($color-d) {
+  $color-contrast: color-lum($color-d);
+  $color-k: $color-d;
+  @if ($color-contrast >= 0.142857 and $color-contrast < 1) {
+    @while $color-contrast > 0.142857 {
+      $color-d: adjust-color($color-d, $red: -1, $green: -1, $blue: -1);
+      $color-contrast: color-lum($color-d);
+      @if ($color-d == #000000) {
+        $color-contrast: 0.1428576;
+      }
+    }
+    @return $color-d;
+  } @else if ($color-contrast <= 7 and $color-contrast > 1) {
+    @while $color-contrast < 7 {
+      $color-d: adjust-color($color-d, $red: 1, $green: 1, $blue: 1);
+      $color-contrast: contrast-color($color-d);
+      @if ($color-d == #ffffff) {
+        $color-contrast: 7.0001;
+      }
+    }
+    @return $color-d;
+  } @else {
+    @return $color-d;
+  }
+}
+
+// Brings primary colors into contrast requirements
+@function primary-color-fix($color-p) {
+  $color-contrast: compare-color($color-p, #f7f7f7);
+  @if $color-contrast < 7 {
+    @while $color-contrast < 7 {
+      $color-p: adjust-color($color-p, $red: -1, $green: -1, $blue: -1);
+      $color-contrast: compare-color($color-p, #f7f7f7);
+	  @if ($color-p == #000000) {
+        $color-contrast: 8;
+      }
+    }
+    @return $color-p;
+  } @else {
+    @return $color-p;
+  }
+}
+
+// Returns a greyscale color meeting declared contrast requirements
+@function wcag-color($color-e, $standard) {
+  $color-contrast: color-lum($color-e);
+  $text: desaturate($color-e, 100%);
+  @if $color-contrast < 1 {
+    @if ($text == $color-e) {
+        $text: adjust-color($text, $red: 1, $green: 1, $blue: 1);
+    }
+    $color-contrast: compare-color($color-e, $text);
+    @while $color-contrast < $standard {
+      $text: adjust-color($text, $red: 1, $green: 1, $blue: 1);
+      $color-contrast: compare-color($color-e, $text);
+      @if ($text == #ffffff) {
+        $color-contrast: ($standard + 1);
+      }
+    }
+    @return $text;
+  } @else if $color-contrast >= 1 {
+    @if ($text == $color-e) {
+        $text: adjust-color($text, $red: -1, $green: -1, $blue: -1);
+    }
+    $color-contrast: compare-color($color-e, $text);
+    @while $color-contrast < $standard {
+      $text: adjust-color($text, $red: -1, $green: -1, $blue: -1);
+      $color-contrast: compare-color($color-e, $text);
+      @if ($text == #000000) {
+        $color-contrast: ($standard + 1);
+      }
+    }
+    @return $text;
+	} @else {
+		@return $text;
+	}
+}
+
+$primary-color-fixed: primary-color-fix($primary-color);
+$complementary-color-1: $primary-color-fixed;
+$complementary-color-2-pre: ryb-adjust-hue($primary-color-fixed, 180);
+$complementary-color-2: $complementary-color-2-pre;
+$monochromatic-color-1-pre: lighten($primary-color-fixed, 10%);
+$monochromatic-color-1: $monochromatic-color-1-pre;
+$monochromatic-color-2: $primary-color-fixed;
+$monochromatic-color-3-pre: darken($primary-color-fixed, 10%);
+$monochromatic-color-3: $monochromatic-color-3-pre;
+$analogous-color-1-pre: ryb-adjust-hue($primary-color-fixed, -30);
+$analogous-color-1: $analogous-color-1-pre;
+$analogous-color-2: $primary-color-fixed;
+$analogous-color-3-pre: ryb-adjust-hue($primary-color-fixed, 30);
+$analogous-color-3: $analogous-color-3-pre;
+$triadic-color-1: $primary-color-fixed;
+$triadic-color-2-pre: ryb-adjust-hue($primary-color-fixed, 120);
+$triadic-color-2: $triadic-color-2-pre;
+$triadic-color-3-pre: ryb-adjust-hue($primary-color-fixed, 240);
+$triadic-color-3: $triadic-color-3-pre;
+$tetradic-color-1: $analogous-color-1;
+$tetradic-color-2: $analogous-color-3;
+$tetradic-color-3-pre: ryb-adjust-hue($analogous-color-1, 180);
+$tetradic-color-3: $tetradic-color-3-pre;
+$tetradic-color-4-pre: ryb-adjust-hue($analogous-color-3, 180);
+$tetradic-color-4: $tetradic-color-4-pre;
+$square-color-1: $primary-color-fixed;
+$square-color-2-pre: ryb-adjust-hue($primary-color-fixed, 90);
+$square-color-2: $square-color-2-pre;
+$square-color-3-pre: ryb-adjust-hue($primary-color-fixed, 180);
+$square-color-3: $square-color-3-pre;
+$square-color-4-pre: ryb-adjust-hue($primary-color-fixed, 270);
+$square-color-4: $square-color-4-pre;
+$greyscale-1: #e9e9e9;
+$greyscale-2: #dfdfdf;
+$greyscale-3: #d2d2d2;
+$greyscale-4: #a0a0a0;
+$greyscale-5: #2c2c2c;
