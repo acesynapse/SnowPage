@@ -2,7 +2,6 @@
 //FIXME Remove deprecated bourbon mixins
 $output-bourbon-deprecation-warnings: false;
 @import "vendor/bourbon/bourbon";
-@import "color-schemer/color-schemer";
 
 // Load Theme Configuration
 @import "configuration/base";
