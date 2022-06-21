@@ -5,9 +5,8 @@
 	z-index: 3;
 
 	a {
-		color: lighten($books-background, 40%);
 		&:hover {
-			color: $books-text-color;
+			color: $books-text-color-hover;
 		}
 	}
 
