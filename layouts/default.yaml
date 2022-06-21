@@ -37,10 +37,6 @@ structure:
       extra:
         -
           uk-sticky: 'media: 768'
-  messages:
-    type: section
-    attributes:
-      boxed: ''
   breadcrumbs:
     type: section
     attributes:
