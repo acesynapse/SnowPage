@@ -2,8 +2,6 @@
 //FIXME Remove deprecated bourbon mixins
 $output-bourbon-deprecation-warnings: false;
 @import "vendor/bourbon/bourbon";
-@import "uikit/utkit.min.css";
-@import "uikit/utkit-rtl.min.css";
 
 // Load Theme Configuration
 @import "configuration/base";
