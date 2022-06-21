@@ -78,6 +78,10 @@ content:
     block:
       id: sp-icons
       variations: align-right
+  message:
+    attributes:
+      message:
+        text: 'This is a message to you!'
   copyright:
     block:
       variations: 'center nopaddingall nomarginall'
