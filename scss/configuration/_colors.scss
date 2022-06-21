@@ -29,9 +29,9 @@ $hero-button-hover: $square-color-1;
 
 // News
 $news-background:	$white;
-$news-text-color:	$greyscale-4;
-$news-link-color: $square-color-2;
-$news-link-hover: $triadic-color-3;
+$news-text-color:	wcag-color($square-color-2, 7);
+$news-link-color: wcag-color($square-color-2, 7);
+$news-link-hover: wcag-color($triadic-color-3, 7);
 $news-button: $square-color-2;
 $news-button-hover: $triadic-color-3;
 
@@ -54,15 +54,15 @@ $subscribe-text-color:	$greyscale-5;
 
 // Resources
 $resources-background:	$white;
-$resources-text-color:	$off-black;
-$resources-link-color: $off-black;
-$resources-link-hover: $off-black;
+$resources-text-color:	wcag-color($complementary-color-1, 7);
+$resources-link-color: wcag-color($complementary-color-1, 7);
+$resources-link-hover: wcag-color($complementary-color-2, 7);
 $resources-button: $complementary-color-1;
 $resources-button-hover: $complementary-color-2;
 
 // Main
 $main-background:	$white;
-$main-text-color:	$off-white;
+$main-text-color:	$off-black;
 
 // Footer
 $footer-background: $greyscale-4;
