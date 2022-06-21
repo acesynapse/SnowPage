@@ -1,5 +1,82 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
+{% set url = site.url %}
+{% set title = 'SnowPage' %}
+{% switch url %}
+  {% case 'http://ahirahall.org' or 'https://ahirahall.org' %}
+    {% set title = 'ahirahall.org' %}
+  {% case 'http://alleganylibrary.org' or 'https://alleganylibrary.org' %}
+    {% set title = 'alleganylibrary.org' %}
+  {% case 'http://andersonleelibrary.org' or 'https://andersonleelibrary.org' %}
+    {% set title = 'andersonleelibrary.org' %}
+  {% case 'http://ashvillelibrary.com' or 'https://ashvillelibrary.com' %}
+    {% set title = 'ashvillelibrary.com' %}
+  {% case 'http://barkerlibrary.org' or 'https://barkerlibrary.org' %}
+    {% set title = 'barkerlibrary.org' %}
+  {% case 'http://bemuspointlibrary.org' or 'https://bemuspointlibrary.org' %}
+    {% set title = 'bemuspointlibrary.org' %}
+  {% case 'http://cattarauguslibrary.org' or 'https://cattarauguslibrary.org' %}
+    {% set title = 'cattarauguslibrary.org' %}
+  {% case 'http://cfclibrary.org' or 'https://cfclibrary.org' %}
+    {% set title = 'cfclibrary.org' %}
+  {% case 'http://delevanlibrary.org' or 'https://delevanlibrary.org' %}
+    {% set title = 'delevanlibrary.org' %}
+  {% case 'http://dunkirklibrary.org' or 'https://dunkirklibrary.org' %}
+    {% set title = 'dunkirklibrary.org' %}
+  {% case 'http://ellicottvillelibrary.org' or 'https://ellicottvillelibrary.org' %}
+    {% set title = 'ellicottvillelibrary.org' %}
+  {% case 'http://ellingtonlibrary.org' or 'https://ellingtonlibrary.org' %}
+    {% set title = 'ellingtonlibrary.org' %}
+  {% case 'http://falconerlibrary.org' or 'https://falconerlibrary.org' %}
+    {% set title = 'falconerlibrary.org' %}
+  {% case 'http://findleylibrary.org' or 'https://findleylibrary.org' %}
+    {% set title = 'findleylibrary.org' %}
+  {% case 'http://fluvannalibrary.org' or 'https://fluvannalibrary.org' %}
+    {% set title = 'fluvannalibrary.org' %}
+  {% case 'http://franklinvillelibrary.org' or 'https://franklinvillelibrary.org' %}
+    {% set title = 'franklinvillelibrary.org' %}
+  {% case 'http://gowandalibrary.org' or 'https://gowandalibrary.org' %}
+    {% set title = 'gowandalibrary.org' %}
+  {% case 'http://hazeltinelibrary.org' or 'https://hazeltinelibrary.org' %}
+    {% set title = 'hazeltinelibrary.org' %}
+  {% case 'http://kennedyfreelibrary.org' or 'https://kennedyfreelibrary.org' %}
+    {% set title = 'kennedyfreelibrary.org' %}
+  {% case 'http://lakewoodlibrary.org' or 'https://lakewoodlibrary.org' %}
+    {% set title = 'lakewoodlibrary.org' %}
+  {% case 'http://littlevalleylibrary.org' or 'https://littlevalleylibrary.org' %}
+    {% set title = 'littlevalleylibrary.org' %}
+  {% case 'http://machiaslibrary.org' or 'https://machiaslibrary.org' %}
+    {% set title = 'machiaslibrary.org' %}
+  {% case 'http://mayvillelibrary.com' or 'https://mayvillelibrary.com' %}
+    {% set title = 'mayvillelibrary.com' %}
+  {% case 'http://minervalibrary.org' or 'https://minervalibrary.org' %}
+    {% set title = 'minervalibrary.org' %}
+  {% case 'http://myerslibrary.org' or 'https://myerslibrary.org' %}
+    {% set title = 'myerslibrary.org' %}
+  {% case 'http://oleanlibrary.org' or 'https://oleanlibrary.org' %}
+    {% set title = 'oleanlibrary.org' %}
+  {% case 'http://pattersonlibrary.org' or 'https://pattersonlibrary.org' %}
+    {% set title = 'pattersonlibrary.org' %}
+  {% case 'http://portvillelibrary.org' or 'https://portvillelibrary.org' %}
+    {% set title = 'portvillelibrary.org' %}
+  {% case 'http://prendergastlibrary.org' or 'https://prendergastlibrary.org' %}
+    {% set title = 'prendergastlibrary.org' %}
+  {% case 'http://randolphlibrary.info' or 'https://randolphlibrary.info' %}
+    {% set title = 'randolphlibrary.info' %}
+  {% case 'http://ripleylibrary.org' or 'https://ripleylibrary.org' %}
+    {% set title = 'ripleylibrary.org' %}
+  {% case 'http://salamancalibrary.org' or 'https://salamancalibrary.org' %}
+    {% set title = 'salamancalibrary.org' %}
+  {% case 'http://senecalibraries.org' or 'https://senecalibraries.org' %}
+    {% set title = 'senecalibraries.org' %}
+  {% case 'http://sinclairvillelibrary.org' or 'https://sinclairvillelibrary.org' %}
+    {% set title = 'sinclairvillelibrary.org' %}
+  {% case 'http://stocktonlibraries.org' or 'https://stocktonlibraries.org' %}
+    {% set title = 'stocktonlibraries.org' %}
+  {% default %}
+    {% set title = 'cclsny.org' %}
+{% endswitch %}
+
 {% block particle %}
     <div class="sp-iconnav">
         <ul class="uk-iconnav">
@@ -9,7 +86,7 @@
                 </li>
             {% endfor %}
             <li>
-            <a href="https://catalog.{{ particle.owner|e }}/cgi-bin/koha/opac-user.pl" target="_blank"><button id="sp-nav" class="uk-button uk-button-link" type="button"><span uk-icon="icon: user; ratio: 1.5"></span><br>Account</button></a>
+            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-user.pl" target="_blank"><button id="sp-nav" class="uk-button uk-button-link" type="button"><span uk-icon="icon: user; ratio: 1.5"></span><br>Account</button></a>
             </li>
             <li>
             <a href="#modal-full" uk-toggle><button id="sp-nav" class="uk-button uk-button-link" type="button"><span uk-icon="icon: search; ratio: 1.5"></span><br>Search</button></a>
@@ -20,7 +97,7 @@
     <div id="modal-full" class="uk-modal-full uk-modal" uk-modal>
         <div class="uk-modal-dialog uk-flex uk-flex-center uk-flex-middle" uk-height-viewport>
             <button class="uk-modal-close-full" type="button" uk-close></button>
-            <form class="uk-search uk-search-navbar" role="search" name="searchform" method="get" action="https://catalog.{{ particle.owner|e }}/cgi-bin/koha/opac-search.pl">
+            <form class="uk-search uk-search-navbar" role="search" name="searchform" method="get" action="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl">
               <button class="uk-search-icon-flip" type="submit" id="searchsubmit" value="Search" uk-search-icon></button>
               <input class="uk-search-input" id="translControl1" name="q" type="text" placeholder="Search the catalog...">
             </form>

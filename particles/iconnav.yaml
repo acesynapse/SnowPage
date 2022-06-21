@@ -21,52 +21,6 @@ form:
       description: CSS class name for the particle.
       default: social
 
-    owner:
-      type: select.select
-      label: Name of Library
-      description: Select Library name.
-      placeholder: 'Select...'
-      default: protemstudios.com
-      options:
-          protemstudios.com: Alwyn Silver Library
-          ahirahall.org: Ahira Hall Memorial Library
-          findleylibrary.org: Alexander Findley Community Library
-          alleganylibrary.org: Allegany Public Library
-          andersonleelibrary.org: Anderson-Lee Library
-          ashvillelibrary.com: Ashville Free Library
-          bemuspointlibrary.org: Bemus Point Public Library
-          franklinvillelibrary.org: Blount Library
-          cattarauguslibrary.org: Cattaraugus Free Library
-          cclsny.org: Chautauqua-Cattaraugus Library System
-          cfclibrary.org: Clymer-French Creek Free Library
-          barkerlibrary.org: Darwin R. Barker Library Association
-          delevanlibrary.org: Delevan-Yorkshire Public Library
-          dunkirklibrary.org: Dunkirk Public Library
-          ellicottvillelibrary.org: Ellicottville Memorial Library
-          ellingtonlibrary.org: Ellington Farman Library
-          falconerlibrary.org: Falconer Public Library
-          fluvannalibrary.org: Fluvanna Free Library
-          gowandalibrary.org: Gowanda Free Library
-          hazeltinelibrary.org: Hazeltine Public Library
-          prendergastlibrary.org: James Prendergast Library Association
-          kennedyfreelibrary.org: Kennedy Free Library
-          machiaslibrary.org: King Memorial Library
-          lakewoodlibrary.org: Lakewood Memorial Library
-          stocktonlibraries.org: Mary E. Seymour Memorial Free Library
-          mayvillelibrary.com: Mayville Library
-          littlevalleylibrary.org: Memorial Library of Little Valley
-          minervalibrary.org: Minerva Free Library
-          myerslibrary.org: Myers Memorial Library
-          oleanlibrary.org: Olean Public Library
-          pattersonlib.org: Patterson Library
-          portvillelibrary.org: Portville Free Library
-          randolphlibrary.info: Randolph Free Library
-          ripleylibrary.org: Ripley Public Library
-          salamancalibrary.org: Salamanca Public Library
-          senecalibraries.org: Seneca Nation Library
-          sinclairvillelibrary.org: Sinclairville Free Library
-          smithlibrary.com: Smith Memorial Library
-
     items:
       type: collection.list
       array: true

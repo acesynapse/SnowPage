@@ -55,52 +55,6 @@ form:
           _parent: Self
           _blank: New Window
 
-    owner:
-      type: select.select
-      label: Name of Library
-      description: Select Library name.
-      placeholder: 'Select...'
-      default: SnowPage Theme
-      options:
-          SnowPage Theme: SnowPage Theme
-          Ahira Hall Memorial Library: Ahira Hall Memorial Library
-          Alexander Findley Community Library: Alexander Findley Community Library
-          Allegany Public Library: Allegany Public Library
-          Anderson-Lee Library: Anderson-Lee Library
-          Ashville Free Library: Ashville Free Library
-          Bemus Point Public Library: Bemus Point Public Library
-          Blount Library: Blount Library
-          Cattaraugus Free Library: Cattaraugus Free Library
-          Chautauqua-Cattaraugus Library System: Chautauqua-Cattaraugus Library System
-          Clymer-French Creek Free Library: Clymer-French Creek Free Library
-          Darwin R. Barker Library Association: Darwin R. Barker Library Association
-          Delevan-Yorkshire Public Library: Delevan-Yorkshire Public Library
-          Dunkirk Public Library: Dunkirk Public Library
-          Ellicottville Memorial Library: Ellicottville Memorial Library
-          Ellington Farman Library: Ellington Farman Library
-          Falconer Public Library: Falconer Public Library
-          Fluvanna Free Library: Fluvanna Free Library
-          Gowanda Free Library: Gowanda Free Library
-          Hazeltine Public Library: Hazeltine Public Library
-          James Prendergast Library Association: James Prendergast Library Association
-          Kennedy Free Library: Kennedy Free Library
-          King Memorial Library: King Memorial Library
-          Lakewood Memorial Library: Lakewood Memorial Library
-          Mary E. Seymour Memorial Free Library: Mary E. Seymour Memorial Free Library
-          Mayville Library: Mayville Library
-          Memorial Library of Little Valley: Memorial Library of Little Valley
-          Minerva Free Library: Minerva Free Library
-          Myers Memorial Library: Myers Memorial Library
-          Olean Public Library: Olean Public Library
-          Patterson Library: Patterson Library
-          Portville Free Library: Portville Free Library
-          Randolph Free Library: Randolph Free Library
-          Ripley Public Library: Ripley Public Library
-          Salamanca Public Library: Salamanca Public Library
-          Seneca Nation Library: Seneca Nation Library
-          Sinclairville Free Library: Sinclairville Free Library
-          Smith Memorial Library: Smith Memorial Library
-
     css.class:
       type: input.text
       label: CSS Classes
