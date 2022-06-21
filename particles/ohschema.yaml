@@ -1,5 +1,5 @@
-name: Opening Hours
-description: Display Opening Hours widgets from OH Plugin.
+name: Opening Hours Schema.org
+description: Display Opening Hours Schema.org widget from OH Plugin.
 type: particle
 icon: fa-clock
 
@@ -15,7 +15,7 @@ form:
       type: container.tabs
       fields:
         _tab_posts:
-          label: Opening Hours
+          label: Schema.org
           overridable: false
 
     css.class:

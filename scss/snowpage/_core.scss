@@ -69,26 +69,29 @@ h1, h2, h3, h4, h5, h6, strong {
 		display: block;
 		text-align: center;
 	}
-	img {
-		width: 150px;
-	}
+
 	& > svg > g > g > path {
-		fill: $primary-color;
+		fill: $primary-color-fixed;
 	}
 }
 
-.bottom-logo {
+.sp-bottom-logo {
 	display: inline-block;
 	@include breakpoint(mobile-only) {
 		display: block;
 		text-align: center;
 	}
-	img {
-		width: 150px;
-	}
+
 	& > svg > g > g > path {
 		fill: $off-white;
 	}
+}
+
+#sp-bottom-logo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	align-content: center;
 }
 
 .logo-large {
