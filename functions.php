@@ -63,7 +63,6 @@ foreach ($helpers as $file) {
 
 require_once 'snowpage-activation.php';
 require_once 'databases.php';
-require_once 'twig_functions.php';
 
 /*
 * Databases Custom Post Type
