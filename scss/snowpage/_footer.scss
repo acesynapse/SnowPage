@@ -13,3 +13,16 @@
 		color: #000 !important;
 	}
 }
+
+.op-overview-title {
+	color: white;
+}
+
+.op-table-overview, .op-cell-heading, .op-cell-periods, .op-closed {
+	color: white !important;
+	border: unset;
+	background: unset;
+	padding: unset;
+	margin: unset;
+	font-size: unset;
+}

@@ -26,6 +26,8 @@ layout:
       - 'logo-2 16'
       - 'spacer-spacer 17'
       - 'spacer-spacer 25'
+    -
+      - ohschema
 
   /copyright/:
     - copyright
@@ -94,6 +96,14 @@ content:
         text: 'This is a message to you!'
     block:
       variations: center
+  ohschema-1561:
+    title: 'Opening Hours Schema.org'
+    attributes:
+      css:
+        class: uk-invisible
+    block:
+      id: ohschema
+      class: uk-invisible
   copyright:
     block:
       variations: 'center nopaddingall nomarginall'

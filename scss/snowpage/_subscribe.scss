@@ -5,7 +5,7 @@
 	z-index: 3;
 
 	a {
-		color: lighten($subscribe-background, 40%);
+		color: $subscribe-text-color;
 		&:hover {
 			color: $subscribe-text-color;
 		}

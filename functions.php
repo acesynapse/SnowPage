@@ -63,6 +63,7 @@ foreach ($helpers as $file) {
 
 require_once 'snowpage-activation.php';
 require_once 'databases.php';
+require_once 'www-post-thumb.php';
 
 /*
 * Databases Custom Post Type
