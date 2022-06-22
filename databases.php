@@ -293,6 +293,9 @@ foreach ($dbposts as $x => $val) {
       $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $val, 'meta_key' => '_thumbnail_id', 'meta_value' => '81' ) );
       $wpdb->insert( $wpdb->prefix.'term_relationships', array( 'object_id' => $val, 'term_taxonomy_id' => $taxid, 'term_order' => '0' ) );
   }
+  $fromhere = get_template_directory_uri() . '/images/databases/';
+  $tohere = substr(get_theme_root_uri(), 0, -6) . 'uploads/databases/';
+  move_uploaded_file($fromhere . 'Ancestry_Master.png' , $tohere . 'Ancestry_Master.png');
 
 // NovelNY
   $wpdb->insert( $wpdb->prefix.'posts', array(
