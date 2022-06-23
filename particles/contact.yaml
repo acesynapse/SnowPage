@@ -1,0 +1,21 @@
+name: Contact Us
+description: Display contact information.
+type: particle
+icon: fa-address-book
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable the particle.
+      default: true
+
+    css.class:
+      type: input.text
+      label: CSS Classes
+      description: CSS class name for the particle.

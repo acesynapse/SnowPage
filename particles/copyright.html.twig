@@ -75,6 +75,8 @@
     {% set title = 'Sinclairville Free Library' %}
   {% case 'http://stocktonlibraries.org' or 'https://stocktonlibraries.org' %}
     {% set title = 'Mary E. Seymour Memorial Free Library' %}
+  {% case 'http://wnyls.org' or 'https://wnyls.org' %}
+    {% set title = 'Olean Public Library' %}
   {% default %}
     {% set title = 'Chautauqua-Cattaraugus Library System' %}
 {% endswitch %}

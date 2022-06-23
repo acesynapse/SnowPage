@@ -1,7 +1,7 @@
 name: Breadcrumbs
 description: This particle generates breadcrumbs.
 type: particle
-icon: fa-arrows-h
+icon: fa-angle-right
 hidden: false
 
 form:
@@ -15,4 +15,4 @@ form:
     _info:
       type: separator.note
       class: alert alert-info
-      content: This particle generates breadcrumbs. 
+      content: This particle generates breadcrumbs.
