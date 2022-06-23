@@ -20,7 +20,7 @@
 {% endfor %}
 
 {% block particle %}
-  <div class="uk-child-width-expand" uk-grid="uk-grid">
+  <div class="uk-visible@xl uk-child-width-expand" uk-grid="uk-grid">
     <div>
       <div class="uk-card uk-card-hover">
         <div class="uk-card-media-top uk-padding-small">
@@ -113,6 +113,167 @@
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
           <p class="uk-text-default uk-text-bold">{{ alt[5]|e }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="uk-visible@l uk-hidden@xl uk-child-width-expand" uk-grid="uk-grid">
+    <div>
+      <div class="uk-card uk-card-hover">
+        <div class="uk-card-media-top uk-padding-small">
+          {% set syndetics = 'https://secure.syndetics.com/index.aspx?isbn=' ~ isbn[0]|e ~ '/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc=' %}
+          {% set openlibrary = 'https://covers.openlibrary.org/b/isbn/' ~ isbn[0]|e ~ '-L.jpg' %}
+
+            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[0]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ syndetics }}"></a>
+
+        </div>
+        <div class="uk-card-body uk-padding-small uk-text-center">
+          <p class="uk-text-default uk-text-bold">{{ alt[0]|e }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="uk-card uk-card-hover">
+        <div class="uk-card-media-top uk-padding-small">
+          {% set syndetics = 'https://secure.syndetics.com/index.aspx?isbn=' ~ isbn[1]|e ~ '/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc=' %}
+          {% set openlibrary = 'https://covers.openlibrary.org/b/isbn/' ~ isbn[1]|e ~ '-L.jpg' %}
+
+            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[1]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ syndetics }}"></a>
+
+        </div>
+        <div class="uk-card-body uk-padding-small uk-text-center">
+          <p class="uk-text-default uk-text-bold">{{ alt[1]|e }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="uk-flex uk-flex-middle uk-flex-center">
+      <div class="uk-card">
+        <span class="uk-text-large uk-text-bold">New &amp; Noteable</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="uk-card uk-card-hover">
+        <div class="uk-card-media-top uk-padding-small">
+          {% set syndetics = 'https://secure.syndetics.com/index.aspx?isbn=' ~ isbn[2]|e ~ '/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc=' %}
+          {% set openlibrary = 'https://covers.openlibrary.org/b/isbn/' ~ isbn[2]|e ~ '-L.jpg' %}
+
+            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[2]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ syndetics }}"></a>
+
+        </div>
+        <div class="uk-card-body uk-padding-small uk-text-center">
+          <p class="uk-text-default uk-text-bold uk-flex-middle">{{ alt[2]|e }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="uk-card uk-card-hover">
+        <div class="uk-card-media-top uk-padding-small">
+          {% set syndetics = 'https://secure.syndetics.com/index.aspx?isbn=' ~ isbn[3]|e ~ '/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc=' %}
+          {% set openlibrary = 'https://covers.openlibrary.org/b/isbn/' ~ isbn[3]|e ~ '-L.jpg' %}
+
+            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[3]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ syndetics }}"></a>
+
+        </div>
+        <div class="uk-card-body uk-padding-small uk-text-center">
+          <p class="uk-text-default uk-text-bold">{{ alt[3]|e }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="uk-visible@m uk-hidden@l uk-child-width-expand" uk-grid="uk-grid">
+
+    <div class="uk-flex uk-flex-middle uk-flex-center">
+      <div class="uk-card">
+        <span class="uk-text-large uk-text-bold">New &amp; Noteable</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="uk-card uk-card-hover">
+        <div class="uk-card-media-top uk-padding-small">
+          {% set syndetics = 'https://secure.syndetics.com/index.aspx?isbn=' ~ isbn[0]|e ~ '/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc=' %}
+          {% set openlibrary = 'https://covers.openlibrary.org/b/isbn/' ~ isbn[0]|e ~ '-L.jpg' %}
+
+            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[0]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ syndetics }}"></a>
+
+        </div>
+        <div class="uk-card-body uk-padding-small uk-text-center">
+          <p class="uk-text-default uk-text-bold">{{ alt[0]|e }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="uk-card uk-card-hover">
+        <div class="uk-card-media-top uk-padding-small">
+          {% set syndetics = 'https://secure.syndetics.com/index.aspx?isbn=' ~ isbn[1]|e ~ '/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc=' %}
+          {% set openlibrary = 'https://covers.openlibrary.org/b/isbn/' ~ isbn[1]|e ~ '-L.jpg' %}
+
+            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[1]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ syndetics }}"></a>
+
+        </div>
+        <div class="uk-card-body uk-padding-small uk-text-center">
+          <p class="uk-text-default uk-text-bold">{{ alt[1]|e }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="uk-card uk-card-hover">
+        <div class="uk-card-media-top uk-padding-small">
+          {% set syndetics = 'https://secure.syndetics.com/index.aspx?isbn=' ~ isbn[2]|e ~ '/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc=' %}
+          {% set openlibrary = 'https://covers.openlibrary.org/b/isbn/' ~ isbn[2]|e ~ '-L.jpg' %}
+
+            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[2]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ syndetics }}"></a>
+
+        </div>
+        <div class="uk-card-body uk-padding-small uk-text-center">
+          <p class="uk-text-default uk-text-bold uk-flex-middle">{{ alt[2]|e }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="uk-visible@s uk-hidden@m uk-child-width-expand" uk-grid="uk-grid">
+
+    <div>
+      <div class="uk-card uk-card-hover">
+        <div class="uk-card-media-top uk-padding-small">
+          {% set syndetics = 'https://secure.syndetics.com/index.aspx?isbn=' ~ isbn[0]|e ~ '/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc=' %}
+          {% set openlibrary = 'https://covers.openlibrary.org/b/isbn/' ~ isbn[0]|e ~ '-L.jpg' %}
+
+            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[0]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ syndetics }}"></a>
+
+        </div>
+        <div class="uk-card-body uk-padding-small uk-text-center">
+          <p class="uk-text-default uk-text-bold">{{ alt[0]|e }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="uk-flex uk-flex-middle uk-flex-center">
+      <div class="uk-card">
+        <span class="uk-text-large uk-text-bold">New &amp; Noteable</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="uk-card uk-card-hover">
+        <div class="uk-card-media-top uk-padding-small">
+          {% set syndetics = 'https://secure.syndetics.com/index.aspx?isbn=' ~ isbn[1]|e ~ '/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc=' %}
+          {% set openlibrary = 'https://covers.openlibrary.org/b/isbn/' ~ isbn[1]|e ~ '-L.jpg' %}
+
+            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[1]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ syndetics }}"></a>
+
+        </div>
+        <div class="uk-card-body uk-padding-small uk-text-center">
+          <p class="uk-text-default uk-text-bold">{{ alt[1]|e }}</p>
         </div>
       </div>
     </div>

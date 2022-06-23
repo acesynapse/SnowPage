@@ -14,29 +14,29 @@ defined('ABSPATH') || die(http_response_code(418));
   global $wpdb;
   if (!($wpdb->get_results("SELECT option_name FROM {$wpdb->prefix}options WHERE option_name = 'sp_db_version'"))) {
     $wpdb->insert( '{$dbpre}options', array('option_name' => 'sp_db_version', 'option_value' => '0.0.0', 'autoload' => 'yes') );
+    mkdir( substr(get_theme_root_uri(), 0, -6) . 'uploads/databases/', 755);
   }
   $currentversionobject = $wpdb->get_results("SELECT option_value FROM {$wpdb->prefix}options WHERE option_name = 'sp_db_version'");
   $currentversionarray = json_decode(json_encode($currentversionobject), true);
   $currentversion = $currentversionarray[0]['option_value'];
 
 if ($dbversion != $currentversion) {
+require_once( ABSPATH . 'wp-admin/includes/image.php' );
 
   // Removal of Open Hours
   if ($currentversion != '0.0.0') {
-  $taxidobject = $wpdb->get_results("SELECT id FROM {$wpdb->prefix}posts WHERE post_type = 'op-set'");
-  $taxidarray = json_decode(json_encode($taxidobject), true);
-  $taxid = $taxidarray[0]['id'];
-  $objectidobject = $wpdb->get_results("SELECT meta_id FROM {$wpdb->prefix}postmeta WHERE post_id = $taxid");
-  $objectidarray = json_decode(json_encode($objectidobject), true);
-  $objectid = array_column($objectidarray, 'meta_id');
-  foreach ($objectid as $x => $val) {
-    $wpdb->delete( $wpdb->prefix.'posts', array( 'id' => $taxid ) );
+  $opidobject = $wpdb->get_results("SELECT id FROM {$wpdb->prefix}posts WHERE post_type = 'op-set'");
+  $opidarray = json_decode(json_encode($opidobject), true);
+  $opid = $opidarray[0]['id'];
+  $objectidobjectoh = $wpdb->get_results("SELECT meta_id FROM {$wpdb->prefix}postmeta WHERE post_id = $opid");
+  $objectidarrayoh = json_decode(json_encode($objectidobjectoh), true);
+  $objectidoh = array_column($objectidarrayoh, 'meta_id');
+  foreach ($objectidoh as $x => $val) {
+    $wpdb->delete( $wpdb->prefix.'posts', array( 'id' => $opid ) );
     $wpdb->delete( $wpdb->prefix.'postmeta', array( 'meta_id' => $val ) );
   }
-}
 
   // Removal of Database Posts
-  if ($currentversion != '0.0.0') {
   $taxidobject = $wpdb->get_results("SELECT term_id FROM {$wpdb->prefix}term_taxonomy WHERE taxonomy = 'systemwide'");
   $taxidarray = json_decode(json_encode($taxidobject), true);
   $taxid = $taxidarray[0]['term_id'];
@@ -50,6 +50,17 @@ if ($dbversion != $currentversion) {
     $wpdb->delete( $wpdb->prefix.'postmeta', array( 'post_id' => $isolated_val ) );
     $wpdb->delete( $wpdb->prefix.'term_relationships', array( 'object_id' => $isolated_val ) );
   }
+
+
+  // Removal of Database Images
+  $dbpdobject = $wpdb->get_results("SELECT post_id FROM {$wpdb->prefix}postmeta WHERE meta_key = '_sp_database_image'");
+  $dbpidarray = json_decode(json_encode($dbpdobject), true);
+  $dbpid = array_column($dbpidarray, 'post_id');
+  foreach ($dbpid as $x => $val) {
+    $wpdb->delete( $wpdb->prefix.'posts', array( 'id' => $val ) );
+    $wpdb->delete( $wpdb->prefix.'postmeta', array( 'post_id' => $val ) );
+  }
+
 }
 
 // Open Hours Insert
@@ -270,36 +281,9 @@ foreach ($dbposts as $x => $val) {
     $wpdb->update( $wpdb->prefix.'posts', array( 'guid' => 'https://'.$urlw.'/?post_type=op-set&#038;p='.$val), array( 'post_id' => $val)  );
 }
 
-// Libby
-  $wpdb->insert( $wpdb->prefix.'posts', array(
-    'post_author' => '1',
-    'post_date' => '2022-01-01 00:00:01',
-    'post_date_gmt' => '2022-01-01 00:00:01',
-    'post_title' => 'Libby.',
-    'post_status' => 'publish',
-    'comment_status' => 'closed',
-    'ping_status' => 'closed',
-    'post_name' => 'libby',
-    'post_modified' => '2022-01-01 00:00:01',
-    'post_modified_gmt' => '2022-01-01 00:00:01',
-    'post_type' => 'databases'
-  ) );
-  $dbpostsobject = $wpdb->get_results("SELECT ID FROM {$wpdb->prefix}posts WHERE post_type = 'databases' ORDER BY ID DESC LIMIT 1");
-  $dbpostsarray = json_decode(json_encode($dbpostsobject), true);
-  $dbposts = $dbpostsarray[0];
-  foreach ($dbposts as $x => $val) {
-      $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $val, 'meta_key' => '_links_to', 'meta_value' => '#' ) );
-      $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $val, 'meta_key' => '_links_to_target', 'meta_value' => '_blank' ) );
-      $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $val, 'meta_key' => '_thumbnail_id', 'meta_value' => '81' ) );
-      $wpdb->insert( $wpdb->prefix.'term_relationships', array( 'object_id' => $val, 'term_taxonomy_id' => $taxid, 'term_order' => '0' ) );
-  }
-  $fromhere = get_template_directory_uri() . '/images/databases/';
-  $tohere = substr(get_theme_root_uri(), 0, -6) . 'uploads/databases/';
-  move_uploaded_file($fromhere . 'Ancestry_Master.png' , $tohere . 'Ancestry_Master.png');
-
 // NovelNY
   $wpdb->insert( $wpdb->prefix.'posts', array(
-    'post_author' => '1',
+    'post_author' => '2257',
     'post_date' => '2022-01-01 00:00:01',
     'post_date_gmt' => '2022-01-01 00:00:01',
     'post_title' => 'NovelNY',
@@ -315,15 +299,221 @@ foreach ($dbposts as $x => $val) {
   $dbpostsarray = json_decode(json_encode($dbpostsobject), true);
   $dbposts = $dbpostsarray[0];
   foreach ($dbposts as $x => $val) {
+	  $imgid = $val + 1;
       $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $val, 'meta_key' => '_links_to', 'meta_value' => '#' ) );
       $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $val, 'meta_key' => '_links_to_target', 'meta_value' => '_blank' ) );
-      $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $val, 'meta_key' => '_thumbnail_id', 'meta_value' => '81' ) );
+      $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $val, 'meta_key' => '_thumbnail_id', 'meta_value' => $imgid ) );
+	  $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $imgid, 'meta_key' => '_sp_database_image', 'meta_value' => 'true' ) );
       $wpdb->insert( $wpdb->prefix.'term_relationships', array( 'object_id' => $val, 'term_taxonomy_id' => $taxid, 'term_order' => '0' ) );
   }
+  $image_url = 'https://www.cclsny.org/wp-content/uploads/2022/06/novel_master.png';
+  $upload_dir = wp_upload_dir();
+  $image_data = file_get_contents( $image_url );
+  $filename = basename( $image_url );
+  if ( wp_mkdir_p( $upload_dir['path'] ) ) {
+    $file = $upload_dir['path'] . '/' . $filename;
+  } else {
+    $file = $upload_dir['basedir'] . '/' . $filename;
+  }
+  file_put_contents( $file, $image_data );
+  $wp_filetype = wp_check_filetype( $filename, null );
+  $attachment = array(
+    'post_mime_type' => $wp_filetype['type'],
+    'post_title' => sanitize_file_name( $filename ),
+    'post_content' => '',
+    'post_status' => 'inherit'
+  );
+  $attach_id = wp_insert_attachment( $attachment, $file );
+  $attach_data = wp_generate_attachment_metadata( $attach_id, $file );
+  wp_update_attachment_metadata( $attach_id, $attach_data );
 
-// New Database
+
+// Libby
+$wpdb->insert( $wpdb->prefix.'posts', array(
+  'post_author' => '2257',
+  'post_date' => '2022-01-01 00:00:01',
+  'post_date_gmt' => '2022-01-01 00:00:01',
+  'post_title' => 'Meet Libby.',
+  'post_status' => 'publish',
+  'comment_status' => 'closed',
+  'ping_status' => 'closed',
+  'post_name' => 'libby',
+  'post_modified' => '2022-01-01 00:00:01',
+  'post_modified_gmt' => '2022-01-01 00:00:01',
+  'post_type' => 'databases'
+) );
+$dbpostsobject = $wpdb->get_results("SELECT ID FROM {$wpdb->prefix}posts WHERE post_type = 'databases' ORDER BY ID DESC LIMIT 1");
+$dbpostsarray = json_decode(json_encode($dbpostsobject), true);
+$dbposts = $dbpostsarray[0];
+foreach ($dbposts as $x => $val) {
+    $imgid = $val + 1;
+    $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $val, 'meta_key' => '_links_to', 'meta_value' => 'https://meet.libbyapp.com/?utm_medium=lightning_banner&utm_source=lightning&utm_campaign=libby' ) );
+    $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $val, 'meta_key' => '_links_to_target', 'meta_value' => '_blank' ) );
+    $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $val, 'meta_key' => '_thumbnail_id', 'meta_value' => $imgid ) );
+    $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $imgid, 'meta_key' => '_sp_database_image', 'meta_value' => 'true' ) );
+    $wpdb->insert( $wpdb->prefix.'term_relationships', array( 'object_id' => $val, 'term_taxonomy_id' => $taxid, 'term_order' => '0' ) );
+}
+$image_url = 'https://www.cclsny.org/wp-content/uploads/2022/06/libby_master.png';
+$upload_dir = wp_upload_dir();
+$image_data = file_get_contents( $image_url );
+$filename = basename( $image_url );
+if ( wp_mkdir_p( $upload_dir['path'] ) ) {
+  $file = $upload_dir['path'] . '/' . $filename;
+} else {
+  $file = $upload_dir['basedir'] . '/' . $filename;
+}
+file_put_contents( $file, $image_data );
+$wp_filetype = wp_check_filetype( $filename, null );
+$attachment = array(
+  'post_mime_type' => $wp_filetype['type'],
+  'post_title' => sanitize_file_name( $filename ),
+  'post_content' => '',
+  'post_status' => 'inherit'
+);
+$attach_id = wp_insert_attachment( $attachment, $file );
+$attach_data = wp_generate_attachment_metadata( $attach_id, $file );
+wp_update_attachment_metadata( $attach_id, $attach_data );
+
+// Ancestry
+$wpdb->insert( $wpdb->prefix.'posts', array(
+  'post_author' => '2257',
+  'post_date' => '2022-01-01 00:00:01',
+  'post_date_gmt' => '2022-01-01 00:00:01',
+  'post_title' => 'Ancestry Library Edition',
+  'post_status' => 'publish',
+  'comment_status' => 'closed',
+  'ping_status' => 'closed',
+  'post_name' => 'ancestry-lb',
+  'post_modified' => '2022-01-01 00:00:01',
+  'post_modified_gmt' => '2022-01-01 00:00:01',
+  'post_type' => 'databases'
+) );
+$dbpostsobject = $wpdb->get_results("SELECT ID FROM {$wpdb->prefix}posts WHERE post_type = 'databases' ORDER BY ID DESC LIMIT 1");
+$dbpostsarray = json_decode(json_encode($dbpostsobject), true);
+$dbposts = $dbpostsarray[0];
+foreach ($dbposts as $x => $val) {
+  $imgid = $val + 1;
+    $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $val, 'meta_key' => '_links_to', 'meta_value' => 'https://www.ancestrylibrary.com/' ) );
+    $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $val, 'meta_key' => '_links_to_target', 'meta_value' => '_blank' ) );
+    $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $val, 'meta_key' => '_thumbnail_id', 'meta_value' => $imgid ) );
+    $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $imgid, 'meta_key' => '_sp_database_image', 'meta_value' => 'true' ) );
+    $wpdb->insert( $wpdb->prefix.'term_relationships', array( 'object_id' => $val, 'term_taxonomy_id' => $taxid, 'term_order' => '0' ) );
+}
+$image_url = 'https://www.cclsny.org/wp-content/uploads/2022/06/ancestry_master.jpg';
+$upload_dir = wp_upload_dir();
+$image_data = file_get_contents( $image_url );
+$filename = basename( $image_url );
+if ( wp_mkdir_p( $upload_dir['path'] ) ) {
+  $file = $upload_dir['path'] . '/' . $filename;
+} else {
+  $file = $upload_dir['basedir'] . '/' . $filename;
+}
+file_put_contents( $file, $image_data );
+$wp_filetype = wp_check_filetype( $filename, null );
+$attachment = array(
+  'post_mime_type' => $wp_filetype['type'],
+  'post_title' => sanitize_file_name( $filename ),
+  'post_content' => '',
+  'post_status' => 'inherit'
+);
+$attach_id = wp_insert_attachment( $attachment, $file );
+$attach_data = wp_generate_attachment_metadata( $attach_id, $file );
+wp_update_attachment_metadata( $attach_id, $attach_data );
 
 
+// HYHP
+  $wpdb->insert( $wpdb->prefix.'posts', array(
+    'post_author' => '2257',
+    'post_date' => '2022-01-01 00:00:01',
+    'post_date_gmt' => '2022-01-01 00:00:01',
+    'post_title' => 'New York Historic Newspapers',
+    'post_status' => 'publish',
+    'comment_status' => 'closed',
+    'ping_status' => 'closed',
+    'post_name' => 'nyhp',
+    'post_modified' => '2022-01-01 00:00:01',
+    'post_modified_gmt' => '2022-01-01 00:00:01',
+    'post_type' => 'databases'
+  ) );
+  $dbpostsobject = $wpdb->get_results("SELECT ID FROM {$wpdb->prefix}posts WHERE post_type = 'databases' ORDER BY ID DESC LIMIT 1");
+  $dbpostsarray = json_decode(json_encode($dbpostsobject), true);
+  $dbposts = $dbpostsarray[0];
+  foreach ($dbposts as $x => $val) {
+	  $imgid = $val + 1;
+      $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $val, 'meta_key' => '_links_to', 'meta_value' => 'http://nyshistoricnewspapers.org/' ) );
+      $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $val, 'meta_key' => '_links_to_target', 'meta_value' => '_blank' ) );
+      $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $val, 'meta_key' => '_thumbnail_id', 'meta_value' => $imgid ) );
+	    $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $imgid, 'meta_key' => '_sp_database_image', 'meta_value' => 'true' ) );
+      $wpdb->insert( $wpdb->prefix.'term_relationships', array( 'object_id' => $val, 'term_taxonomy_id' => $taxid, 'term_order' => '0' ) );
+  }
+  $image_url = 'https://www.cclsny.org/wp-content/uploads/2022/06/nyhp_master.png';
+  $upload_dir = wp_upload_dir();
+  $image_data = file_get_contents( $image_url );
+  $filename = basename( $image_url );
+  if ( wp_mkdir_p( $upload_dir['path'] ) ) {
+    $file = $upload_dir['path'] . '/' . $filename;
+  } else {
+    $file = $upload_dir['basedir'] . '/' . $filename;
+  }
+  file_put_contents( $file, $image_data );
+  $wp_filetype = wp_check_filetype( $filename, null );
+  $attachment = array(
+    'post_mime_type' => $wp_filetype['type'],
+    'post_title' => sanitize_file_name( $filename ),
+    'post_content' => '',
+    'post_status' => 'inherit'
+  );
+  $attach_id = wp_insert_attachment( $attachment, $file );
+  $attach_data = wp_generate_attachment_metadata( $attach_id, $file );
+  wp_update_attachment_metadata( $attach_id, $attach_data );
+
+
+
+  // New York Heritage
+    $wpdb->insert( $wpdb->prefix.'posts', array(
+      'post_author' => '2257',
+      'post_date' => '2022-01-01 00:00:01',
+      'post_date_gmt' => '2022-01-01 00:00:01',
+      'post_title' => 'New York Heritage',
+      'post_status' => 'publish',
+      'comment_status' => 'closed',
+      'ping_status' => 'closed',
+      'post_name' => 'heritage',
+      'post_modified' => '2022-01-01 00:00:01',
+      'post_modified_gmt' => '2022-01-01 00:00:01',
+      'post_type' => 'databases'
+    ) );
+    $dbpostsobject = $wpdb->get_results("SELECT ID FROM {$wpdb->prefix}posts WHERE post_type = 'databases' ORDER BY ID DESC LIMIT 1");
+    $dbpostsarray = json_decode(json_encode($dbpostsobject), true);
+    $dbposts = $dbpostsarray[0];
+    foreach ($dbposts as $x => $val) {
+  	  $imgid = $val + 1;
+        $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $val, 'meta_key' => '_links_to', 'meta_value' => 'https://nyheritage.org/' ) );
+        $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $val, 'meta_key' => '_links_to_target', 'meta_value' => '_blank' ) );
+        $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $val, 'meta_key' => '_thumbnail_id', 'meta_value' => $imgid ) );
+  	  $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $imgid, 'meta_key' => '_sp_database_image', 'meta_value' => 'true' ) );
+        $wpdb->insert( $wpdb->prefix.'term_relationships', array( 'object_id' => $val, 'term_taxonomy_id' => $taxid, 'term_order' => '0' ) );
+    }
+    $image_url = 'https://www.cclsny.org/wp-content/uploads/2022/06/heritage_master.jpg';
+    $upload_dir = wp_upload_dir();
+    $image_data = file_get_contents( $image_url );
+    $filename = basename( $image_url );
+    if ( wp_mkdir_p( $upload_dir['path'] ) ) {
+      $file = $upload_dir['path'] . '/' . $filename;
+    } else {
+      $file = $upload_dir['basedir'] . '/' . $filename;
+    }
+    file_put_contents( $file, $image_data );
+    $wp_filetype = wp_check_filetype( $filename, null );
+    $attachment = array(
+      'post_mime_type' => $wp_filetype['type'],
+      'post_title' => sanitize_file_name( $filename ),
+      'post_content' => '',
+      'post_status' => 'inherit'
+    );
+    $attach_id = wp_insert_attachment( $attachment, $file );
+    $attach_data = wp_generate_attachment_metadata( $attach_id, $file );
+    wp_update_attachment_metadata( $attach_id, $attach_data );
 
 
   $wpdb->update( $wpdb->prefix.'options', array('option_value' => $dbversion) , array('option_name' => 'sp_db_version') );
