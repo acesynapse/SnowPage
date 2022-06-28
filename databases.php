@@ -496,7 +496,7 @@ wp_update_attachment_metadata( $attach_id, $attach_data );
         $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $val, 'meta_key' => '_links_to', 'meta_value' => 'https://nyheritage.org/' ) );
         $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $val, 'meta_key' => '_links_to_target', 'meta_value' => '_blank' ) );
         $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $val, 'meta_key' => '_thumbnail_id', 'meta_value' => $imgid ) );
-  	  $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $imgid, 'meta_key' => '_sp_database_image', 'meta_value' => 'true' ) );
+  	    $wpdb->insert( $wpdb->prefix.'postmeta', array( 'post_id' => $imgid, 'meta_key' => '_sp_database_image', 'meta_value' => 'true' ) );
         $wpdb->insert( $wpdb->prefix.'term_relationships', array( 'object_id' => $val, 'term_taxonomy_id' => $taxid, 'term_order' => '0' ) );
     }
     $image_url = 'https://www.cclsny.org/wp-content/uploads/2022/06/heritage_master.jpg';

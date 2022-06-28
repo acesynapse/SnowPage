@@ -21,11 +21,9 @@ layout:
 
   /footer/:
     -
-      - 'openinghours 25'
-      - 'spacer-spacer 17'
-      - 'logo-2 16'
-      - 'spacer-spacer 17'
-      - 'spacer-spacer 25'
+      - 'openinghours 33'
+      - 'logo-2 34'
+      - 'contact 33'
     -
       - ohschema
 
@@ -96,7 +94,7 @@ content:
         text: 'This is a message to you!'
     block:
       variations: center
-  ohschema-1561:
+  ohschema:
     title: 'Opening Hours Schema.org'
     attributes:
       css:

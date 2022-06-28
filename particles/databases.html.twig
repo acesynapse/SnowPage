@@ -49,15 +49,15 @@
 
           <div>
             <div class="uk-inline uk-transition-toggle sp-overflow-hidden" tabindex="0">
-              <div class="uk-transition-scale-up uk-transition-opaque">
+              <div class="uk-transition-opaque">
                 <a href="{{ post.link|raw }}">
                   <img src="{{ url(post.thumbnail.src) }}"/>
                 </a>
               </div>
-              <div class="uk-position-bottom-left">
+              <div>
                 <h3>
-                  <a href="{{ post.link|raw }}" class="uk-transition-fade uk-position-cover sp-button-databases">
-                    {{ display.title.limit ? post.title|raw : post.title|raw }}
+                  <a href="{{ post.link|raw }}" class="uk-transition-fade uk-overlay uk-position-center sp-button-databases">
+                    <p class="uk-h4 uk-padding">{{ display.title.limit ? post.title|raw : post.title|raw }}</p>
                   </a>
                 </h3>
               </div>
