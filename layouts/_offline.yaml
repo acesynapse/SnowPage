@@ -2,7 +2,8 @@ version: 2
 
 preset:
   image: 'gantry-admin://images/layouts/offline.png'
+  name: default
 
 layout:
   /offline/:
-    -
+    - 

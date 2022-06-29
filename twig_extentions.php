@@ -8,54 +8,122 @@
  * http://www.gnu.org/licenses/gpl-3.0.html
  */
 
-namespace Gantry\Component\Twig;
+defined('ABSPATH') || die(http_response_code(418));
 
-use Twig\Extension\AbstractExtension;
-use Twig\TwigFilter;
+use Twig\TwigFunction;
 
-class AppExtension extends AbstractExtension
-{
-    public function getFilters()
-    {
-        return [
-            new TwigFilter('imageurl', [$this, 'imageUrl']),
-        ];
-    }
+      function returnphoto ($search) {
+        $urlbt = "https://catalog.cclsny.org/cgi-bin/koha/opac-export.pl?op=export&bib={$search}&format=mods";
+        $bibtex = file_get_contents($urlbt);
+        $bibtex = str_replace( "\n", '', $bibtex);
+        preg_match('/(isbn">|lccn">)(\d*)\D/', $bibtex, $bibnum);
+        $bibnum = $bibnum[2];
+        $src1 = (@getimagesize("https://secure.syndetics.com/index.aspx?isbn={$bibnum}/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc="));
+        $src2 = (@getimagesize("https://covers.openlibrary.org/b/isbn/{$bibnum}-L.jpg"));
+        $src3 = (@getimagesize("https://covers.openlibrary.org/b/lccn/{$bibnum}-L.jpg"));
 
-    public function isImage ($url) {
-      $headers = array_map('strtolower', @get_headers($url));
-      $keysearch = 'content-type: image/jpeg';
-      if(in_array($keysearch, $headers)) {
-        return true;
-      } else {
-        return false;
-      }
-    }
+      if ($src1 != false && $src1[0] > 10) {
+              $imgurl = "https://secure.syndetics.com/index.aspx?isbn={$bibnum}/LC.GIF&client=chautauqua-cattaraugus&type=xw10&upc=&oclc=";
+              return $imgurl;
+          } else if ($src2 != false && $src2[0] > 10) {
+              $imgurl = "https://covers.openlibrary.org/b/isbn/{$bibnum}-L.jpg";
+              return $imgurl;
+          } else if ($src3 != false && $src3[0] > 10) {
+              $imgurl = "https://covers.openlibrary.org/b/lccn/{$bibnum}-L.jpg";
+              return $imgurl;
+          } else {
+              $imgurl = "https://www.cclsny.org/wp-content/uploads/2022/06/20220613_CCLS_StockBook.png";
+              return $imgurl;
+          }
 
-    public function imageUrl($number) {
-      $urlone = "https://secure.syndetics.com/index.aspx?isbn={$number}/LC.GIF";
-      $urltwo = "https://secure.syndetics.com/index.aspx?upc={$number}/LC.GIF";
-      $urlthree = "https://secure.syndetics.com/index.aspx?oclc={$number}/LC.GIF";
-      $urlfour = "https://covers.openlibrary.org/b/isbn/{$number}-L.jpg";
-      $urlfive = "https://content.chilifresh.com/?isbn={$number}&size=L";
-      $sizearray = array();
-      if (isImage($urlone) == true) {
-        $sizearray[$urlone] = getimagesize($urlone)[1];
       }
-      if (isImage($urltwo) == true) {
-        $sizearray[$urltwo] = getimagesize($urltwo)[1];
+
+
+
+      function returnauthor ($search, $which) {
+        $urlbt = "https://catalog.cclsny.org/cgi-bin/koha/opac-export.pl?op=export&bib={$search}&format=bibtex";
+        $bibtex = file_get_contents($urlbt);
+        $bibtex = str_replace( "\n", '', $bibtex);
+        if ($which == 'title') {
+        $title = $bibtex;
+        $title = preg_replace('/(.*)(title = {)/', '', $title);
+        $title = preg_replace('/(})(.*)/', '', $title);
+        $title = preg_replace('/ \//', '', $title);
+        $title = preg_replace('/\./', '', $title);
+        $title = strtolower($title);
+        $title = ucwords($title);
+        $uppercase_words = array("/ A /", "/ An /", "/ And The /", "/ And /", "/ As If /", "/ As /", "/ At /", "/ But /", "/ By /", "/ For /", "/ If /", "/ In The /", "/ In A /", "/ In /", "/ Is /", "/ Nor /", "/ Off /", "/ On Top Of /", "/ On The /", "/ Of The /", "/ Of A /", "/ Of /", "/ On /", "/ Or /", "/ Out Of /", "/ So /", "/ To The /", "/ The /", "/ To /", "/ Up /", "/ Yet /");
+        $lowercase_replacements = array(" a ", " an ", " and the ", " and ", " as if ", " as ", " at ", " but ", " by ", " for ", " if ", " in the ", " in a ", " in ", " is ", " nor ", " off ", " on top of ", " on the ", " of the ", " of a ", " of ", " on ", " or ", " out of ", " so ", " to the ", " the ", " to ", " up ", " yet ");
+        $title = preg_replace($uppercase_words, $lowercase_replacements, $title);
+        return $title;
+        } else if ($which == 'author') {
+        $author = $bibtex;
+        $author = preg_replace('/(.*)(author = {)/', '', $author);
+        $author = preg_replace('/( and|})(.*)/', '', $author);
+        $author = preg_replace('/(\. |\.)/', '', $author);
+        $author = explode(", ", $author);
+        $author = array_reverse($author);
+        $author = implode(" ", $author);
+        $author = preg_replace('/(,|\.)/', '', $author);
+        return $author;
       }
-      if (isImage($urlthree) == true) {
-        $sizearray[$urlthree] = getimagesize($urlthree)[1];
       }
-      if (isImage($urlfour) == true) {
-        $sizearray[$urlfour] = getimagesize($urlfour)[1];
+
+
+
+      $urlbt = "https://cclsny.bywatersolutions.com/cgi-bin/koha/opac-search.pl?idx=&q=+gods+of+Mars&weight_search=1&count=6&format=rss";
+      $bibtex = file_get_contents($urlbt);
+      $bibtex = str_replace( "\n", '', $bibtex);
+      preg_match_all('/=(\d*)<\/guid>/', $bibtex, $bibnum);
+      $bibnum = $bibnum[0];
+      $bibnum = preg_replace('/\D/', '', $bibnum);
+
+      $authors = array();
+      $titles = array();
+      $linkurl = array();
+      $photourl = array();
+
+      foreach ($bibnum as $num) {
+      $author = returnauthor($num, 'author');
+      $title = returnauthor($num, 'title');
+      $combinelink = "https://catalog.cclsny.org/cgi-bin/koha/opac-detail.pl?biblionumber={$num}";
+      $photos = returnphoto($num);
+      array_push ($authors, $author);
+      array_push ($titles, $title);
+      array_push ($linkurl, $combinelink);
+      array_push ($photourl, $photos);
       }
-      if (isImage($urlfive) == true) {
-        $sizearray[$urlfive] = getimagesize($urlfive)[1];
-      }
-      asort($sizearray);
-      $imageurl = array_key_last($sizearray);
-      return $imageurl;
-    }
-}
+
+      $final_array = array(
+          'author1'   => $authors[0],
+          'title1'    => $titles[0],
+          'photo1'    => $photourl[0],
+          'link1'     => $linkurl[0],
+
+          'author2'   => $authors[1],
+          'title2'    => $titles[1],
+          'photo2'    => $photourl[1],
+          'link2'     => $linkurl[1],
+
+          'author3'   => $authors[2],
+          'title3'    => $titles[2],
+          'photo3'    => $photourl[2],
+          'link3'     => $linkurl[2],
+
+          'author4'   => $authors[3],
+          'title4'    => $titles[3],
+          'photo4'    => $photourl[3],
+          'link4'     => $linkurl[3],
+
+          'author5'   => $authors[4],
+          'title5'    => $titles[4],
+          'photo5'    => $photourl[4],
+          'link5'     => $linkurl[4],
+
+          'author6'   => $authors[5],
+          'title6'    => $titles[5],
+          'photo6'    => $photourl[5],
+          'link6'     => $linkurl[5]
+      );
+
+      $twig->addGlobal('finalArray', $final_array);

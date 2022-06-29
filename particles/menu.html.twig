@@ -8,7 +8,7 @@
 
 <div id="offcanvas-nav-primary" uk-offcanvas="overlay: true">
     <div class="uk-offcanvas-bar uk-flex uk-flex-column">
-        <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
+        <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical" uk-nav>
           {% for item in menu.root %}
             {% if not item.children %}
             <li class="uk-active"><a href="{{ item.link }}">{{ item.title }}</a></li>

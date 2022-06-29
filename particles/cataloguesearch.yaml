@@ -1,0 +1,22 @@
+name: Catalogue Search
+description: Display a catalogue search box.
+type: particle
+icon: fa-search
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable social particles.
+      default: true
+
+    css.class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+      default: social

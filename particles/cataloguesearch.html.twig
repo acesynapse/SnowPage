@@ -80,29 +80,10 @@
 {% endswitch %}
 
 {% block particle %}
-    <div class="sp-iconnav">
-        <ul class="uk-iconnav">
-            {% for item in particle.items %}
-                <li>
-                <a href="{{ item.link|e }}" target="{{ item.target|e }}"><button id="sp-nav" class="uk-button uk-button-link" type="button"><span uk-icon="icon: {{ item.icon|e }}; ratio: 1.5"></span><br>{{ item.text|e }}</button></a>
-                </li>
-            {% endfor %}
-            <li>
-            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-user.pl" target="_blank"><button id="sp-nav" class="uk-button uk-button-link" type="button"><span uk-icon="icon: user; ratio: 1.5"></span><br>Account</button></a>
-            </li>
-            <li>
-            <a href="#modal-full" uk-toggle><button id="sp-nav" class="uk-button uk-button-link" type="button"><span uk-icon="icon: search; ratio: 1.5"></span><br>Search</button></a>
-            </li>
-        </ul>
-    </div>
-
-    <div id="modal-full" class="uk-modal-full uk-modal" uk-modal>
         <div class="uk-modal-dialog uk-flex uk-flex-center uk-flex-middle" uk-height-viewport>
-            <button class="uk-modal-close-full" type="button" uk-close></button>
             <form class="uk-search uk-search-navbar" role="search" name="searchform" method="get" action="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl">
               <button class="uk-search-icon-flip" type="submit" id="searchsubmit" value="Search" uk-search-icon></button>
               <input class="uk-search-input" id="translControl1" name="q" type="text" placeholder="Search the catalog...">
             </form>
         </div>
-    </div>
 {% endblock %}

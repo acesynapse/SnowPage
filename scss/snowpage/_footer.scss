@@ -30,3 +30,57 @@
 .ohschema {
 	height: 0;
 }
+
+#sp-fb, #sp-in, #sp-tw, #sp-yt, #sp-pi, #sp-sn, #sp-gr, #sp-fb:hover, #sp-in:hover, #sp-tw:hover, #sp-yt:hover, #sp-pi:hover, #sp-sn:hover, #sp-gr:hover {
+	transition: .25s ease-in-out;
+	-moz-transition: .25s ease-in-out;
+	-webkit-transition: .25s ease-in-out;
+}
+
+#sp-fb, #sp-in, #sp-tw, #sp-yt, #sp-pi, #sp-sn, #sp-gr {
+	padding: 5px;
+	color: #a0a0a0;
+	position: relative;
+	display: inline-block;
+	background: white;
+	border-radius: 50%;
+}
+
+#sp-fb:hover {
+	color: white;
+	background: #1178f2;
+}
+
+#sp-in:hover {
+	color: white;
+	background: linear-gradient(17deg, rgba(255,196,0,1) 8%, rgba(255,61,17,1) 39%, rgba(254,0,191,1) 53%, rgba(131,11,253,1) 83%);
+}
+
+#sp-tw:hover {
+	color: white;
+	background: #179bf0;
+}
+
+#sp-yt:hover {
+	color: white;
+	background: #fe0000;
+}
+
+#sp-pi:hover {
+	color: white;
+	background: #e60023;
+}
+
+#sp-sn:hover {
+	color: black;
+	background: #fcfd00;
+}
+
+#sp-gr:hover {
+	color: white;
+	background: #463020;
+}
+
+.op-cell-heading {
+	width: 6rem;
+}
