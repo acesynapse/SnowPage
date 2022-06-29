@@ -8,9 +8,7 @@
  * http://www.gnu.org/licenses/gpl-3.0.html
  */
 
-namespace App\Twig;
-
-defined('ABSPATH') || die(http_response_code(418));
+namespace Gantry\Component\Twig;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
@@ -24,7 +22,7 @@ class AppExtension extends AbstractExtension
         ];
     }
 
-    function isImage ($url) {
+    public function isImage ($url) {
       $headers = array_map('strtolower', @get_headers($url));
       $keysearch = 'content-type: image/jpeg';
       if(in_array($keysearch, $headers)) {
