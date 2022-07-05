@@ -3,6 +3,7 @@
 	color: $header-text-color;
 	position: relative;
 	z-index: 980;
+	border-bottom: 4px solid $messages-background;
 
 	a {
 		color: $primary-color;

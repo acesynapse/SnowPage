@@ -1,9 +1,51 @@
 version: 2
-
 preset:
-  image: 'gantry-admin://images/layouts/body-only.png'
+  image: 'gantry-admin://images/layouts/default.png'
+  name: default
 
 layout:
+  header: {  }
+  messages: {  }
+  breadcrumbs: {  }
   /main/:
-    - system-messages
-    - system-content
+    -
+      - system-content
+  footer: {  }
+  copyright: {  }
+structure:
+  header:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  messages:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  breadcrumbs:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  main:
+    attributes:
+      boxed: ''
+  footer:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children

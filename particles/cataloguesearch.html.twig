@@ -1,17 +1,17 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
-{% set url = site.url %}
+{% set url = site.url|replace({"http://": "", "https://": "", "http://www.": "", "https://www.": ""})|e %}
 {% set title = '' %}
 {% switch url %}
-  {% case 'http://ahirahall.org' or 'https://ahirahall.org' %}
+  {% case 'ahirahall.org' %}
     {% set title = 'ahirahall.org' %}
-  {% case 'http://alleganylibrary.org' or 'https://alleganylibrary.org' %}
+  {% case 'alleganylibrary.org' %}
     {% set title = 'alleganylibrary.org' %}
-  {% case 'http://andersonleelibrary.org' or 'https://andersonleelibrary.org' %}
+  {% case 'andersonleelibrary.org' %}
     {% set title = 'andersonleelibrary.org' %}
-  {% case 'http://ashvillelibrary.com' or 'https://ashvillelibrary.com' %}
+  {% case 'ashvillelibrary.com' %}
     {% set title = 'ashvillelibrary.com' %}
-  {% case 'http://barkerlibrary.org' or 'https://barkerlibrary.org' %}
+  {% case 'barkerlibrary.org' %}
     {% set title = 'barkerlibrary.org' %}
   {% case 'http://bemuspointlibrary.org' or 'https://bemuspointlibrary.org' %}
     {% set title = 'bemuspointlibrary.org' %}
@@ -73,17 +73,17 @@
     {% set title = 'sinclairvillelibrary.org' %}
   {% case 'http://stocktonlibraries.org' or 'https://stocktonlibraries.org' %}
     {% set title = 'stocktonlibraries.org' %}
-  {% case 'http://wnyls.org' or 'https://wnyls.org' %}
+  {% case 'wnyls.org' %}
     {% set title = 'oleanlibrary.org' %}
   {% default %}
     {% set title = 'cclsny.org' %}
 {% endswitch %}
 
 {% block particle %}
-        <div class="uk-modal-dialog uk-flex uk-flex-center uk-flex-middle" uk-height-viewport>
-            <form class="uk-search uk-search-navbar" role="search" name="searchform" method="get" action="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl">
-              <button class="uk-search-icon-flip" type="submit" id="searchsubmit" value="Search" uk-search-icon></button>
-              <input class="uk-search-input" id="translControl1" name="q" type="text" placeholder="Search the catalog...">
-            </form>
-        </div>
+<div>
+  <form class="uk-search uk-search-navbar" role="search" name="searchform" method="get" action="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl">
+    <button class="uk-search-icon-flip" type="submit" id="searchsubmit" value="Search" uk-search-icon></button>
+    <input class="uk-search-input" id="translControl1" name="q" type="text" placeholder="Search the catalog...">
+  </form>
+</div>
 {% endblock %}

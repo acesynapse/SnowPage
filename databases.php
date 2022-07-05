@@ -14,7 +14,6 @@ defined('ABSPATH') || die(http_response_code(418));
   global $wpdb;
   if (!($wpdb->get_results("SELECT option_name FROM {$wpdb->prefix}options WHERE option_name = 'sp_db_version'"))) {
     $wpdb->insert( '{$dbpre}options', array('option_name' => 'sp_db_version', 'option_value' => '0.0.0', 'autoload' => 'yes') );
-    mkdir( substr(get_theme_root_uri(), 0, -6) . 'uploads/databases/', 755);
   }
   $currentversionobject = $wpdb->get_results("SELECT option_value FROM {$wpdb->prefix}options WHERE option_name = 'sp_db_version'");
   $currentversionarray = json_decode(json_encode($currentversionobject), true);
@@ -66,7 +65,7 @@ require_once( ABSPATH . 'wp-admin/includes/image.php' );
 // Open Hours Insert
 $urlw = $_SERVER['HTTP_HOST'];
 switch ($urlw) {
-  case 'ahirahall.org';
+  case 'ahirahall.org' || 'www.ahirahall.org';
     $libhours = 'a:6:{i:0;a:3:{s:7:"weekday";i:1;s:9:"timeStart";s:5:"13:00";s:7:"timeEnd";s:5:"20:00";}i:1;a:3:{s:7:"weekday";i:2;s:9:"timeStart";s:5:"10:00";s:7:"timeEnd";s:5:"17:00";}i:2;a:3:{s:7:"weekday";i:3;s:9:"timeStart";s:5:"13:00";s:7:"timeEnd";s:5:"20:00";}i:3;a:3:{s:7:"weekday";i:4;s:9:"timeStart";s:5:"10:00";s:7:"timeEnd";s:5:"17:00";}i:4;a:3:{s:7:"weekday";i:5;s:9:"timeStart";s:5:"13:00";s:7:"timeEnd";s:5:"17:00";}i:5;a:3:{s:7:"weekday";i:6;s:9:"timeStart";s:5:"10:00";s:7:"timeEnd";s:5:"13:00";}}';
     $libholi = 'a:9:{i:0;a:3:{s:4:"name";s:36:"Closed - Martin Luther King, Jr. Day";s:9:"dateStart";s:10:"2022-01-17";s:7:"dateEnd";s:10:"2022-01-17";}i:1;a:3:{s:4:"name";s:15:"Closed - Easter";s:9:"dateStart";s:10:"2022-04-15";s:7:"dateEnd";s:10:"2022-04-16";}i:2;a:3:{s:4:"name";s:21:"Closed - Memorial Day";s:9:"dateStart";s:10:"2022-05-28";s:7:"dateEnd";s:10:"2022-05-30";}i:3;a:3:{s:4:"name";s:25:"Closed - Independence Day";s:9:"dateStart";s:10:"2022-07-04";s:7:"dateEnd";s:10:"2022-07-04";}i:4;a:3:{s:4:"name";s:18:"Closed - Labor Day";s:9:"dateStart";s:10:"2022-09-03";s:7:"dateEnd";s:10:"2022-09-05";}i:5;a:3:{s:4:"name";s:21:"Closed - Veterans Day";s:9:"dateStart";s:10:"2022-11-11";s:7:"dateEnd";s:10:"2022-11-11";}i:6;a:3:{s:4:"name";s:21:"Closed - Thanksgiving";s:9:"dateStart";s:10:"2022-11-23";s:7:"dateEnd";s:10:"2022-11-26";}i:7;a:3:{s:4:"name";s:18:"Closed - Christmas";s:9:"dateStart";s:10:"2022-12-24";s:7:"dateEnd";s:10:"2022-12-26";}i:8;a:3:{s:4:"name";s:18:"Closed - New Years";s:9:"dateStart";s:10:"2022-12-31";s:7:"dateEnd";s:10:"2023-01-02";}}';
     $libir = 'a:0:{}';

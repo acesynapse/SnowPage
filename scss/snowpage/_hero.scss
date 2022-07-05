@@ -42,9 +42,14 @@
 }
 
 .sp-button-databases {
-	background-color: $square-color-4 !important;
+	background-color: $databases-background !important;
 	letter-spacing: 0.05rem !important;
+	border-radius: 0.5rem !important;
 	&:hover {
-		background-color: $square-color-2 !important;
+		opacity: 0.91 !important;
 	}
+}
+
+.sp-databases-text {
+	color: $databases-text-color !important;
 }

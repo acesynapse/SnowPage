@@ -1,6 +1,6 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
-{% set url = site.url %}
+{% set url = site.url|replace({"http://": "", "https://": "", "http://www.": "", "https://www.": ""})|e %}
 {% set telephone = '' %}
 {% set fax = '' %}
 {% set email = '' %}
@@ -330,18 +330,18 @@
     {% set youtube = '' %}
     {% set instagram = '' %}
     {% set pinterest = '' %}
-  {% case 'http://wnyls.org' or 'https://wnyls.org' %}
-    {% set telephone = '716-' %}
-    {% set fax = '716-' %}
-    {% set email = '' %}
-    {% set street = '' %}
-    {% set csz = '' %}
-  	{% set google = '' %}
-    {% set facebook = '' %}
-    {% set twitter = '' %}
-    {% set youtube = '' %}
-    {% set instagram = '' %}
-    {% set pinterest = '' %}
+  {% case 'http://wnyls.org' or 'https://wnyls.org' or 'http://www.wnyls.org' or 'https://www.wnyls.org' %}
+    {% set telephone = '716-372-0200' %}
+    {% set fax = '716-372-8651' %}
+    {% set email = 'info@oleanlibrary.org' %}
+    {% set street = '134 N. 2nd St.' %}
+    {% set csz = 'Olean, NY 14760' %}
+    {% set google = 'Olean+Public+Library/@42.0791284,-78.4343099,17z/data=!3m1!4b1!4m5!3m4!1s0x89d270fe669a6a75:0xe255818b5cd3a81a!8m2!3d42.079143!4d-78.4322757' %}
+    {% set facebook = 'oleanpubliclibrary' %}
+    {% set twitter = 'oleanpublibrary' %}
+    {% set youtube = 'UCggiEsEwFUUCqOo02YptdEg' %}
+    {% set instagram = 'oleanpubliclibrary' %}
+    {% set pinterest = 'oleanpubliclibrary' %}
   {% default %}
     {% set telephone = '716-664-6675' %}
     {% set fax = '716-484-1205' %}

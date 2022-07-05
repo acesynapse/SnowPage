@@ -23,3 +23,9 @@
 		color: #000 !important;
 	}
 }
+
+.sp-bookshelves-hover {
+	&:hover {
+		color: $off-black;
+	}
+}

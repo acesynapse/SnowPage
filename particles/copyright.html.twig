@@ -2,80 +2,80 @@
 
 {% set end_date = 'now'|date('Y') %}
 
-{% set url = site.url %}
+{% set url = site.url|replace({"http://": "", "https://": "", "http://www.": "", "https://www.": ""})|e %}
 {% set title = 'SnowPage' %}
 {% switch url %}
-  {% case 'http://ahirahall.org' or 'https://ahirahall.org' %}
+  {% case 'ahirahall.org' %}
     {% set title = 'Ahira Hall Memorial Library' %}
-  {% case 'http://alleganylibrary.org' or 'https://alleganylibrary.org' %}
+  {% case 'alleganylibrary.org' %}
     {% set title = 'Allegany Public Library' %}
-  {% case 'http://andersonleelibrary.org' or 'https://andersonleelibrary.org' %}
+  {% case 'andersonleelibrary.org' %}
     {% set title = 'Anderson-Lee Library' %}
-  {% case 'http://ashvillelibrary.com' or 'https://ashvillelibrary.com' %}
+  {% case 'ashvillelibrary.com' %}
     {% set title = 'Ashville Free Library' %}
-  {% case 'http://barkerlibrary.org' or 'https://barkerlibrary.org' %}
+  {% case 'barkerlibrary.org' %}
     {% set title = 'Darwin R. Barker Library Association' %}
-  {% case 'http://bemuspointlibrary.org' or 'https://bemuspointlibrary.org' %}
+  {% case 'bemuspointlibrary.org' %}
     {% set title = 'Bemus Point Public Library' %}
-  {% case 'http://cattarauguslibrary.org' or 'https://cattarauguslibrary.org' %}
+  {% case 'cattarauguslibrary.org' %}
     {% set title = 'Cattaraugus Free Library' %}
-  {% case 'http://cfclibrary.org' or 'https://cfclibrary.org' %}
+  {% case 'cfclibrary.org' %}
     {% set title = 'Clymer-French Creek Free Library' %}
-  {% case 'http://delevanlibrary.org' or 'https://delevanlibrary.org' %}
+  {% case 'delevanlibrary.org' %}
     {% set title = 'Delevan-Yorkshire Public Library' %}
-  {% case 'http://dunkirklibrary.org' or 'https://dunkirklibrary.org' %}
+  {% case 'dunkirklibrary.org' %}
     {% set title = 'Dunkirk Public Library' %}
-  {% case 'http://ellicottvillelibrary.org' or 'https://ellicottvillelibrary.org' %}
+  {% case 'ellicottvillelibrary.org' %}
     {% set title = 'Ellicottville Memorial Library' %}
-  {% case 'http://ellingtonlibrary.org' or 'https://ellingtonlibrary.org' %}
+  {% case 'ellingtonlibrary.org' %}
     {% set title = 'Ellington Farman Library' %}
-  {% case 'http://falconerlibrary.org' or 'https://falconerlibrary.org' %}
+  {% case 'falconerlibrary.org' %}
     {% set title = 'Falconer Public Library' %}
-  {% case 'http://findleylibrary.org' or 'https://findleylibrary.org' %}
+  {% case 'findleylibrary.org' %}
     {% set title = 'Alexander Findley Community Library' %}
-  {% case 'http://fluvannalibrary.org' or 'https://fluvannalibrary.org' %}
+  {% case 'fluvannalibrary.org' %}
     {% set title = 'Fluvanna Free Library' %}
-  {% case 'http://franklinvillelibrary.org' or 'https://franklinvillelibrary.org' %}
+  {% case 'franklinvillelibrary.org' %}
     {% set title = 'Blount Library' %}
-  {% case 'http://gowandalibrary.org' or 'https://gowandalibrary.org' %}
+  {% case 'gowandalibrary.org' %}
     {% set title = 'Gowanda Free Library' %}
-  {% case 'http://hazeltinelibrary.org' or 'https://hazeltinelibrary.org' %}
+  {% case 'hazeltinelibrary.org' %}
     {% set title = 'Hazeltine Public Library' %}
-  {% case 'http://kennedyfreelibrary.org' or 'https://kennedyfreelibrary.org' %}
+  {% case 'kennedyfreelibrary.org' %}
     {% set title = 'Kennedy Free Library' %}
-  {% case 'http://lakewoodlibrary.org' or 'https://lakewoodlibrary.org' %}
+  {% case 'lakewoodlibrary.org' %}
     {% set title = 'Lakewood Memorial Library' %}
-  {% case 'http://littlevalleylibrary.org' or 'https://littlevalleylibrary.org' %}
+  {% case 'littlevalleylibrary.org' %}
     {% set title = 'Memorial Library of Little Valley' %}
-  {% case 'http://machiaslibrary.org' or 'https://machiaslibrary.org' %}
+  {% case 'machiaslibrary.org' %}
     {% set title = 'King Memorial Library' %}
-  {% case 'http://mayvillelibrary.com' or 'https://mayvillelibrary.com' %}
+  {% case 'mayvillelibrary.com' %}
     {% set title = 'Mayville Library' %}
-  {% case 'http://minervalibrary.org' or 'https://minervalibrary.org' %}
+  {% case 'minervalibrary.org' %}
     {% set title = 'Minerva Free Library' %}
-  {% case 'http://myerslibrary.org' or 'https://myerslibrary.org' %}
+  {% case 'myerslibrary.org' %}
     {% set title = 'Myers Memorial Library' %}
-  {% case 'http://oleanlibrary.org' or 'https://oleanlibrary.org' %}
+  {% case 'oleanlibrary.org' %}
     {% set title = 'Olean Public Library' %}
-  {% case 'http://pattersonlibrary.org' or 'https://pattersonlibrary.org' %}
+  {% case 'pattersonlibrary.org' %}
     {% set title = 'Patterson Library' %}
-  {% case 'http://portvillelibrary.org' or 'https://portvillelibrary.org' %}
+  {% case 'portvillelibrary.org' %}
     {% set title = 'Portville Free Library' %}
-  {% case 'http://prendergastlibrary.org' or 'https://prendergastlibrary.org' %}
+  {% case 'prendergastlibrary.org' %}
     {% set title = 'James Prendergast Library Association' %}
-  {% case 'http://randolphlibrary.info' or 'https://randolphlibrary.info' %}
+  {% case 'randolphlibrary.info' %}
     {% set title = 'Randolph Free Library' %}
-  {% case 'http://ripleylibrary.org' or 'https://ripleylibrary.org' %}
+  {% case 'ripleylibrary.org' %}
     {% set title = 'Ripley Public Library' %}
-  {% case 'http://salamancalibrary.org' or 'https://salamancalibrary.org' %}
+  {% case 'salamancalibrary.org' %}
     {% set title = 'Salamanca Public Library' %}
-  {% case 'http://senecalibraries.org' or 'https://senecalibraries.org' %}
+  {% case 'senecalibraries.org'%}
     {% set title = 'Seneca Nation Library' %}
-  {% case 'http://sinclairvillelibrary.org' or 'https://sinclairvillelibrary.org' %}
+  {% case 'sinclairvillelibrary.org' %}
     {% set title = 'Sinclairville Free Library' %}
-  {% case 'http://stocktonlibraries.org' or 'https://stocktonlibraries.org' %}
+  {% case 'stocktonlibraries.org' %}
     {% set title = 'Mary E. Seymour Memorial Free Library' %}
-  {% case 'http://wnyls.org' or 'https://wnyls.org' %}
+  {% case 'wnyls.org' %}
     {% set title = 'Olean Public Library' %}
   {% default %}
     {% set title = 'Chautauqua-Cattaraugus Library System' %}

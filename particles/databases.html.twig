@@ -47,22 +47,18 @@
       <div class="uk-child-width-1-4 uk-grid-large" uk-grid="uk-grid">
         {% for post in column %}
 
-          <div>
-            <div class="uk-inline uk-transition-toggle sp-overflow-hidden" tabindex="0">
-              <div class="uk-transition-opaque">
+        <div class="uk-text-center">
+            <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
                 <a href="{{ post.link|raw }}">
-                  <img src="{{ url(post.thumbnail.src) }}"/>
+                  <img src="{{ url(post.thumbnail.src) }}">
                 </a>
-              </div>
-              <div>
-                <h3>
-                  <a href="{{ post.link|raw }}" class="uk-transition-fade uk-overlay uk-position-center sp-button-databases">
-                    <p class="uk-h4 uk-padding">{{ display.title.limit ? post.title|raw : post.title|raw }}</p>
-                  </a>
-                </h3>
-              </div>
+                <a href="{{ post.link|raw }}">
+                  <div class="uk-transition-fade uk-position-cover uk-position-small uk-overlay uk-overlay-default uk-flex uk-flex-center uk-flex-middle sp-button-databases">
+                    <p class="uk-h3 uk-text-bold uk-padding">{{ display.title.limit ? post.title|raw : post.title|raw }}</p>
+                  </div>
+                </a>
             </div>
-          </div>
+        </div>
 
         {% endfor %}
       </div>
