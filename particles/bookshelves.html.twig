@@ -1,5 +1,84 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
+{% set url = site.url|replace({"http://": "", "https://": "", "http://www.": "", "https://www.": ""})|e %}
+{% set title = '' %}
+{% switch url %}
+  {% case 'ahirahall.org' %}
+    {% set title = 'ahirahall.org' %}
+  {% case 'alleganylibrary.org' %}
+    {% set title = 'alleganylibrary.org' %}
+  {% case 'andersonleelibrary.org' %}
+    {% set title = 'andersonleelibrary.org' %}
+  {% case 'ashvillelibrary.com' %}
+    {% set title = 'ashvillelibrary.com' %}
+  {% case 'barkerlibrary.org' %}
+    {% set title = 'barkerlibrary.org' %}
+  {% case 'bemuspointlibrary.org' %}
+    {% set title = 'bemuspointlibrary.org' %}
+  {% case 'cattarauguslibrary.org' %}
+    {% set title = 'cattarauguslibrary.org' %}
+  {% case 'cfclibrary.org' %}
+    {% set title = 'cfclibrary.org' %}
+  {% case 'delevanlibrary.org' %}
+    {% set title = 'delevanlibrary.org' %}
+  {% case 'dunkirklibrary.org' %}
+    {% set title = 'dunkirklibrary.org' %}
+  {% case 'ellicottvillelibrary.org' %}
+    {% set title = 'ellicottvillelibrary.org' %}
+  {% case 'ellingtonlibrary.org' %}
+    {% set title = 'ellingtonlibrary.org' %}
+  {% case 'falconerlibrary.org' %}
+    {% set title = 'falconerlibrary.org' %}
+  {% case 'findleylibrary.org' %}
+    {% set title = 'findleylibrary.org' %}
+  {% case 'fluvannalibrary.org' %}
+    {% set title = 'fluvannalibrary.org' %}
+  {% case 'franklinvillelibrary.org' %}
+    {% set title = 'franklinvillelibrary.org' %}
+  {% case 'gowandalibrary.org' %}
+    {% set title = 'gowandalibrary.org' %}
+  {% case 'hazeltinelibrary.org' %}
+    {% set title = 'hazeltinelibrary.org' %}
+  {% case 'kennedyfreelibrary.org' %}
+    {% set title = 'kennedyfreelibrary.org' %}
+  {% case 'lakewoodlibrary.org' %}
+    {% set title = 'lakewoodlibrary.org' %}
+  {% case 'littlevalleylibrary.org' %}
+    {% set title = 'littlevalleylibrary.org' %}
+  {% case 'machiaslibrary.org' %}
+    {% set title = 'machiaslibrary.org' %}
+  {% case 'mayvillelibrary.com' %}
+    {% set title = 'mayvillelibrary.com' %}
+  {% case 'minervalibrary.org' %}
+    {% set title = 'minervalibrary.org' %}
+  {% case 'myerslibrary.org' %}
+    {% set title = 'myerslibrary.org' %}
+  {% case 'oleanlibrary.org' %}
+    {% set title = 'oleanlibrary.org' %}
+  {% case 'pattersonlibrary.org' %}
+    {% set title = 'pattersonlibrary.org' %}
+  {% case 'portvillelibrary.org' %}
+    {% set title = 'portvillelibrary.org' %}
+  {% case 'prendergastlibrary.org' %}
+    {% set title = 'prendergastlibrary.org' %}
+  {% case 'randolphlibrary.info' %}
+    {% set title = 'randolphlibrary.info' %}
+  {% case 'ripleylibrary.org' %}
+    {% set title = 'ripleylibrary.org' %}
+  {% case 'salamancalibrary.org' %}
+    {% set title = 'salamancalibrary.org' %}
+  {% case 'senecalibraries.org' %}
+    {% set title = 'senecalibraries.org' %}
+  {% case 'sinclairvillelibrary.org' %}
+    {% set title = 'sinclairvillelibrary.org' %}
+  {% case 'stocktonlibraries.org' %}
+    {% set title = 'stocktonlibraries.org' %}
+  {% case 'wnyls.org' %}
+    {% set title = 'oleanlibrary.org' %}
+  {% default %}
+    {% set title = 'cclsny.org' %}
+{% endswitch %}
+
 {# Query Posts #}
 {% set query_parameters = {
   'post_type': 'bookshelves',
@@ -25,7 +104,7 @@
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
         <div class="uk-card-media-top uk-padding-small">
 
-            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[0]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[0]|imageurl|e }}"></a>
+            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[0]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[0]|imageurl|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
@@ -38,7 +117,7 @@
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
         <div class="uk-card-media-top uk-padding-small">
 
-            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[1]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[1]|imageurl|e }}"></a>
+            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[1]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[1]|imageurl|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
@@ -51,7 +130,7 @@
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
         <div class="uk-card-media-top uk-padding-small">
 
-            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[2]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[2]|imageurl|e }}"></a>
+            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[2]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[2]|imageurl|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
@@ -61,8 +140,8 @@
     </div>
 
     <div class="uk-flex uk-flex-middle uk-flex-center">
-      <div class="uk-card">
-        <span class="uk-text-large uk-text-bold">New &amp; Noteable</span>
+      <div class="uk-card uk-text-center">
+        <span class="sp-books-text">{{ particle.message.text|e }}</span>
       </div>
     </div>
 
@@ -70,7 +149,7 @@
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
         <div class="uk-card-media-top uk-padding-small">
 
-            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[3]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[3]|imageurl|e }}"></a>
+            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[3]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[3]|imageurl|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
@@ -83,7 +162,7 @@
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
         <div class="uk-card-media-top uk-padding-small">
 
-            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[4]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[4]|imageurl|e }}"></a>
+            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[4]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[4]|imageurl|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
@@ -96,7 +175,7 @@
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
         <div class="uk-card-media-top uk-padding-small">
 
-            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[5]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[5]|imageurl|e }}"></a>
+            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[5]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[5]|imageurl|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
@@ -111,7 +190,7 @@
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
         <div class="uk-card-media-top uk-padding-small">
 
-            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[0]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[0]|imageurl|e }}"></a>
+            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[0]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[0]|imageurl|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
@@ -124,7 +203,7 @@
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
         <div class="uk-card-media-top uk-padding-small">
 
-            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[1]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[1]|imageurl|e }}"></a>
+            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[1]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[1]|imageurl|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
@@ -134,8 +213,8 @@
     </div>
 
     <div class="uk-flex uk-flex-middle uk-flex-center">
-      <div class="uk-card">
-        <span class="uk-text-large uk-text-bold">New &amp; Noteable</span>
+      <div class="uk-card uk-text-center">
+        <span class="sp-books-text">{{ particle.message.text|e }}</span>
       </div>
     </div>
 
@@ -143,7 +222,7 @@
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
         <div class="uk-card-media-top uk-padding-small">
 
-            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[2]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[2]|imageurl|e }}"></a>
+            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[2]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[2]|imageurl|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
@@ -156,7 +235,7 @@
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
         <div class="uk-card-media-top uk-padding-small">
 
-            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[3]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[3]|imageurl|e }}"></a>
+            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[3]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[3]|imageurl|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
@@ -169,8 +248,8 @@
   <div class="uk-visible@m uk-hidden@l uk-child-width-expand" uk-grid="uk-grid">
 
     <div class="uk-flex uk-flex-middle uk-flex-center">
-      <div class="uk-card">
-        <span class="uk-text-large uk-text-bold">New &amp; Noteable</span>
+      <div class="uk-card uk-text-center">
+        <span class="sp-books-text">{{ particle.message.text|e }}</span>
       </div>
     </div>
 
@@ -178,7 +257,7 @@
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
         <div class="uk-card-media-top uk-padding-small">
 
-            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[0]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[0]|imageurl|e }}"></a>
+            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[0]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[0]|imageurl|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
@@ -191,7 +270,7 @@
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
         <div class="uk-card-media-top uk-padding-small">
 
-            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[1]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[1]|imageurl|e }}"></a>
+            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[1]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[1]|imageurl|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
@@ -204,7 +283,7 @@
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
         <div class="uk-card-media-top uk-padding-small">
 
-            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[2]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[2]|imageurl|e }}"></a>
+            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[2]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[2]|imageurl|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
@@ -214,13 +293,13 @@
     </div>
   </div>
 
-  <div class="uk-visible@s uk-hidden@m uk-child-width-expand" uk-grid="uk-grid">
 
+  <div class="uk-visible@s uk-hidden@m uk-child-width-expand" uk-grid="uk-grid">
     <div class="uk-flex uk-flex-bottom uk-flex-center">
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
         <div class="uk-card-media-top uk-padding-small">
 
-            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[0]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[0]|imageurl|e }}"></a>
+            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[0]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[0]|imageurl|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
@@ -230,8 +309,8 @@
     </div>
 
     <div class="uk-flex uk-flex-middle uk-flex-center">
-      <div class="uk-card">
-        <span class="uk-text-large uk-text-bold">New &amp; Noteable</span>
+      <div class="uk-card uk-text-center">
+        <span class="sp-books-text">{{ particle.message.text|e }}</span>
       </div>
     </div>
 
@@ -239,7 +318,41 @@
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
         <div class="uk-card-media-top uk-padding-small">
 
-            <a href="https://catalog.cclsny.org/cgi-bin/koha/opac-search.pl?q={{ isbn[1]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[1]|imageurl|e }}"></a>
+            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[1]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[1]|imageurl|e }}"></a>
+
+        </div>
+        <div class="uk-card-body uk-padding-small uk-text-center">
+          <p class="uk-text-default uk-text-bold">{{ alt[1]|replace({"&#039;" : "'", "." : ""})|e }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="uk-hidden@s uk-child-width-expand" uk-grid="uk-grid">
+    <div class="uk-flex uk-flex-bottom uk-flex-center">
+      <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
+        <div class="uk-card-media-top uk-padding-small">
+
+            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[0]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[0]|imageurl|e }}"></a>
+
+        </div>
+        <div class="uk-card-body uk-padding-small uk-text-center">
+          <p class="uk-text-default uk-text-bold">{{ alt[0]|replace({"&#039;" : "'", "." : ""})|e }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="uk-flex uk-flex-middle uk-flex-center">
+      <div class="uk-card uk-text-center">
+        <span class="sp-books-text">{{ particle.message.text|e }}</span>
+      </div>
+    </div>
+
+    <div class="uk-flex uk-flex-bottom uk-flex-center">
+      <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
+        <div class="uk-card-media-top uk-padding-small">
+
+            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[1]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[1]|imageurl|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">

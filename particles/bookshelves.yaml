@@ -18,6 +18,11 @@ form:
       description: Globally enable the particle.
       default: true
 
+    message.text:
+      type: input.text
+      label: Message Text
+      description: Input the message would you like to display.
+
     twig:
        type: input.checkbox
        label: Process Twig

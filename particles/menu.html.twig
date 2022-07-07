@@ -4,11 +4,14 @@
     <div class="alert alert-error">{{ e.getMessage }}</div>
 {% endtry %}
 
+{% set one = '[wpa_toolbar]' %}
+{% set two = '[google-translator]' %}
+
 <button id="sp-nav" class="uk-button uk-button-link" type="button" uk-toggle="target: #offcanvas-nav-primary"><span uk-icon="icon: table; ratio: 1.5"></span><br>Menu</button>
 
 <div id="offcanvas-nav-primary" uk-offcanvas="overlay: true">
     <div class="uk-offcanvas-bar uk-flex uk-flex-column">
-        <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical" uk-nav>
+        <ul class="uk-nav uk-nav-primary uk-margin-auto-vertical uk-nav-parent-icon" uk-nav>
           {% for item in menu.root %}
             {% if not item.children %}
             <li class="uk-active"><a href="{{ item.link }}">{{ item.title }}</a></li>
@@ -16,14 +19,29 @@
             {% if item.children %}
             <li class="uk-parent">
                 <a href="{{ item.link }}">{{ item.title }}</a>
-                {% for child in item.children %}
                 <ul class="uk-nav-sub">
+                {% for child in item.children %}
                     <li><a href="{{ child.link }}">{{ child.title }}</a></li>
-                </ul>
                 {% endfor %}
+                </ul>
             </li>
             {% endif %}
           {% endfor %}
         </ul>
+        <div class="  ltr  left a11y-toolbar-widget">
+          <ul style="float:left;list-style:none;padding-left:unset;">
+            <li style="float:left;">
+              <button type="button" class="a11y-toggle a11y-toggle-contrast toggle-contrast" id="is_normal_contrast" aria-pressed="false">
+                <span class="aticon aticon-adjust" aria-hidden="true" title="Toggle Contrast"></span>
+              </button>
+            </li>
+            <li style="float:left;">
+              <button type="button" class="a11y-toggle a11y-toggle-fontsize toggle-fontsize" id="is_normal_fontsize" aria-pressed="false">
+                <span class="aticon aticon-font" aria-hidden="true" title="Toggle Font Size"></span>
+              </button>
+            </li>
+          </ul>
+        </div>
+        {{ gantry.platform.filter(two)|html|raw }}
     </div>
 </div>

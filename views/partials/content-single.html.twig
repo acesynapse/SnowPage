@@ -5,23 +5,15 @@
         {# Begin Entry Header #}
         <section class="entry-header">
 
-            {# Begin Entry Title #}
-            {% if gantry.config.get('content.' ~ scope ~ '.title.enabled', '1') %}
-                <h2 class="entry-title">
-                    {% if gantry.config.get('content.' ~ scope ~ '.title.link', '0') %}
-                        <a href="{{ post.link }}" title="{{ post.title }}">{{ post.title }}</a>
-                    {% else %}
-                        {{ post.title }}
-                    {% endif %}
-                </h2>
-            {% endif %}
-            {# End Entry Title #}
-
-            {# Begin Entry Meta #}
-            {% if gantry.config.get('content.' ~ scope ~ '.meta-date.enabled', '1') or gantry.config.get('content.' ~ scope ~ '.meta-author.enabled', '1') or gantry.config.get('content.' ~ scope ~ '.meta-comments.enabled', '1') or gantry.config.get('content.' ~ scope ~ '.meta-categories.enabled', '1') or gantry.config.get('content.' ~ scope ~ '.meta-tags.enabled', '0') %}
-                {% include ['partials/meta-' ~ scope ~ '.html.twig', 'partials/meta.html.twig'] %}
-            {% endif %}
-            {# End Entry Meta #}
+            <div class="uk-child-width-1-2 uk-grid-small uk-grid-match" uk-grid>
+              <div class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover" data-src="{{ post.thumbnail.src|resize(gantry.config.get('content.' ~ scope ~ '.featured-image.width', '1200'), gantry.config.get('content.' ~ scope ~ '.featured-image.height', '350')) }}" alt="{{ post.title }}" uk-img>
+              </div>
+              <div class="uk-padding-remove uk-margin-remove">
+                <div class="uk-card uk-flex uk-flex-center uk-flex-middle">
+                  <h1 class="uk-title uk-text-bold">{{ post.title }}</h1>
+                </div>
+              </div>
+            </div>
 
         </section>
         {# End Entry Header #}
@@ -30,16 +22,7 @@
         {% if not function( 'post_password_required', post.ID ) %}
 
             {# Begin Entry Content #}
-            <section class="entry-content">
-
-                {# Begin Featured Image #}
-                {% if gantry.config.get('content.' ~ scope ~ '.featured-image.enabled', '1') and post.thumbnail.src %}
-                    {% set position = (gantry.config.get('content.' ~ scope ~ '.featured-image.position', 'none') == 'none') ? '' : 'float-' ~ gantry.config.get('content.' ~ scope ~ '.featured-image.position', 'none') %}
-                    <a href="{{ post.link }}" class="post-thumbnail" aria-hidden="true">
-                        <img src="{{ post.thumbnail.src|resize(gantry.config.get('content.' ~ scope ~ '.featured-image.width', '1200'), gantry.config.get('content.' ~ scope ~ '.featured-image.height', '350')) }}" class="featured-image tease-featured-image {{ position }}" alt="{{ post.title }}" />
-                    </a>
-                {% endif %}
-                {# End Featured Image #}
+            <section class="entry-content uk-text-lead uk-padding uk-padding-remove-bottom uk-padding-remove-left uk-padding-remove-right">
 
                 {# Begin Page Content #}
                 {{ post.paged_content|raw }}
@@ -47,18 +30,8 @@
                 {{ function('wp_link_pages', {'before': '<div class="page-links" itemprop="pagination">', 'after': '</div>', 'link_before': '<span class="page-number page-numbers">', 'link_after': '</span>', 'echo': 0}) }}
                 {# End Page Content #}
 
-                {# Begin Edit Link #}
-                {{ function('edit_post_link', __('Edit', 'snowpage'), '<span class="edit-link">', '</span>') }}
-                {# End Edit Link #}
-
             </section>
             {# End Entry Content #}
-
-            {# Begin Comments #}
-            {% if (post.comment_status == 'open' or post.comment_count > 0) and post.post_type != 'product' %}
-                {{ function('comments_template')|raw }}
-            {% endif %}
-            {# End Comments #}
 
         {% else %}
 

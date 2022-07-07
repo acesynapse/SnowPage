@@ -38,6 +38,11 @@ form:
       label: Text
       description: Add text for information Block Button
 
+    image:
+      type: input.imagepicker
+      label: Image
+      description: Select desired image.
+
     twig:
        type: input.checkbox
        label: Process Twig

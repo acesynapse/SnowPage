@@ -21,3 +21,9 @@ form:
           allowEmptyOption: true
       options:
         '': Please Select Menu
+
+    filter:
+      type: input.checkbox
+      label: Process shortcodes
+      description: Enable shortcode processing / filtering in the content.
+      default: '1'
