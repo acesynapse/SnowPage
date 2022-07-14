@@ -15,7 +15,7 @@
 
 {# Query Posts #}
 {% set query_parameters = {
-  'posts_per_page': limit.total | default('8'),
+  'posts_per_page': limit.total | default('4'),
   'offset': start,
   'orderby': sort.orderby,
   'order': sort.ordering,

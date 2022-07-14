@@ -1,0 +1,391 @@
+name: Article Features
+description: Display Article Features
+type: particle
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable Article Features particles.
+      default: true
+
+    tabs:
+      type: container.tabs
+      fields:
+        tab_basic:
+          label: Basic
+          fields:
+
+            class:
+              type: input.selectize
+              label: CSS Classes
+              description: CSS class name for the particle.
+            padding:
+              type: input.text
+              label: Content Padding
+              description: Type CSS 'Top and Bottom' padding value to regulate the height of particle
+              placeholder: '80px 0'
+            margin:
+              type: input.text
+              label: Content Margin
+              description: Type CSS 'Margin' value to regulate the margin of particle
+              placeholder: '0 auto'
+            width:
+              type: input.text
+              label: Content Maximum Width
+              description: Type CSS 'width' value to regulate the width of particle. You can use '%' or 'px', leave it blank if you don't want to set maximum fixed width.
+              placeholder: '100%'
+
+        tab_header:
+          label: Header-Footer
+          fields:
+
+            _note_c_before:
+              type: separator.note
+              class: alert alert-info
+              content: 'Content before'
+            htitle:
+              type: input.text
+              label: Header Title
+            hsize:
+              type: select.select
+              label: Heading Size
+              default: h2
+              options:
+                h1: H1
+                h2: H2
+                h3: H3
+                h4: H4
+            hdes:
+              type: textarea.textarea
+              label: Custom HTML
+            htAl:
+              type: select.select
+              label: Header Text Align
+              description: Choose Text Align Direction
+              placeholder: 'Select...'
+              default: center
+              options:
+                left: Left
+                center: Center
+                right: Right
+            hmargin:
+              type: input.text
+              label: Header Margin Bottom
+              description: Type CSS 'Bottom' margin value to apply space beetween header and accordion items
+              placeholder: '60px'
+
+            _note_c_after:
+              type: separator.note
+              class: alert alert-info
+              content: 'Content After'
+            fdes:
+              type: textarea.textarea
+              label: Custom HTML
+
+        tab_settings:
+          label: Settings
+          fields:
+            _note_if_style:
+              type: separator.note
+              class: alert alert-info
+              content: Global Style - Options
+            if_style:
+              type: select.select
+              label: Image Features Style
+              description: Choose opening hour style.
+              placeholder: 'Select...'
+              default: style1
+              options:
+                style1: Style 1
+                style1_il: Style 1 Image Left
+                style2: Style 2
+                style3: Style 3
+                style4: Style 4
+                style5: Style 5
+
+            if_columns:
+              type: select.select
+              label: Image Features Columns
+              description: Choose Image features columns (Does not apply if you enable carousel below).
+              placeholder: 'Select...'
+              default: 25
+              options:
+                50: 2 Columns
+                33: 3 Columns
+                25: 4 Columns
+
+
+            ifg_title_font:
+              type: input.text
+              label: Title Font Size
+              description: Type CSS font size for the title if you want to override style default font size.
+              placeholder: 24px
+
+            _note_if_style2:
+              type: separator.note
+              class: alert alert-info
+              content: Style 2 - Options
+            style2_img_pos:
+              type: select.select
+              label: Style 2 Image Position
+              description: Select style 2 image position
+              placeholder: 'Select...'
+              default: right
+              options:
+                left: Left
+                right: Right
+            style2_bg:
+              type: input.colorpicker
+              label: Style 2 - Background Color
+              default: '#4db2b3'
+            style2_color:
+              type: input.colorpicker
+              label: Style 2 - Font Color
+              default: '#ffffff'
+
+            _note_if_style3:
+              type: separator.note
+              class: alert alert-info
+              content: Style 3 - Options
+            style3_title:
+              type: input.colorpicker
+              label: Style 3 - Title Color
+              default: '#666666'
+            style3_bg:
+              type: input.colorpicker
+              label: Style 3 - Background Color
+              default: '#ffffff'
+            style3_hover_bg:
+              type: input.colorpicker
+              label: Style 3 - Date & Hover Background Color
+              default: '#4db2b3'
+            style3_color:
+              type: input.colorpicker
+              label: Style 3 - Hover Font Color
+              default: '#ffffff'
+
+
+            _note_if_carousel:
+              type: separator.note
+              class: alert alert-info
+              content: Carousel - Options
+            enable_carousel:
+              type: enable.enable
+              label: Enable Carousel
+              default: false
+            carousel_autoplay:
+              type: enable.enable
+              label: Auto Play Carousel
+              default: true
+            carousel_navigation:
+              type: select.select
+              label: Navigation Type
+              description: Choose carousel Navigation Type.
+              placeholder: 'Select...'
+              default: both
+              options:
+                dots: Dots
+                nav: Nav
+                both: Both
+                none: None
+            carousel_items:
+              type: select.select
+              label: Items Per Column
+              description: Choose carousel item columns.
+              placeholder: 'Select...'
+              default: 3
+              options:
+                1: 1
+                2: 2
+                3: 3
+                4: 4
+
+        tab_content:
+          label: Content
+          fields:
+            _note_if_articles:
+              type: separator.note
+              class: alert alert-info
+              content: Joomla Articles - Options
+
+            article.filter.categories:
+              type: joomla.categories
+              label: Categories
+              description: Select the categories the articles should be taken from.
+              overridable: false
+
+            article.filter.articles:
+              type: input.text
+              label: Articles
+              description: Enter the Joomla articles that should be shown. It should be a list of article IDs separated with a comma (i.e. 1,2,3,4,5).
+              overridable: false
+
+            article.filter.featured:
+              type: select.select
+              label: Featured Articles
+              description: Select how Featured articles should be filtered.
+              default: ''
+              options:
+                include: Include Featured
+                exclude: Exclude Featured
+                only: Only Featured
+              overridable: false
+
+            article.limit.total:
+              type: input.text
+              label: Number of Articles
+              description: Enter the maximum number of articles to display.
+              default: 3
+              pattern: '\d{1,2}'
+              overridable: false
+
+            article.limit.start:
+              type: input.text
+              label: Start From
+              description: Enter offset specifying the first article to return. The default is '0' (the first article).
+              default: 0
+              pattern: '\d{1,2}'
+              overridable: false
+
+            article.sort.orderby:
+              type: select.select
+              label: Order By
+              description: Select how the articles should be ordered by.
+              default: publish_up
+              options:
+                publish_up: Published Date
+                created: Created Date
+                modified: Last Modified Date
+                title: Title
+                ordering: Ordering
+                hits: Hits
+                id: ID
+                alias: Alias
+              overridable: false
+
+            article.sort.ordering:
+              type: select.select
+              label: Ordering Direction
+              description: Select the direction the articles should be ordered by.
+              default: ASC
+              options:
+                ASC: Ascending
+                DESC: Descending
+              overridable: false
+
+            _note_if_articles_display:
+              type: separator.note
+              class: alert alert-info
+              content: Joomla Articles Display - Options
+
+            article.display.category.enabled:
+              type: select.select
+              label: Category
+              description: Select if the article category should be shown.
+              default: show
+              options:
+                show: Show
+                '': Hide
+
+            article.display.image.enabled:
+              type: select.select
+              label: Image
+              description: Select if and what image of the article should be shown.
+              default: intro
+              options:
+                intro: Intro
+                full: Full
+                '': None
+            article.display.text.type:
+              type: select.select
+              label: Article Text
+              description: Select if and how the article text should be shown.
+              default: intro
+              options:
+                intro: Introduction
+                full: Full Article
+                '': Hide
+
+            article.display.title.enabled:
+              type: select.select
+              label: Title
+              description: Select if the article title should be shown.
+              default: show
+              options:
+                show: Show
+                '': Hide
+
+            article.display.text.limit:
+              type: input.text
+              label: Text Limit
+              description: Type in the number of characters the article text should be limited to.
+              default: '70'
+              pattern: '\d+'
+
+            article.display.title.limit:
+              type: input.text
+              label: Title Limit
+              description: Enter the maximum number of characters the article title should be limited to.
+              pattern: '\d+(\.\d+){0,1}'
+
+            article.display.date.enabled:
+              type: select.select
+              label: Date
+              description: Select if the article date should be shown.
+              default: published
+              options:
+                created: Show Created Date
+                published: Show Published Date
+                modified: Show Modified Date
+                '': Hide
+
+            article.display.date.format:
+              type: select.date
+              label: Date Format
+              description: Select preferred date format. Leave empty not to display a date.
+              default: l, F d, Y
+              selectize:
+                  allowEmptyOption: true
+              options:
+                  'l, F d, Y': Date1
+                  'l, d F': Date2
+                  'D, d F': Date3
+                  'F d': Date4
+                  'd F': Date5
+                  'd M': Date6
+                  'D, M d, Y': Date7
+                  'D, M d, y': Date8
+                  'l': Date9
+                  'l j F Y': Date10
+                  'j F Y': Date11
+            link_target:
+              type: select.select
+              label: Link URL Target
+              description: Choose URL Target 
+              placeholder: 'Select...'
+              default: self
+              options:
+                self: Self
+                blank: Blank
+
+            article.display.read_more.enabled:
+              type: select.select
+              label: Read More
+              description: Select if the article 'Read More' button should be shown.
+              default: show
+              options:
+                show: Show
+                '': Hide
+
+            article.display.read_more.label:
+              type: input.text
+              label: Read More Label
+              description: Type in the label for the 'Read More' button.
+              placeholder: 'Read More...'
+
+            article.display.read_more.css:
+              type: input.selectize
+              label: Button CSS Classes
+              description: CSS class name for the 'Read More' button.
