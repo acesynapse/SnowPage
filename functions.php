@@ -67,7 +67,6 @@ require_once 'twig_functions.php';
 
 /*
 * Databases Custom Post Type
-*
 */
 
 function custom_post_databases() {
