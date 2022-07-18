@@ -41,6 +41,14 @@
 	}
 }
 
+.sp-news-title {
+	color: $triadic-color-2 !important;
+	letter-spacing: 0.05rem !important;
+	&:hover {
+		color: $triadic-color-3 !important;
+	}
+}
+
 .sp-button-databases {
 	background-color: $databases-background !important;
 	letter-spacing: 0.05rem !important;

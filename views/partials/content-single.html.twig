@@ -4,13 +4,18 @@
 
         {# Begin Entry Header #}
         <section class="entry-header">
+          <div class="uk-height-large uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-blend" data-src="{{ post.thumbnail.src|resize(gantry.config.get('content.' ~ scope ~ '.featured-image.width', '1200'), gantry.config.get('content.' ~ scope ~ '.featured-image.height', '350')) }}" alt="{{ post.title }}" uk-img>
+            <div class="uk-background-default uk-padding uk-panel">
+              <h1 class="uk-text-bold uk-text-uppercase">{{ post.title }}</h1>
+            </div>
+          </div>
 
             <div class="uk-child-width-1-2 uk-grid-small uk-grid-match" uk-grid>
               <div class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover" data-src="{{ post.thumbnail.src|resize(gantry.config.get('content.' ~ scope ~ '.featured-image.width', '1200'), gantry.config.get('content.' ~ scope ~ '.featured-image.height', '350')) }}" alt="{{ post.title }}" uk-img>
               </div>
               <div class="uk-padding-remove uk-margin-remove">
                 <div class="uk-card uk-flex uk-flex-center uk-flex-middle">
-                  <h1 class="uk-title uk-text-bold">{{ post.title }}</h1>
+                  <h1 class="uk-title uk-text-bold uk-heading-line uk-text-center">{{ post.title }}</h1>
                 </div>
               </div>
             </div>
