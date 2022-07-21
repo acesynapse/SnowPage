@@ -87,13 +87,15 @@
   'posts_per_page': 1
 } %}
 
-{% set isbn = [] %}
+{% set kohaurl = [] %}
+{% set kohaimg = [] %}
 {% set alt = [] %}
 {% set posts = wordpress.query_posts(query_parameters) %}
 {% for column in posts | batch(1) %}
   {% for post in column %}
     {% set id = post.id %}
-    {% set isbn = isbn | merge(post.meta('isbn')) %}
+    {% set kohaurl = kohaurl | merge(post.meta('kohaurl')) %}
+    {% set kohaimg = kohaimg | merge(post.meta('kohaimg')) %}
     {% set alt = alt | merge(post.meta('alt')) %}
   {% endfor %}
 {% endfor %}
@@ -102,39 +104,39 @@
   <div class="uk-visible@xl uk-child-width-expand" uk-grid="uk-grid">
     <div class="uk-flex uk-flex-bottom uk-flex-center">
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
-        <div class="uk-card-media-top uk-padding-small">
+        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
 
-            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[0]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[0]|imageurl|e }}"></a>
+            <a href="{{ kohaurl[0]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[0]|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold">{{ alt[0]|replace({"&#039;" : "'", "." : ""})|e }}</p>
+          <p class="uk-text-large uk-text-bold" style="line-height:1.15;">{{ alt[0]|replace({"&#039;" : "'", "." : ""})|e }}</p>
         </div>
       </div>
     </div>
 
     <div class="uk-flex uk-flex-bottom uk-flex-center">
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
-        <div class="uk-card-media-top uk-padding-small">
+        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
 
-            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[1]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[1]|imageurl|e }}"></a>
+            <a href="{{ kohaurl[1]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[1]|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold">{{ alt[1]|replace({"&#039;" : "'", "." : ""})|e }}</p>
+          <p class="uk-text-large uk-text-bold" style="line-height:1.15;">{{ alt[1]|replace({"&#039;" : "'", "." : ""})|e }}</p>
         </div>
       </div>
     </div>
 
     <div class="uk-flex uk-flex-bottom uk-flex-center">
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
-        <div class="uk-card-media-top uk-padding-small">
+        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
 
-            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[2]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[2]|imageurl|e }}"></a>
+            <a href="{{ kohaurl[2]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[2]|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold">{{ alt[2]|replace({"&#039;" : "'", "." : ""})|e }}</p>
+          <p class="uk-text-large uk-text-bold" style="line-height:1.15;">{{ alt[2]|replace({"&#039;" : "'", "." : ""})|e }}</p>
         </div>
       </div>
     </div>
@@ -147,39 +149,39 @@
 
     <div class="uk-flex uk-flex-bottom uk-flex-center">
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
-        <div class="uk-card-media-top uk-padding-small">
+        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
 
-            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[3]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[3]|imageurl|e }}"></a>
+            <a href="{{ kohaurl[3]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[3]|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold uk-flex-middle">{{ alt[3]|replace({"&#039;" : "'", "." : ""})|e }}</p>
+          <p class="uk-text-large uk-text-bold uk-flex-middle"  style="line-height:1.15;">{{ alt[3]|replace({"&#039;" : "'", "." : ""})|e }}</p>
         </div>
       </div>
     </div>
 
     <div class="uk-flex uk-flex-bottom uk-flex-center">
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
-        <div class="uk-card-media-top uk-padding-small">
+        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
 
-            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[4]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[4]|imageurl|e }}"></a>
+            <a href="{{ kohaurl[4]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[4]|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold">{{ alt[4]|replace({"&#039;" : "'", "." : ""})|e }}</p>
+          <p class="uk-text-large uk-text-bold" style="line-height:1.15;">{{ alt[4]|replace({"&#039;" : "'", "." : ""})|e }}</p>
         </div>
       </div>
     </div>
 
     <div class="uk-flex uk-flex-bottom uk-flex-center">
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
-        <div class="uk-card-media-top uk-padding-small">
+        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
 
-            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[5]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[5]|imageurl|e }}"></a>
+            <a href="{{ kohaurl[5]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[5]|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold">{{ alt[5]|replace({"&#039;" : "'", "." : ""})|e }}</p>
+          <p class="uk-text-large uk-text-bold" style="line-height:1.15;">{{ alt[5]|replace({"&#039;" : "'", "." : ""})|e }}</p>
         </div>
       </div>
     </div>
@@ -188,26 +190,26 @@
   <div class="uk-visible@l uk-hidden@xl uk-child-width-expand" uk-grid="uk-grid">
     <div class="uk-flex uk-flex-bottom uk-flex-center">
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
-        <div class="uk-card-media-top uk-padding-small">
+        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
 
-            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[0]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[0]|imageurl|e }}"></a>
+            <a href="{{ kohaurl[0]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[0]|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold">{{ alt[0]|replace({"&#039;" : "'", "." : ""})|e }}</p>
+          <p class="uk-text-large uk-text-bold" style="line-height:1.15;">{{ alt[0]|replace({"&#039;" : "'", "." : ""})|e }}</p>
         </div>
       </div>
     </div>
 
     <div class="uk-flex uk-flex-bottom uk-flex-center">
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
-        <div class="uk-card-media-top uk-padding-small">
+        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
 
-            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[1]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[1]|imageurl|e }}"></a>
+            <a href="{{ kohaurl[1]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[1]|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold">{{ alt[1]|replace({"&#039;" : "'", "." : ""})|e }}</p>
+          <p class="uk-text-large uk-text-bold" style="line-height:1.15;">{{ alt[1]|replace({"&#039;" : "'", "." : ""})|e }}</p>
         </div>
       </div>
     </div>
@@ -220,26 +222,26 @@
 
     <div class="uk-flex uk-flex-bottom uk-flex-center">
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
-        <div class="uk-card-media-top uk-padding-small">
+        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
 
-            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[2]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[2]|imageurl|e }}"></a>
+            <a href="{{ kohaurl[2]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[2]|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold uk-flex-middle">{{ alt[2]|replace({"&#039;" : "'", "." : ""})|e }}</p>
+          <p class="uk-text-large uk-text-bold uk-flex-middle" style="line-height:1.15;">{{ alt[2]|replace({"&#039;" : "'", "." : ""})|e }}</p>
         </div>
       </div>
     </div>
 
     <div class="uk-flex uk-flex-bottom uk-flex-center">
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
-        <div class="uk-card-media-top uk-padding-small">
+        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
 
-            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[3]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[3]|imageurl|e }}"></a>
+            <a href="{{ kohaurl[3]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[3]|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold">{{ alt[3]|replace({"&#039;" : "'", "." : ""})|e }}</p>
+          <p class="uk-text-large uk-text-bold" style="line-height:1.15;">{{ alt[3]|replace({"&#039;" : "'", "." : ""})|e }}</p>
         </div>
       </div>
     </div>
@@ -255,39 +257,39 @@
 
     <div class="uk-flex uk-flex-bottom uk-flex-center">
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
-        <div class="uk-card-media-top uk-padding-small">
+        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
 
-            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[0]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[0]|imageurl|e }}"></a>
+            <a href="{{ kohaurl[0]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[0]|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold">{{ alt[0]|replace({"&#039;" : "'", "." : ""})|e }}</p>
+          <p class="uk-text-large uk-text-bold" style="line-height:1.15;">{{ alt[0]|replace({"&#039;" : "'", "." : ""})|e }}</p>
         </div>
       </div>
     </div>
 
     <div class="uk-flex uk-flex-bottom uk-flex-center">
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
-        <div class="uk-card-media-top uk-padding-small">
+        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
 
-            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[1]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[1]|imageurl|e }}"></a>
+            <a href="{{ kohaurl[1]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[1]|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold">{{ alt[1]|replace({"&#039;" : "'", "." : ""})|e }}</p>
+          <p class="uk-text-large uk-text-bold" style="line-height:1.15;">{{ alt[1]|replace({"&#039;" : "'", "." : ""})|e }}</p>
         </div>
       </div>
     </div>
 
     <div class="uk-flex uk-flex-bottom uk-flex-center">
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
-        <div class="uk-card-media-top uk-padding-small">
+        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
 
-            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[2]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[2]|imageurl|e }}"></a>
+            <a href="{{ kohaurl[2]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[2]|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold uk-flex-middle">{{ alt[2]|replace({"&#039;" : "'", "." : ""})|e }}</p>
+          <p class="uk-text-large uk-text-bold uk-flex-middle" style="line-height:1.15;">{{ alt[2]|replace({"&#039;" : "'", "." : ""})|e }}</p>
         </div>
       </div>
     </div>
@@ -297,13 +299,13 @@
   <div class="uk-visible@s uk-hidden@m uk-child-width-expand" uk-grid="uk-grid">
     <div class="uk-flex uk-flex-bottom uk-flex-center">
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
-        <div class="uk-card-media-top uk-padding-small">
+        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
 
-            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[0]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[0]|imageurl|e }}"></a>
+            <a href="{{ kohaurl[0]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[0]|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold">{{ alt[0]|replace({"&#039;" : "'", "." : ""})|e }}</p>
+          <p class="uk-text-large uk-text-bold" style="line-height:1.15;">{{ alt[0]|replace({"&#039;" : "'", "." : ""})|e }}</p>
         </div>
       </div>
     </div>
@@ -316,13 +318,13 @@
 
     <div class="uk-flex uk-flex-bottom uk-flex-center">
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
-        <div class="uk-card-media-top uk-padding-small">
+        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
 
-            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[1]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[1]|imageurl|e }}"></a>
+            <a href="{{ kohaurl[1]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[1]|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold">{{ alt[1]|replace({"&#039;" : "'", "." : ""})|e }}</p>
+          <p class="uk-text-large uk-text-bold" style="line-height:1.15;">{{ alt[1]|replace({"&#039;" : "'", "." : ""})|e }}</p>
         </div>
       </div>
     </div>
@@ -331,13 +333,13 @@
   <div class="uk-hidden@s uk-child-width-expand" uk-grid="uk-grid">
     <div class="uk-flex uk-flex-bottom uk-flex-center">
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
-        <div class="uk-card-media-top uk-padding-small">
+        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
 
-            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[0]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[0]|imageurl|e }}"></a>
+            <a href="{{ kohaurl[0]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[0]|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold">{{ alt[0]|replace({"&#039;" : "'", "." : ""})|e }}</p>
+          <p class="uk-text-large uk-text-bold" style="line-height:1.15;">{{ alt[0]|replace({"&#039;" : "'", "." : ""})|e }}</p>
         </div>
       </div>
     </div>
@@ -350,13 +352,13 @@
 
     <div class="uk-flex uk-flex-bottom uk-flex-center">
       <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
-        <div class="uk-card-media-top uk-padding-small">
+        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
 
-            <a href="https://catalog.{{ title|e }}/cgi-bin/koha/opac-search.pl?q={{ isbn[1]|e }}" target="_blank"><img class="uk-border-rounded" src="{{ isbn[1]|imageurl|e }}"></a>
+            <a href="{{ kohaurl[1]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[1]|e }}"></a>
 
         </div>
         <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold">{{ alt[1]|replace({"&#039;" : "'", "." : ""})|e }}</p>
+          <p class="uk-text-large uk-text-bold" style="line-height:1.15;">{{ alt[1]|replace({"&#039;" : "'", "." : ""})|e }}</p>
         </div>
       </div>
     </div>
@@ -367,6 +369,6 @@
 {% block javascript_footer %}
     <script src="{{ url('gantry-theme://uikit/js/particles.min.js') }}"></script>
     <script type="text/javascript">
-        particlesJS("g-feature", {"particles":{"number":{"value":150,"density":{"enable":true,"value_area":160}},"color":{"value":"#ffffff"},"shape":{"type":"circle","stroke":{"width":0}},"opacity":{"value":1,"random":true,"anim":{"enable":true,"speed":1,"opacity_min":0,"sync":false}},"size":{"value":3,"random":true,"anim":{"enable":false,"speed":4,"size_min":0.3,"sync":false}},"line_linked":{"enable":false},"move":{"enable":true,"speed":1,"direction":"none","random":true,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":600}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":false,"mode":"bubble"},"onclick":{"enable":false,"mode":"repulse"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":250,"size":0,"duration":2,"opacity":0,"speed":3},"repulse":{"distance":400,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});
+        particlesJS("g-books");
     </script>
 {% endblock %}

@@ -18,8 +18,6 @@
 {% set two = '"]' %}
 
 {% block particle %}
-
-  <div class="sp-programs-title">
-    <span class="sp-programs-title-icon" uk-icon="icon: more-vertical; ratio: 2"></span>Upcoming Programs</div>
+<div class="sp-programs-title uk-grid uk-child-width-1-2@m uk-margin-bottom"><div><span class="sp-programs-title-icon" uk-icon="icon: more-vertical; ratio: 2"></span>Upcoming Programs</div><div class="uk-text-muted uk-text-small uk-text-normal uk-visible@m" style="display:flex;justify-content:flex-end;align-items:center;"><a href="/calendar/" style="color:grey;">See All Programs</a></div></div>
   {{ gantry.platform.filter(one ~ id ~ two)|html|raw }}
 {% endblock %}

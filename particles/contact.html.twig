@@ -426,35 +426,35 @@
 
 {# Below Meduim #}
 <div class="uk-hidden@m uk-align-right@l uk-text-right " style="line-height:1.25;">
-    <ul class="uk-iconnav">
+    <ul class="uk-iconnav uk-flex-center">
       {% if facebook != '' %}
         <li>
-        <a href="https://www.facebook.com/{{ facebook|e }}" target="_blank"><button id="sp-fb" class="uk-button uk-button-link" type="button"><span uk-icon="icon: facebook; ratio: 1" style="height:20px;width:20px;display:flex;align-content:center;justify-content:center;align-items:center;"></span></button></a>
+        <a href="https://www.facebook.com/{{ facebook|e }}" target="_blank"><button id="sp-fb" class="uk-button uk-button-link" type="button"><span uk-icon="icon: facebook; ratio: 1" style="height:25px;width:25px;display:flex;align-content:center;justify-content:center;align-items:center;"></span></button></a>
         </li>
       {% endif %}
       {% if instagram != '' %}
         <li>
-        <a href="https://www.instagram.com/{{ instagram|e }}" target="_blank"><button id="sp-in" class="uk-button uk-button-link" type="button"><span uk-icon="icon: instagram; ratio: 1" style="height:20px;width:20px;display:flex;align-content:center;justify-content:center;align-items:center;"></span></button></a>
+        <a href="https://www.instagram.com/{{ instagram|e }}" target="_blank"><button id="sp-in" class="uk-button uk-button-link" type="button"><span uk-icon="icon: instagram; ratio: 1" style="height:25px;width:25px;display:flex;align-content:center;justify-content:center;align-items:center;"></span></button></a>
         </li>
       {% endif %}
       {% if twitter != '' %}
         <li>
-          <a href="https://www.twitter.com/{{ twitter|e }}" target="_blank"><button id="sp-tw" class="uk-button uk-button-link" type="button"><span uk-icon="icon: twitter; ratio: 1" style="height:20px;width:20px;display:flex;align-content:center;justify-content:center;align-items:center;"></span></button></a>
+          <a href="https://www.twitter.com/{{ twitter|e }}" target="_blank"><button id="sp-tw" class="uk-button uk-button-link" type="button"><span uk-icon="icon: twitter; ratio: 1" style="height:25px;width:25px;display:flex;align-content:center;justify-content:center;align-items:center;"></span></button></a>
         </li>
       {% endif %}
       {% if telephone != '' %}
       <li>
-        <a href="tel:{{ telephone|trim('-')|e }}" target="_blank"><button id="sp-gr" class="uk-button uk-button-link" type="button"><i class="fa fa-phone fa-lg" style="height:20px;width:20px;display:flex;align-content:center;justify-content:center;align-items:center;"></i></button></a>
+        <a href="tel:{{ telephone|trim('-')|e }}" target="_blank"><button id="sp-gr" class="uk-button uk-button-link" type="button"><i class="fa fa-phone fa-lg" style="height:25px;width:25px;display:flex;align-content:center;justify-content:center;align-items:center;"></i></button></a>
       </li>
       {% endif %}
       {% if email != '' %}
       <li>
-        <a href="mailto:{{ email|e }}" target="_blank"><button id="sp-gr" class="uk-button uk-button-link" type="button"><i class="fa fa-at fa-lg" style="height:20px;width:20px;display:flex;align-content:center;justify-content:center;align-items:center;"></i></button></a>
+        <a href="mailto:{{ email|e }}" target="_blank"><button id="sp-gr" class="uk-button uk-button-link" type="button"><i class="fa fa-at fa-lg" style="height:25px;width:25px;display:flex;align-content:center;justify-content:center;align-items:center;"></i></button></a>
       </li>
       {% endif %}
       {% if google != '' %}
       <li>
-        <a href="https://www.google.com/maps/place/{{ google|e }}" target="_blank"><button id="sp-gr" class="uk-button uk-button-link" type="button"><i class="fa fa-map fa-lg" style="height:20px;width:20px;display:flex;align-content:center;justify-content:center;align-items:center;"></i></button></a>
+        <a href="https://www.google.com/maps/place/{{ google|e }}" target="_blank"><button id="sp-gr" class="uk-button uk-button-link" type="button"><i class="fa fa-map fa-lg" style="height:25px;width:25px;display:flex;align-content:center;justify-content:center;align-items:center;"></i></button></a>
       </li>
       {% endif %}
     </ul>

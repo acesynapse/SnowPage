@@ -78,13 +78,6 @@ content:
     attributes:
       css:
         class: ''
-      items:
-        -
-          icon: heart
-          text: Donate
-          link: '#'
-          target: ''
-          name: Donate
     block:
       id: sp-icons
       variations: align-right

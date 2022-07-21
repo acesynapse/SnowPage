@@ -16,11 +16,8 @@
 {# Query Posts #}
 {% set query_parameters = {
   'post_type': 'databases',
-  'posts_per_page': limit.total | default('4'),
-  'offset': start,
-  'orderby': sort.orderby,
-  'order': sort.ordering,
-  'ignore_sticky_posts': sticky_posts
+  'posts_per_page': '12',
+  'orderby': 'rand'
 } %}
 
 {% if filter.posts %}
@@ -40,16 +37,18 @@
 {% block particle %}
 
 {# All Posts #}
-<div class="sp-databases-title"><span class="sp-databases-title-icon" uk-icon="icon: more-vertical; ratio: 2"></span>Digital Resources</div>
-  <div>
+<div class="sp-databases-title uk-grid uk-child-width-1-2@m uk-margin-bottom"><div><span class="sp-databases-title-icon" uk-icon="icon: more-vertical; ratio: 2"></span>Digital Resources</div><div class="uk-text-muted uk-text-small uk-text-normal uk-visible@m" style="display:flex;justify-content:flex-end;align-items:center;"><a href="#" style="color:grey;">See All Digital Resources</a></div></div>
+<div uk-slider="autoplay: true, autoplay-interval: 6000, pause-on-hover: true">
+  <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
+    <ul class="uk-slider-items uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-4@m">
 
     {% for column in posts | batch (limit.columns) %}
-      <div class="uk-child-width-1-4@l uk-child-width-1-2@s uk-child-width-1-1 uk-grid">
         {% for post in column %}
-          <div class="uk-light">
-            <div class="uk-inline-clip uk-transition-toggle">
+        <li class="uk-padding-small">
+          <div class="uk-light uk-border-rounded">
+            <div class="uk-inline-clip uk-transition-toggle uk-border-rounded">
               <a href="{{ post.link|raw }}">
-                <img class="uk-transition-scale-up uk-transition-opaque uk-border-rounded" src="{{ url(post.thumbnail.src) }}" alt="Beauty Image">
+                <img class="uk-transition-scale-up uk-transition-opaque uk-border-rounded" src="{{ url(post.thumbnail.src) }}" alt="{{ display.title.limit ? post.title|raw : post.title|raw }}">
                 <div class="uk-position-cover uk-overlay-default uk-transition-slide-left-medium"></div>
                 <div class="uk-position-center">
                   <div class="uk-overlay uk-transition-slide-left-medium uk-margin-remove-first-child">
@@ -60,9 +59,14 @@
               </a>
             </div>
           </div>
+        </li>
         {% endfor %}
-      </div>
     {% endfor %}
+  </ul>
+  <a class="uk-position-center-left uk-position-small uk-hidden-hover sp-selector-color" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+  <a class="uk-position-center-right uk-position-small uk-hidden-hover sp-selector-color" href="#" uk-slidenav-next uk-slider-item="next"></a>
   </div>
+  <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+</div>
 
 {% endblock %}

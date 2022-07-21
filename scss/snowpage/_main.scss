@@ -61,3 +61,15 @@
 .sp-news-title-icon {
 	color: $triadic-color-2 !important;
 }
+
+#offcanvas-nav-primary > div > div.ltr.left.a11y-toolbar-widget > ul {
+	color: black  !important;
+}
+
+.particles-js-canvas-el {
+	width: unset !important;
+    height: unset !important;
+    z-index: -1 !important;
+    position: absolute !important;
+    top: 0 !important;
+}

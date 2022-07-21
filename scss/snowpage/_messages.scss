@@ -1,5 +1,5 @@
 #g-messages {
-	background: $messages-background;
+	background: linear-gradient(10deg, $messages-background 0%, $messages-background-2 100%);
 	color: $messages-text-color;
 	position: relative;
 	z-index: 3;

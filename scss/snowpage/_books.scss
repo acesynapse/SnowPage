@@ -1,5 +1,5 @@
 #g-books {
-	background: $books-background;
+	background: linear-gradient(10deg, $books-background 0%, $books-background-2 100%);
 	color: $books-text-color;
 	position: relative;
 	z-index: 3;

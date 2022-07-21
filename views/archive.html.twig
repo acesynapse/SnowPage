@@ -14,7 +14,7 @@
                         {% if gantry.config.get('content.' ~ scope ~ '.heading.text') is not empty %}
                             {{ gantry.config.get('content.' ~ scope ~ '.heading.text') }}
                         {% else %}
-                            {{ title }}
+                            <div class="sp-news-title uk-grid uk-child-width-1-2@m uk-margin-bottom"><div><span class="sp-news-title-icon" uk-icon="icon: more-vertical; ratio: 2"></span>{{ title }}</div></div>
                         {% endif %}
                     </h1>
                 </header>
@@ -25,11 +25,28 @@
 
                 {# Begin Post Entries #}
                 <section class="entries">
-                    <div class="g-grid">
+                    <div class="uk-grid">
                         {% for post in posts %}
-                            <div class="g-block {% if pagination.current == 1 and 'sticky' in post.class %}size-100{% else %}{{ gantry.config.get('content.' ~ scope ~ '.content.columns')|default('size-100') }}{% endif %}">
-                                {% include ['partials/content-' ~ scope ~ '.html.twig', (post.format) ? 'partials/content-' ~ post.format ~ '.html.twig' : '', 'partials/content.html.twig'] %}
+                        <div class="uk-width-1-1 uk-width-1-4@l uk-width-1-2@m uk-active">
+                          <a class="uk-card uk-card-default uk-card-small uk-card-body uk-margin-remove-first-child uk-card-hover uk-transition-toggle uk-link-toggle uk-display-block" href="{{ post.link|raw }}" target="_self">
+                            <div class="uk-inline-clip uk-border-rounded">
+                              <img class="uk-transition-scale-up uk-transition-opaque uk-border-rounded" src="{{ url(post.thumbnail.src) }}" alt="{{ display.title.limit ? post.title|raw : post.title|raw }}" style="aspect-ratio: 3 / 2">
                             </div>
+                            <h3 class="uk-margin-remove-bottom uk-margin-top uk-h3 uk-text-bold">
+                              {{ display.title.limit ? post.title|raw : post.title|raw }}
+                            </h3>
+                            <p class="uk-margin-top uk-margin-remove-bottom uk-article-meta">
+                              Published on {{ post.post_date|date(display.date.format) }}.
+                            </p>
+                            {% set post_text = post.post_excerpt != '' ? post.post_excerpt : post.content %}
+                            <div class="uk-panel uk-margin-top uk-visible@m">
+                              {{ post_text|truncate_text(160)|raw }}
+                            </div>
+                            <div class="uk-margin-top">
+                              <div class="uk-button uk-button-default uk-width-1-1">Read More</div>
+                            </div>
+                          </a>
+                        </div>
                         {% endfor %}
                     </div>
                 </section>

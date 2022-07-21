@@ -5,7 +5,7 @@
   <div>
     <div class="uk-inline">
       <img src="{{ url(particle.image) }}" width="2000" height="400" alt="" style="min-height:250px;">
-      <div class="uk-overlay uk-overlay-default uk-position-center-left uk-box-shadow-small uk-width-2-3">
+      <div class="uk-overlay uk-overlay-default uk-position-center-left uk-box-shadow-small uk-width-2-3 uk-border-rounded">
         <div class="uk-child-width-expand@m uk-grid-large uk-grid-match" uk-grid>
           <div>
             <div>
@@ -14,7 +14,7 @@
             </div>
           </div>
           <div class="uk-position-bottom-right uk-width-auto">
-            <a href="{{ particle.buttonlink|e }}"><button class="uk-button uk-button-primary sp-button-hero">{{ particle.buttontext|e }}<span class="uk-position-center-right" uk-icon="arrow-right"></span></button></a>
+            <a href="{{ particle.buttonlink|e }}"><button class="uk-button uk-button-primary sp-button-hero uk-border-rounded">{{ particle.buttontext|e }}<span class="uk-position-center-right" uk-icon="arrow-right"></span></button></a>
           </div>
         </div>
       </div>

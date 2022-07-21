@@ -11,6 +11,7 @@ $header-link-hover: $monochromatic-color-1;
 
 // Messages
 $messages-background: $monochromatic-color-1;
+$messages-background-2: ryb-adjust-hue($monochromatic-color-1, 10);
 $messages-text-color: wcag-color($monochromatic-color-1, 7);
 
 // Breadcrumbs
@@ -37,6 +38,7 @@ $news-button-hover: $triadic-color-3;
 
 // Books
 $books-background: $complementary-color-2;
+$books-background-2: ryb-adjust-hue($complementary-color-2, 10);
 $books-text-color: wcag-color($complementary-color-2, 7);
 $books-text-color-hover: $greyscale-5;
 
@@ -55,10 +57,10 @@ $subscribe-text-color:	$greyscale-5;
 // Resources
 $resources-background:	$white;
 $resources-text-color:	$greyscale-5;
-$resources-link-color: wcag-color($complementary-color-1, 7);
-$resources-link-hover: wcag-color($complementary-color-2, 7);
-$resources-button: $complementary-color-1;
-$resources-button-hover: $complementary-color-2;
+$resources-link-color: wcag-color($tetradic-color-3, 7);
+$resources-link-hover: wcag-color($tetradic-color-4, 7);
+$resources-button: $tetradic-color-3;
+$resources-button-hover: $tetradic-color-4;
 
 // Main
 $main-background:	$white;
