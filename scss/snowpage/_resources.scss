@@ -1,5 +1,5 @@
 #g-resources {
-	background: $resources-background;
+	background: linear-gradient(10deg, $resources-background 0%, $resources-background-2 100%);
 	color: $resources-text-color;
 	position: relative;
 	z-index: 3;
@@ -32,7 +32,7 @@
 }
 
 .sp-databases-title-icon {
-	color: $tetradic-color-3 !important;
+	color: $greyscale-5 !important;
 }
 
 .sp-selector-color {

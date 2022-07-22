@@ -7,3 +7,20 @@ atoms:
     attributes:
       enabled: true
     id: uikit
+  -
+    id: cookie-consent
+    type: cookie-consent
+    title: 'Cookie Consent'
+    attributes:
+      enabled: '1'
+      cookie_consent: '1'
+      cookie_consent_position: bottom
+      cookie_consent_layout: edgeless
+      cookie_consent_cbgColor: '#2787c9'
+      cookie_consent_ctextColor: '#ffffff'
+      cookie_consent_cbuttonBg: '#985e00'
+      cookie_consent_cbuttonColor: '#ffffff'
+      cookie_consent_displayText: 'We use cookies to ensure you get the best experience on our website.'
+      cookie_consent_policyText: 'Learn more'
+      cookie_consent_policyURL: ''
+      cookie_consent_dismissText: 'Got It!'

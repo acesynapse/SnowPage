@@ -55,8 +55,10 @@ $subscribe-background:	$greyscale-2;
 $subscribe-text-color:	$greyscale-5;
 
 // Resources
-$resources-background:	$white;
-$resources-text-color:	$greyscale-5;
+$resources-background: $tetradic-color-3;
+$resources-background-2: ryb-adjust-hue($tetradic-color-3, 10);
+$resources-button: $tetradic-color-3;
+$resources-text-color:	$greyscale-1;
 $resources-link-color: wcag-color($tetradic-color-3, 7);
 $resources-link-hover: wcag-color($tetradic-color-4, 7);
 $resources-button: $tetradic-color-3;
@@ -65,10 +67,6 @@ $resources-button-hover: $tetradic-color-4;
 // Main
 $main-background:	$white;
 $main-text-color:	$off-black;
-
-// Databases
-$databases-background: $square-color-4;
-$databases-text-color:	wcag-color($square-color-2, 7);
 
 // Footer
 $footer-background: $greyscale-4;

@@ -23,13 +23,13 @@ layout:
     -
       - programs
 
-  /subscribe/:
-    -
-      - subscribe
-
   /resources/:
     -
       - databases
+
+  /subscribe/:
+    -
+      - subscribe
 
   footer: {  }
   copyright: {  }

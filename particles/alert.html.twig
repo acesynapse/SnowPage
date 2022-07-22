@@ -35,7 +35,7 @@ text-align: {{ particle.align|raw }};
 padding:{{ particle.content_padding|raw }}rem 0;
 {% endif %}">
 
-{{ particle.closebutton ? '<a class="alert-close" close></a>' : '' }}
+{{ particle.closebutton ? '<a class="alert-close" close><span uk-icon="icon: close"></span></a>' : '' }}
 {{ particle.alertcontent|striptags }}
 </div>
 {% endif %}

@@ -67,7 +67,7 @@
 }
 
 .sp-button-databases {
-	background-color: $databases-background !important;
+	background-color: $resources-background !important;
 	letter-spacing: 0.05rem !important;
 	border-radius: 0.5rem !important;
 	&:hover {
@@ -76,5 +76,5 @@
 }
 
 .sp-databases-text {
-	color: $databases-text-color !important;
+	color: $resources-text-color !important;
 }

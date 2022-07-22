@@ -31,13 +31,13 @@
 	height: 0;
 }
 
-#sp-fb, #sp-in, #sp-tw, #sp-yt, #sp-pi, #sp-sn, #sp-gr, #sp-fb:hover, #sp-in:hover, #sp-tw:hover, #sp-yt:hover, #sp-pi:hover, #sp-sn:hover, #sp-gr:hover {
+#sp-fb, #sp-in, #sp-tw, #sp-yt, #sp-pi, #sp-sn, #sp-fl, #sp-gr, #sp-fb:hover, #sp-in:hover, #sp-tw:hover, #sp-yt:hover, #sp-pi:hover, #sp-sn:hover, #sp-fl:hover, #sp-gr:hover {
 	transition: .25s ease-in-out;
 	-moz-transition: .25s ease-in-out;
 	-webkit-transition: .25s ease-in-out;
 }
 
-#sp-fb, #sp-in, #sp-tw, #sp-yt, #sp-pi, #sp-sn, #sp-gr {
+#sp-fb, #sp-in, #sp-tw, #sp-yt, #sp-pi, #sp-sn, #sp-fl, #sp-gr {
 	padding: 5px;
 	color: #a0a0a0;
 	position: relative;
@@ -74,6 +74,11 @@
 #sp-sn:hover {
 	color: black;
 	background: #fcfd00;
+}
+
+#sp-fl:hover {
+	color: white;
+	background: linear-gradient(90deg, rgba(13,97,204,1) 0%, rgba(13,97,204,1) 50%, rgba(247,0,124,1) 50%, rgba(247,0,124,1) 100%);
 }
 
 #sp-gr:hover {

@@ -153,10 +153,10 @@
 }
 
 .sp-nav {
-  color: $primary-color-fixed;
-  padding: 0 0.5rem;
+  color: $primary-color-fixed !important;
+  padding: 0 0.5rem !important;
   &:hover {
-    color: $complementary-color-2;
+    color: $complementary-color-2 !important;
   }
 }
 
