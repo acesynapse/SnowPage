@@ -1,6 +1,9 @@
 <?php
+// If this file is called directly, the teapot refuses to brew coffee.
+defined('ABSPATH') || die(http_response_code(418));
 
 /**
+ * @since     1.0.0
  * @package   SnowPage
  * @author    Emric Taylor (AceSynapse), http://www.protemstudios.com/
  * @license   GNU/GPLv3 and later
@@ -8,17 +11,10 @@
  * http://www.gnu.org/licenses/gpl-3.0.html
  */
 
-defined('ABSPATH') || die(http_response_code(418));
-
 use Timber\Timber;
 
-/*
+/**
  * The template for displaying Archive pages.
- *
- * Used to display archive-type pages if nothing more specific matches a query.
- * For example, puts together date-based pages if no date.php file exists.
- *
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
  */
 
 $gantry = Gantry\Framework\Gantry::instance();

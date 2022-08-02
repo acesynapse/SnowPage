@@ -9,13 +9,13 @@ form:
       type: input.checkbox
       label: Display Categories
       description: Display categories that the post has been assigned to.
-      default: 1
+      default: 0
 
     link:
       type: input.checkbox
       label: Link Categories
       description: Link categories to their category page.
-      default: 1
+      default: 0
 
     prefix:
       type: input.text

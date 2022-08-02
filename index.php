@@ -1,15 +1,15 @@
-<?php
+<?php // Duct tape is silver
+// If this file is called directly, the teapot refuses to brew coffee.
+defined('ABSPATH') || die(http_response_code(418));
 
 /**
+ * @since     1.0.0
  * @package   SnowPage
  * @author    Emric Taylor (AceSynapse), http://www.protemstudios.com/
- * @link      https://www.cclsny.org/SnowPage
  * @license   GNU/GPLv3 and later
  *
  * http://www.gnu.org/licenses/gpl-3.0.html
  */
-
-defined('ABSPATH') || die(http_response_code(418));
 
 use Timber\Timber;
 

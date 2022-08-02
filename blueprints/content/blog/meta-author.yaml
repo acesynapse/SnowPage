@@ -9,13 +9,13 @@ form:
       type: input.checkbox
       label: Display Author
       description: Display author.
-      default: 1
+      default: 0
 
     link:
       type: input.checkbox
       label: Link Author
       description: Link author to his archives.
-      default: 1
+      default: 0
 
     prefix:
       type: input.text

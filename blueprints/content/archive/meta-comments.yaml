@@ -9,7 +9,7 @@ form:
       type: input.checkbox
       label: Display Comments
       description: Display number of comments.
-      default: 1
+      default: 0
 
     link:
       type: input.checkbox

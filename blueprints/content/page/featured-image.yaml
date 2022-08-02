@@ -21,7 +21,7 @@ form:
       type: input.text
       label: Image Height
       description: Image height in pixels.
-      default: 600
+      default: 900
 
     position:
       type: select.select
