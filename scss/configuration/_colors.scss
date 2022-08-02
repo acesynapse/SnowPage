@@ -5,18 +5,18 @@ $base-border-color: $grey;
 
 // Header
 $header-background: #f7f7f7;
-$header-text-color: wcag-color($monochromatic-color-2, 7);
+$header-text-color: text-color-compare($monochromatic-color-2);
 $header-link-color: $monochromatic-color-2;
 $header-link-hover: $monochromatic-color-1;
 
 // Messages
 $messages-background: $monochromatic-color-1;
 $messages-background-2: ryb-adjust-hue($monochromatic-color-1, 10);
-$messages-text-color: wcag-color($monochromatic-color-1, 7);
+$messages-text-color: text-color-compare($monochromatic-color-1);
 
 // Breadcrumbs
 $breadcrumbs-background: $greyscale-4;
-$breadcrumbs-text-color: wcag-color($greyscale-4, 7);
+$breadcrumbs-text-color: text-color-compare($greyscale-4);
 $breadcrumbs-link-color: $greyscale-4;
 $breadcrumbs-link-hover: $greyscale-3;
 
@@ -30,16 +30,16 @@ $hero-button-hover: $square-color-1;
 
 // News
 $news-background:	$white;
-$news-text-color:	wcag-color($square-color-2, 7);
-$news-link-color: wcag-color($square-color-2, 7);
-$news-link-hover: wcag-color($triadic-color-3, 7);
+$news-text-color:	text-color-compare($square-color-2);
+$news-link-color: text-color-compare($square-color-2);
+$news-link-hover: text-color-compare($triadic-color-3);
 $news-button: $square-color-2;
 $news-button-hover: $triadic-color-3;
 
 // Books
 $books-background: $complementary-color-2;
 $books-background-2: ryb-adjust-hue($complementary-color-2, 10);
-$books-text-color: wcag-color($complementary-color-2, 7);
+$books-text-color: text-color-compare($complementary-color-2);
 $books-text-color-hover: $greyscale-5;
 
 // Programs
@@ -55,12 +55,12 @@ $subscribe-background:	$greyscale-2;
 $subscribe-text-color:	$greyscale-5;
 
 // Resources
-$resources-background: $tetradic-color-3;
-$resources-background-2: ryb-adjust-hue($tetradic-color-3, 10);
+$resources-background: $square-color-4;
+$resources-background-2: ryb-adjust-hue($square-color-4, 10);
 $resources-button: $tetradic-color-3;
 $resources-text-color:	$greyscale-1;
-$resources-link-color: wcag-color($tetradic-color-3, 7);
-$resources-link-hover: wcag-color($tetradic-color-4, 7);
+$resources-link-color: text-color-compare($tetradic-color-3);
+$resources-link-hover: text-color-compare($tetradic-color-4);
 $resources-button: $tetradic-color-3;
 $resources-button-hover: $tetradic-color-4;
 

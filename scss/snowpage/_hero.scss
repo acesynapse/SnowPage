@@ -45,7 +45,7 @@
 	  left: 0;
 	  direction: rtl;
 	  z-index: -1;
-	  background: $primary_color !important;
+	  background: $primary_color-fixed !important;
 	  transition: all 0.3s ease;
 	}
 	&:hover {
