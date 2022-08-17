@@ -1,20 +1,13 @@
 #g-header {
-	background: $header-background;
-	color: $header-text-color;
-	position: relative;
-	z-index: 980;
-	border-bottom: 4px solid $messages-background;
+	background: $off-white;
+	color: $penta-0;
+	border-bottom: 3px solid $penta-0;
 
 	a {
-		color: $primary-color-fixed;
+		color: $penta-0;
 		&:hover {
-			color: $complementary-color-2;
-		}
-	}
-
-	.search {
-		input {
-			color: $main-text-color;
+			color: $penta-0-35;
+			text-shadow: 0px 0px 1px $greyscale-2;
 		}
 	}
 }

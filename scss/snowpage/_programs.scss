@@ -1,20 +1,11 @@
 #g-programs {
-	background: $programs-background;
-	color: $programs-text-color;
-	position: relative;
-	z-index: 3;
-
+	background: $off-white;
+	color: $off-black;
 	a {
-		color: $programs-link-color;
+		color: $off-black;
 		&:hover {
-			color: $programs-link-hover;
-		}
-	}
-
-
-	.search {
-		input {
-			color: $main-text-color;
+			color: $off-black;
+			text-decoration: underline;
 		}
 	}
 }
@@ -24,25 +15,4 @@
 		background: #fff !important;
 		color: #000 !important;
 	}
-}
-
-.sp-programs-title {
-	font-weight: 700;
-	font-size: 1.5rem;
-	margin-bottom: 1rem;
-}
-
-.sp-programs-title-icon {
-	color: $square-color-4 !important;
-}
-
-.sp-programs-color {
-	color: $square-color-4 !important;
-}
-
-.sp-programs-excerpt {
-	border-bottom-style: solid;
-	border-bottom-width: 2px;
-	padding-bottom: 10px;
-	border-bottom-color: $square-color-4 !important;
 }

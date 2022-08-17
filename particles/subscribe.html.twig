@@ -1,9 +1,8 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
 {% block particle %}
-<div class="sp_subscribe_block">
-  <div><bold>Subscribe to our newsletter</bold><br>Sign up for library updates, information on upcoming events and more.</div>
-  <div class="uk-margin-left"><a href="{{ particle.mailchimp.url|e }}" class="sp_subscribe_button">Subscribe <span uk-icon="icon: chevron-right; ratio: 1.5"></span></a></div>
-  <div></div>
+<div class="uk-grid">
+  <div class="uk-width-1-2@m uk-width-1-1"><div class="uk-text-lead">{{ particle.title|e }}</div>{{ particle.description|e }}</div>
+  <div class="uk-width-1-2@m uk-width-1-1"><div class="uk-flex uk-flex-right uk-flex-left@m uk-padding-small"><a class="uk-button uk-button-default" href="{{ particle.mailchimp.url|e }}">Subscribe <span uk-icon="icon: chevron-right; ratio: 1.5"></span></a></div></div>
 </div>
 {% endblock %}

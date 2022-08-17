@@ -8,7 +8,7 @@ configuration:
     type: config_matches
     values:
       twig: '0'
-      filter: '1'
+      filter: '0'
 
 form:
   fields:
@@ -17,6 +17,20 @@ form:
       label: Enabled
       description: Globally enable the particle.
       default: true
+
+    title:
+      type: input.text
+      label: Title
+      description: Place your subscription title here.
+      overridable: false
+      default: "Subscribe to our newsletter"
+
+    description:
+      type: input.text
+      label: Description
+      description: Place your description here.
+      overridable: false
+      default: "Sign up for library updates, information on upcoming events and more."
 
     mailchimp.url:
       type: input.text
@@ -34,4 +48,4 @@ form:
       type: input.checkbox
       label: Process shortcodes
       description: Enable shortcode processing / filtering in the content.
-      default: '1'
+      default: '0'

@@ -82,7 +82,7 @@
 {% endswitch %}
 
 {% block particle %}
-<div class="g-copyright {{ particle.css.class }}">
+<div class="uk-text-center">
     {% if particle.additional.textone is not empty %}{% if particle.linkone is not empty %}<a target="{{ particle.targetone|default('_blank')|e }}" href="{{ particle.linkone|e }}">{% endif %}{{ particle.additional.textone|e }}{% if particle.linkone is not empty %}</a>{% endif %} | {% endif %}
     {% if particle.additional.texttwo is not empty %}{% if particle.linktwo is not empty %}<a target="{{ particle.targettwo|default('_blank')|e }}" href="{{ particle.linktwo|e }}">{% endif %}{{ particle.additional.texttwo|e }}{% if particle.linktwo is not empty %}</a>{% endif %} | {% endif %}
     Copyright &copy;

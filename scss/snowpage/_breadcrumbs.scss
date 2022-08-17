@@ -1,19 +1,11 @@
 #g-breadcrumbs {
-	background: $breadcrumbs-background;
-	color: $breadcrumbs-text-color;
-	position: relative;
-	z-index: 3;
-
+	background: $greyscale-1;
+	color: $off-white;
 	a {
-		color: lighten($breadcrumbs-background, 40%);
+		color: $off-white;
 		&:hover {
-			color: $breadcrumbs-text-color;
-		}
-	}
-
-	.search {
-		input {
-			color: $main-text-color;
+			color: $off-white;
+			text-decoration: underline !important;
 		}
 	}
 }

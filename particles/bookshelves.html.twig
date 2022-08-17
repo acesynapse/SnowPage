@@ -101,9 +101,9 @@
 {% endfor %}
 
 {% block particle %}
-  <div class="uk-visible@xl uk-child-width-expand" uk-grid="uk-grid">
-    <div class="uk-flex uk-flex-bottom uk-flex-center">
-      <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
+  <div class="uk-child-width-expand" uk-grid="uk-grid">
+    <div class="uk-visible@xl uk-flex uk-flex-bottom uk-flex-center">
+      <div class="uk-card uk-card-hover uk-border-rounded sp-book-title">
         <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
 
             <a href="{{ kohaurl[0]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[0]|e }}"></a>
@@ -115,8 +115,8 @@
       </div>
     </div>
 
-    <div class="uk-flex uk-flex-bottom uk-flex-center">
-      <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
+    <div class="uk-visible@l uk-flex uk-flex-bottom uk-flex-center">
+      <div class="uk-card uk-card-hover uk-border-rounded sp-book-title">
         <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
 
             <a href="{{ kohaurl[1]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[1]|e }}"></a>
@@ -129,7 +129,7 @@
     </div>
 
     <div class="uk-flex uk-flex-bottom uk-flex-center">
-      <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
+      <div class="uk-card uk-card-hover uk-border-rounded sp-book-title">
         <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
 
             <a href="{{ kohaurl[2]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[2]|e }}"></a>
@@ -142,13 +142,15 @@
     </div>
 
     <div class="uk-flex uk-flex-middle uk-flex-center">
-      <div class="uk-card uk-text-center">
-        <span class="sp-books-text">{{ particle.message.text|e }}</span>
+      <div class="uk-card uk-text-center uk-text-middle uk-heading-small sp-bookshelves-text">
+        <div class="uk-container uk-container-expand">
+          <span class="">{{ particle.message.text|e }}</span>
+        </div>
       </div>
     </div>
 
     <div class="uk-flex uk-flex-bottom uk-flex-center">
-      <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
+      <div class="uk-card uk-card-hover uk-border-rounded sp-book-title">
         <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
 
             <a href="{{ kohaurl[3]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[3]|e }}"></a>
@@ -160,8 +162,8 @@
       </div>
     </div>
 
-    <div class="uk-flex uk-flex-bottom uk-flex-center">
-      <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
+    <div class="uk-visible@l uk-flex uk-flex-bottom uk-flex-center">
+      <div class="uk-card uk-card-hover uk-border-rounded sp-book-title">
         <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
 
             <a href="{{ kohaurl[4]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[4]|e }}"></a>
@@ -173,8 +175,8 @@
       </div>
     </div>
 
-    <div class="uk-flex uk-flex-bottom uk-flex-center">
-      <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
+    <div class="uk-visible@xl uk-flex uk-flex-bottom uk-flex-center">
+      <div class="uk-card uk-card-hover uk-border-rounded sp-book-title">
         <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
 
             <a href="{{ kohaurl[5]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[5]|e }}"></a>
@@ -187,188 +189,14 @@
     </div>
   </div>
 
-  <div class="uk-visible@l uk-hidden@xl uk-child-width-expand" uk-grid="uk-grid">
-    <div class="uk-flex uk-flex-bottom uk-flex-center">
-      <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
-        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
-
-            <a href="{{ kohaurl[0]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[0]|e }}"></a>
-
-        </div>
-        <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold" style="line-height:1.15;">{{ alt[0]|replace({"&#039;" : "'", "." : ""})|e }}</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="uk-flex uk-flex-bottom uk-flex-center">
-      <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
-        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
-
-            <a href="{{ kohaurl[1]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[1]|e }}"></a>
-
-        </div>
-        <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold" style="line-height:1.15;">{{ alt[1]|replace({"&#039;" : "'", "." : ""})|e }}</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="uk-flex uk-flex-middle uk-flex-center">
-      <div class="uk-card uk-text-center">
-        <span class="sp-books-text">{{ particle.message.text|e }}</span>
-      </div>
-    </div>
-
-    <div class="uk-flex uk-flex-bottom uk-flex-center">
-      <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
-        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
-
-            <a href="{{ kohaurl[2]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[2]|e }}"></a>
-
-        </div>
-        <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold uk-flex-middle" style="line-height:1.15;">{{ alt[2]|replace({"&#039;" : "'", "." : ""})|e }}</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="uk-flex uk-flex-bottom uk-flex-center">
-      <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
-        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
-
-            <a href="{{ kohaurl[3]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[3]|e }}"></a>
-
-        </div>
-        <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold" style="line-height:1.15;">{{ alt[3]|replace({"&#039;" : "'", "." : ""})|e }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="uk-visible@m uk-hidden@l uk-child-width-expand" uk-grid="uk-grid">
-
-    <div class="uk-flex uk-flex-middle uk-flex-center">
-      <div class="uk-card uk-text-center">
-        <span class="sp-books-text">{{ particle.message.text|e }}</span>
-      </div>
-    </div>
-
-    <div class="uk-flex uk-flex-bottom uk-flex-center">
-      <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
-        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
-
-            <a href="{{ kohaurl[0]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[0]|e }}"></a>
-
-        </div>
-        <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold" style="line-height:1.15;">{{ alt[0]|replace({"&#039;" : "'", "." : ""})|e }}</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="uk-flex uk-flex-bottom uk-flex-center">
-      <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
-        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
-
-            <a href="{{ kohaurl[1]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[1]|e }}"></a>
-
-        </div>
-        <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold" style="line-height:1.15;">{{ alt[1]|replace({"&#039;" : "'", "." : ""})|e }}</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="uk-flex uk-flex-bottom uk-flex-center">
-      <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
-        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
-
-            <a href="{{ kohaurl[2]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[2]|e }}"></a>
-
-        </div>
-        <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold uk-flex-middle" style="line-height:1.15;">{{ alt[2]|replace({"&#039;" : "'", "." : ""})|e }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="uk-visible@s uk-hidden@m uk-child-width-expand" uk-grid="uk-grid">
-    <div class="uk-flex uk-flex-bottom uk-flex-center">
-      <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
-        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
-
-            <a href="{{ kohaurl[0]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[0]|e }}"></a>
-
-        </div>
-        <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold" style="line-height:1.15;">{{ alt[0]|replace({"&#039;" : "'", "." : ""})|e }}</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="uk-flex uk-flex-middle uk-flex-center">
-      <div class="uk-card uk-text-center">
-        <span class="sp-books-text">{{ particle.message.text|e }}</span>
-      </div>
-    </div>
-
-    <div class="uk-flex uk-flex-bottom uk-flex-center">
-      <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
-        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
-
-            <a href="{{ kohaurl[1]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[1]|e }}"></a>
-
-        </div>
-        <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold" style="line-height:1.15;">{{ alt[1]|replace({"&#039;" : "'", "." : ""})|e }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="uk-hidden@s uk-child-width-expand" uk-grid="uk-grid">
-    <div class="uk-flex uk-flex-bottom uk-flex-center">
-      <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
-        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
-
-            <a href="{{ kohaurl[0]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[0]|e }}"></a>
-
-        </div>
-        <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold" style="line-height:1.15;">{{ alt[0]|replace({"&#039;" : "'", "." : ""})|e }}</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="uk-flex uk-flex-middle uk-flex-center">
-      <div class="uk-card uk-text-center">
-        <span class="sp-books-text">{{ particle.message.text|e }}</span>
-      </div>
-    </div>
-
-    <div class="uk-flex uk-flex-bottom uk-flex-center">
-      <div class="uk-card uk-card-hover uk-border-rounded sp-bookshelves-hover">
-        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
-
-            <a href="{{ kohaurl[1]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[1]|e }}"></a>
-
-        </div>
-        <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold" style="line-height:1.15;">{{ alt[1]|replace({"&#039;" : "'", "." : ""})|e }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
 {% endblock %}
 
+
+{#
 {% block javascript_footer %}
     <script src="{{ url('gantry-theme://uikit/js/particles.min.js') }}"></script>
     <script type="text/javascript">
         particlesJS("g-books");
     </script>
 {% endblock %}
+#}

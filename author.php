@@ -11,29 +11,32 @@ defined('ABSPATH') || die(http_response_code(418));
  * http://www.gnu.org/licenses/gpl-3.0.html
  */
 
-use Timber\Timber;
+ use Gantry\Framework\Gantry;
+ use Gantry\Framework\Theme;
+ use Timber\Timber;
+ use Timber\User;
 
-/*
- * The template for displaying Author Archive pages
- */
+ /*
+  * The template for displaying Author Archive pages
+  */
 
-global $wp_query;
+ global $wp_query;
 
-$gantry = Gantry\Framework\Gantry::instance();
+ $gantry = Gantry::instance();
 
-/** @var \Gantry\Framework\Theme $theme */
-$theme  = $gantry['theme'];
+ /** @var Theme $theme */
+ $theme  = $gantry['theme'];
 
-// We need to render contents of <head> before plugin content gets added.
-$context              = Timber::get_context();
-$context['page_head'] = $theme->render('partials/page_head.html.twig', $context);
+ // We need to render contents of <head> before plugin content gets added.
+ $context              = Timber::get_context();
+ $context['page_head'] = $theme->render('partials/page_head.html.twig', $context);
 
-$context['posts'] = Timber::get_posts();
+ $context['posts'] = Timber::get_posts();
 
-if (isset($authordata)) {
-    $author            = new \Timber\User($authordata->ID);
-    $context['author'] = $author;
-    $context['title']  = \__('Author:', 'snowpage') . ' ' . $author->name();
-}
+ if (isset($authordata)) {
+     $author            = new User($authordata->ID);
+     $context['author'] = $author;
+     $context['title']  = __('Author:', 'snowpage') . ' ' . $author->name();
+ }
 
-Timber::render(['author.html.twig', 'archive.html.twig', 'index.html.twig'], $context);
+ Timber::render(['author.html.twig', 'archive.html.twig', 'index.html.twig'], $context);

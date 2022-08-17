@@ -1,106 +1,117 @@
-// Base
-$base-background: $white;
-$base-text-color: $black;
-$base-border-color: $grey;
+.sp-color-1-5 {
+	color: $penta-0 !important;
+	&:hover {
+		color: $penta-0-35 !important;
+		text-shadow: 0px 0px 1px $greyscale-2;
+	}
+}
 
-// Header
-$header-background: #f7f7f7;
-$header-text-color: text-color-compare($monochromatic-color-2);
-$header-link-color: $monochromatic-color-2;
-$header-link-hover: $monochromatic-color-1;
+.sp-color-2-5 {
+	color: $penta-72 !important;
+	&:hover {
+		color: $penta-72-35 !important;
+		text-shadow: 0px 0px 1px $greyscale-2;
+	}
+}
 
-// Messages
-$messages-background: $monochromatic-color-1;
-$messages-background-2: ryb-adjust-hue($monochromatic-color-1, 10);
-$messages-text-color: text-color-compare($monochromatic-color-1);
+.sp-color-3-5 {
+	color: $penta-144 !important;
+	&:hover {
+		color: $penta-144-35 !important;
+		text-shadow: 0px 0px 1px $greyscale-2;
+	}
+}
 
-// Breadcrumbs
-$breadcrumbs-background: $greyscale-4;
-$breadcrumbs-text-color: text-color-compare($greyscale-4);
-$breadcrumbs-link-color: $greyscale-4;
-$breadcrumbs-link-hover: $greyscale-3;
+.sp-color-4-5 {
+	color: $penta-216 !important;
+	a{
+		&:hover {
+			color: $penta-216-35 !important;
+			text-shadow: 0px 0px 1px $greyscale-2;
+		}
+	}
+}
 
-// Hero
-$hero-background: $triadic-color-3;
-$hero-text-color: #3a3a3a;
-$hero-link-color: #3a3a3a;
-$hero-link-hover: #3a3a3a;
-$hero-button: $triadic-color-3;
-$hero-button-hover: $square-color-1;
+.sp-color-5-5 {
+	color: $penta-288 !important;
+	&:hover {
+		color: $penta-288-35 !important;
+		text-shadow: 0px 0px 1px $greyscale-2;
+	}
+}
 
-// News
-$news-background:	$white;
-$news-text-color:	text-color-compare($square-color-2);
-$news-link-color: text-color-compare($square-color-2);
-$news-link-hover: text-color-compare($triadic-color-3);
-$news-button: $square-color-2;
-$news-button-hover: $triadic-color-3;
+.sp-grey-1-5 {
+	color: $greyscale-1 !important;
+}
 
-// Books
-$books-background: $complementary-color-2;
-$books-background-2: ryb-adjust-hue($complementary-color-2, 10);
-$books-text-color: text-color-compare($complementary-color-2);
-$books-text-color-hover: $greyscale-5;
+.sp-grey-2-5 {
+	color: $greyscale-2 !important;
+}
 
-// Programs
-$programs-background: $white;
-$programs-text-color:	$off-black;
-$programs-link-color: $off-black;
-$programs-link-hover: $off-black;
-$programs-button: $square-color-1;
-$programs-button-hover: $square-color-2;
+.sp-grey-3-5 {
+	color: $greyscale-3 !important;
+	a {
+		color: $greyscale-3 !important;
+	}
+}
 
-// Subscribe
-$subscribe-background:	$greyscale-2;
-$subscribe-text-color:	$greyscale-5;
+.sp-grey-4-5 {
+	color: $greyscale-4 !important;
+}
 
-// Resources
-$resources-background: $square-color-4;
-$resources-background-2: ryb-adjust-hue($square-color-4, 10);
-$resources-button: $tetradic-color-3;
-$resources-text-color:	$greyscale-1;
-$resources-link-color: text-color-compare($tetradic-color-3);
-$resources-link-hover: text-color-compare($tetradic-color-4);
-$resources-button: $tetradic-color-3;
-$resources-button-hover: $tetradic-color-4;
+.sp-grey-5-5 {
+	color: $greyscale-5 !important;
+}
 
-// Main
-$main-background:	$white;
-$main-text-color:	$off-black;
 
-// Footer
-$footer-background: $greyscale-4;
-$footer-text-color: $off-white;
+.sp-background-1-5 {
+	background: $penta-0 !important;
+}
 
-// Copyright
-$copyright-background: $greyscale-5;
-$copyright-text-color: $greyscale-4;
+.sp-background-2-5 {
+	background: $penta-72 !important;
+}
 
-// Off Canvas
-$offcanvas-background: $greyscale-4;
-$offcanvas-text-color: $off-white;
-$offcanvas-toggle-color: $off-white;
+.sp-background-3-5 {
+	background: $penta-144 !important;
+}
 
-// Block Variations
-$box1-background: $white;
-$box2-background: $greyscale-1;
+.sp-background-4-5 {
+	background: $penta-216 !important;
+}
 
-// System Messsages and Alerts
-$success-color: #4b873e;
-$warning-color:	adjust-hue($success-color, 290);
-$error-color:	adjust-hue($success-color, 250);
-$info-color: adjust-hue($success-color, 90);
+.sp-background-5-5 {
+	background: $penta-288 !important;
+}
 
-// Typography
-$rule-color: #F0F2F4;
-$code-text: #c7254e;
-$code-bg: #f9f2f4;
-$pre-text: #237794;
-$pre-bg: #f6f6f6;
 
-// Borders
-$border-color-hover: darken($base-border-color, 10%);
-$border-color-focus: $complementary-color-2;
+.sp-background-g1-5 {
+	background: $greyscale-1 !important;
+}
 
-// Shadows
-$base-box-shadow: inset 0 1px 3px hsla(0, 0%, 0%, 0.06);
+.sp-background-g2-5 {
+	background: $greyscale-2 !important;
+}
+
+.sp-background-g3-5 {
+	background: $greyscale-3 !important;
+}
+
+.sp-background-g4-5 {
+	background: $greyscale-4 !important;
+}
+
+.sp-background-g5-5 {
+	background: $greyscale-5 !important;
+}
+
+.sp-white {
+	color: $off-white !important;
+	a {
+		color: $off-white !important;
+	}
+}
+
+.sp-black {
+	color: $off-black !important;
+}

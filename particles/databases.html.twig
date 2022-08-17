@@ -37,7 +37,9 @@
 {% block particle %}
 
 {# All Posts #}
-<div class="sp-databases-title uk-margin-bottom"><span class="sp-databases-title-icon" uk-icon="icon: more-vertical; ratio: 2"></span>Digital Resources</div>
+<div class="uk-grid">
+  <div class="uk-text-lead uk-text-bold sp-white"><span uk-icon="icon: more-vertical; ratio: 2"></span>Digital Resources</div>
+</div>
 <div uk-slider="autoplay: true, autoplay-interval: 6000, pause-on-hover: true">
   <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
     <ul class="uk-slider-items uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-4@m">
@@ -63,8 +65,8 @@
         {% endfor %}
     {% endfor %}
   </ul>
-  <a class="uk-position-center-left uk-position-small uk-hidden-hover sp-selector-color" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
-  <a class="uk-position-center-right uk-position-small uk-hidden-hover sp-selector-color" href="#" uk-slidenav-next uk-slider-item="next"></a>
+  <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+  <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
   </div>
   <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
 </div>

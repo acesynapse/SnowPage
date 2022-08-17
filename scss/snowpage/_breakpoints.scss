@@ -1,0 +1,48 @@
+// Media Device Breakpoints
+$breakpoints-large-desktop-container:		1200px !default;
+$breakpoints-desktop-container:				960px !default;
+$breakpoints-tablet-container:				768px !default;
+$breakpoints-large-mobile-container:		767px !default;
+$breakpoints-mobile-container:				100% !default;
+$breakpoints-mobile-menu-breakpoint:        767px !default;
+
+// Breakpoint Variables For Particless
+$media: "all" !default;
+$mobile-only: "#{$media} and (max-width:#{$breakpoints-tablet-container - 0.062})" !default;
+$no-mobile: "#{$media} and (min-width:#{$breakpoints-tablet-container})" !default;
+$small-mobile-range: "#{$media} and (max-width:#{$breakpoints-large-mobile-container})" !default;
+$large-mobile-range: "#{$media} and (min-width:#{$breakpoints-large-mobile-container + 0.063}) and (max-width:#{$breakpoints-tablet-container - 0.062})" !default;
+$tablet-range: "#{$media} and (min-width:#{$breakpoints-tablet-container}) and (max-width:#{$breakpoints-desktop-container - 0.062})" !default;
+$desktop-range: "#{$media} and (min-width:#{$breakpoints-desktop-container}) and (max-width:#{$breakpoints-large-desktop-container - 0.062})" !default;
+$large-desktop-range: "#{$media} and (min-width:#{$breakpoints-large-desktop-container})" !default;
+
+// Breakpoints
+@mixin breakpoint($breakpoint, $media: all) {
+	@if $breakpoint == large-desktop-range {
+		@media only #{$media} and (min-width: $breakpoints-large-desktop-container) { @content; }
+	}
+	@else if $breakpoint == desktop-range {
+		@media only #{$media} and (min-width: $breakpoints-desktop-container) and (max-width: $breakpoints-large-desktop-container - 0.01rem) { @content; }
+	}
+	@else if $breakpoint == desktop-only {
+		@media only #{$media} and (min-width: $breakpoints-desktop-container) { @content; }
+	}
+	@else if $breakpoint == tablet-range {
+		@media only #{$media} and (min-width: $breakpoints-tablet-container) and (max-width: $breakpoints-desktop-container - 0.01rem) { @content; }
+	}
+	@else if $breakpoint == large-mobile-range {
+		@media only #{$media} and (min-width: $breakpoints-large-mobile-container + 0.01rem) and (max-width: $breakpoints-tablet-container - 0.01rem) { @content; }
+	}
+	@else if $breakpoint == small-mobile-range {
+		@media only #{$media} and (max-width: $breakpoints-large-mobile-container) { @content; }
+	}
+	@else if $breakpoint == no-mobile {
+		@media only #{$media} and (min-width: $breakpoints-tablet-container) { @content; }
+	}
+	@else if $breakpoint == mobile-only {
+		@media only #{$media} and (max-width: $breakpoints-tablet-container - 0.01rem) { @content; }
+	}
+	@else if $breakpoint == no-desktop {
+		@media only #{$media} and (max-width: $breakpoints-desktop-container - 0.01rem) { @content; }
+	}
+}

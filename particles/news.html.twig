@@ -39,7 +39,10 @@
 {% block particle %}
 
   {# All Posts #}
-<div class="sp-news-title uk-grid uk-child-width-1-2@m uk-margin-bottom"><div><span class="sp-news-title-icon" uk-icon="icon: more-vertical; ratio: 2"></span>Latest News</div><div class="uk-text-muted uk-text-small uk-text-normal uk-visible@m" style="display:flex;justify-content:flex-end;align-items:center;"><a href="/category/news/" style="color:grey;">See All News</a></div></div>
+<div class="uk-grid">
+  <div class="uk-width-1-2@m uk-text-lead uk-text-bold"><span uk-icon="icon: more-vertical; ratio: 2" class="sp-color-2-5"></span>Latest News</div>
+  <div class="uk-width-1-2@m uk-link-muted uk-visible@m uk-text-right"><a href="/category/news/">See All News</a></div>
+</div>
   <div>
 
     {% for column in posts | batch(limit.columns) %}
@@ -51,7 +54,7 @@
             <div class="uk-inline-clip uk-border-rounded">
               <img class="uk-transition-scale-up uk-transition-opaque uk-border-rounded" src="{{ url(post.thumbnail.src) }}" alt="{{ display.title.limit ? post.title|raw : post.title|raw }}" style="aspect-ratio: 3 / 2">
             </div>
-            <h3 class="uk-margin-remove-bottom uk-margin-top uk-h3 uk-text-bold">
+            <h3 class="uk-margin-remove-bottom uk-margin-top uk-h3 uk-text-bold sp-color-2-5">
               {{ display.title.limit ? post.title|raw : post.title|raw }}
             </h3>
             <p class="uk-margin-top uk-margin-remove-bottom uk-article-meta">

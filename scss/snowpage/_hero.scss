@@ -1,19 +1,11 @@
 #g-hero {
-	background: $hero-background;
-	color: $hero-text-color;
-	position: relative;
-	z-index: 3;
-
+	background: $off-white;
+	color: $off-black;
 	a {
-		color: lighten($hero-background, 40%);
+		color: $off-black;
 		&:hover {
-			color: $hero-text-color;
-		}
-	}
-
-	.search {
-		input {
-			color: $main-text-color;
+			color: $off-black;
+			text-decoration: underline;
 		}
 	}
 }
@@ -25,56 +17,9 @@
 	}
 }
 
-.sp-button-hero {
-  padding: 10px 25px;
-	letter-spacing: 0.05rem;
-  outline: none !important;
-  transition: all 0.3s ease;
-  position: relative;
-  display: inline-block;
-  z-index: 1;
-  color: white;
-	background: $complementary-color-2 !important;
-	border: unset !important;
-	&:after {
-		position: absolute;
-	  content: "";
-	  width: 0;
-	  height: 100%;
-	  top: 0;
-	  left: 0;
-	  direction: rtl;
-	  z-index: -1;
-	  background: $primary_color-fixed !important;
-	  transition: all 0.3s ease;
-	}
+.sp-hero-button {
+	background: $penta-0 !important;
 	&:hover {
-		color: rgb(0, 0, 0);
-		&:after {
-			left: auto;
-		  right: 0;
-		  width: 100%;
-		}
+		background: $penta-0-35 !important;
 	}
-}
-
-.sp-button-news {
-	background-color: $triadic-color-2 !important;
-	letter-spacing: 0.05rem !important;
-	&:hover {
-		background-color: $triadic-color-3 !important;
-	}
-}
-
-.sp-button-databases {
-	background-color: $resources-background !important;
-	letter-spacing: 0.05rem !important;
-	border-radius: 0.5rem !important;
-	&:hover {
-		opacity: 0.91 !important;
-	}
-}
-
-.sp-databases-text {
-	color: $resources-text-color !important;
 }

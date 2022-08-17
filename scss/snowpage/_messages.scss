@@ -1,26 +1,19 @@
 #g-messages {
-	background: linear-gradient(10deg, $messages-background 0%, $messages-background-2 100%);
-	color: $messages-text-color;
-	position: relative;
-	z-index: 3;
-
+	background: linear-gradient(10deg, $penta-0 0%, (darken($penta-0, 5)) 100%);
+	color: $off-white;
+	text-align: center;
 	a {
-		color: lighten($messages-background, 40%);
+		color: $off-white;
 		&:hover {
-			color: $messages-text-color;
-		}
-	}
-
-	.search {
-		input {
-			color: $main-text-color;
+			color: $off-white;
+			text-decoration: underline;
 		}
 	}
 }
 
 @media print {
 	#g-messages {
-		background: #fff !important;
-		color: #000 !important;
+		background: #000 !important;
+		color: #fff !important;
 	}
 }

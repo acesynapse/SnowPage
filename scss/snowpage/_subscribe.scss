@@ -1,19 +1,11 @@
 #g-subscribe {
-	background: $subscribe-background;
-	color: $subscribe-text-color;
-	position: relative;
-	z-index: 3;
-
+	background: linear-gradient(10deg, $greyscale-0 0%, (darken($greyscale-0, 5)) 100%);
+	color: $off-black;
 	a {
-		color: $subscribe-text-color;
+		color: $off-black;
 		&:hover {
-			color: $subscribe-text-color;
-		}
-	}
-
-	.search {
-		input {
-			color: $main-text-color;
+			color: $off-black;
+			text-decoration: underline;
 		}
 	}
 }

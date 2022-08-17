@@ -1,18 +1,10 @@
 #g-books {
-	background: linear-gradient(10deg, $books-background 0%, $books-background-2 100%);
-	color: $books-text-color;
-	position: relative;
-	z-index: 3;
-
+	background: linear-gradient(10deg, $penta-144 0%, (darken($penta-144, 5)) 100%);
+	color: $off-white;
 	a {
+		color: $off-white;
 		&:hover {
-			color: $books-text-color-hover;
-		}
-	}
-
-	.search {
-		input {
-			color: $main-text-color;
+			color: $off-white;
 		}
 	}
 }
@@ -24,16 +16,14 @@
 	}
 }
 
-.sp-bookshelves-hover {
+.sp-book-title {
+	line-height: 1.15;
 	&:hover {
-		color: $off-black;
+		color: $greyscale-2 !important;
 	}
 }
 
-.sp-books-text {
-	font-size: 4rem;
-	line-height: 0.8;
-	font-weight: 700;
-	font-variant: small-caps;
-	letter-spacing: 2px;
+.sp-bookshelves-text {
+	line-height: 1.15 !important;
+	color: $off-white !important;
 }

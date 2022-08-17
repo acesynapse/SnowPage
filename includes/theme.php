@@ -11,24 +11,31 @@ defined('ABSPATH') || die(http_response_code(418));
  * http://www.gnu.org/licenses/gpl-3.0.html
  */
 
-/**
- * Define the template.
- */
-class GantryTheme extends \Gantry\Framework\Theme {}
+ use Gantry\Framework\Platform;
+ use Gantry\Framework\Theme;
 
-// Initialize theme stream.
-/** @var \Gantry\Framework\Platform $platform */
-$platform = $gantry['platform'];
-$platform->set(
-    'streams.gantry-theme.prefixes',
-    array('' => array(
-        "gantry-themes://{$gantry['theme.name']}/custom",
-        "gantry-themes://{$gantry['theme.name']}",
-        "gantry-themes://{$gantry['theme.name']}/common"
-    ))
-);
+ class_exists('\\Gantry\\Framework\\Gantry') or die;
 
-// Define Gantry services.
-$gantry['theme'] = static function ($c) {
-    return new GantryTheme($c['theme.path'], $c['theme.name']);
-};
+ /**
+  * Define the template.
+  */
+ class GantryTheme extends Theme
+ {
+ }
+
+ // Initialize theme stream.
+ /** @var Platform $platform */
+ $platform = $gantry['platform'];
+ $platform->set(
+     'streams.gantry-theme.prefixes',
+     array('' => array(
+         "gantry-themes://{$gantry['theme.name']}/custom",
+         "gantry-themes://{$gantry['theme.name']}",
+         "gantry-themes://{$gantry['theme.name']}/common"
+     ))
+ );
+
+ // Define Gantry services.
+ $gantry['theme'] = static function ($c) {
+     return new GantryTheme($c['theme.path'], $c['theme.name']);
+ };

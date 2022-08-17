@@ -16,14 +16,15 @@
 {% endfor %}
 {% set one = '[op-overview set_id="' %}
 {% set two = '" title="Hours" show_closed_days="true" include_io="true" include_holidays="true"]' %}
-{% set three = '" title="Hours" show_closed_days="true" include_io="true" include_holidays="true" compress="true" short="true"]' %}
+{% set three = '" show_closed_days="true" include_io="true" include_holidays="true" compress="true" short="true"]' %}
 
 {% block particle %}
-<div class="uk-visible@l sp-hours">
+{% set class=(particle.class ? 'class="'~ particle.class ~'"') %}
+<div class="uk-visible@m">
   {{ gantry.platform.filter(one ~ id ~ two)|html|raw }}
 </div>
 
-<div class="uk-hidden@l sp-hours">
+<div class="uk-hidden@m">
   {{ gantry.platform.filter(one ~ id ~ three)|html|raw }}
 </div>
 {% endblock %}

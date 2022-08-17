@@ -18,6 +18,9 @@
 {% set two = '"]' %}
 
 {% block particle %}
-<div class="sp-programs-title uk-grid uk-child-width-1-2@m uk-margin-bottom"><div><span class="sp-programs-title-icon" uk-icon="icon: more-vertical; ratio: 2"></span>Upcoming Programs</div><div class="uk-text-muted uk-text-small uk-text-normal uk-visible@m" style="display:flex;justify-content:flex-end;align-items:center;"><a href="/calendar/" style="color:grey;">See All Programs</a></div></div>
+<div class="uk-grid uk-margin-bottom">
+  <div class="uk-width-1-2@m uk-text-lead uk-text-bold"><span uk-icon="icon: more-vertical; ratio: 2" class="sp-color-4-5"></span>Upcoming Programs</div>
+  <div class="uk-width-1-2@m uk-link-muted uk-visible@m uk-text-right"><a href="/category/news/">See All Programs</a></div>
+</div>
   {{ gantry.platform.filter(one ~ id ~ two)|html|raw }}
 {% endblock %}

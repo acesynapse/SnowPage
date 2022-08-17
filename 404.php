@@ -11,22 +11,22 @@ defined('ABSPATH') || die(http_response_code(418));
  * http://www.gnu.org/licenses/gpl-3.0.html
  */
 
-use Timber\Timber;
+ use Gantry\Framework\Gantry;
+ use Gantry\Framework\Theme;
+ use Timber\Timber;
 
-/*
- * The template for displaying 404 pages (Not Found)
- */
+ /*
+  * The template for displaying 404 pages (Not Found)
+  */
 
-// Calls Gantry Frameword Instance
-$gantry = Gantry\Framework\Gantry::instance();
+ $gantry = Gantry::instance();
 
-/** @var \Gantry\Framework\Theme $theme */
-$theme  = $gantry['theme'];
-$theme->setLayout('_error', true);
+ /** @var Theme $theme */
+ $theme  = $gantry['theme'];
+ $theme->setLayout('_error', true);
 
-// We need to render contents of <head> before plugin content gets added.
-$context              = Timber::get_context();
-$context['page_head'] = $theme->render('partials/page_head.html.twig', $context);
+ // We need to render contents of <head> before plugin content gets added.
+ $context              = Timber::get_context();
+ $context['page_head'] = $theme->render('partials/page_head.html.twig', $context);
 
-// Renders 404 page partial
-Timber::render('404.html.twig', $context);
+ Timber::render('404.html.twig', $context);

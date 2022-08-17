@@ -1,81 +1,38 @@
 // REQUIRED DEPENDENCIES - DO NOT CHANGE
 @import "dependencies";
 
-// THEME COMPONENTS
-// Base
-@import "nucleus/theme/base";
-
-// Core
-@import "snowpage/core";
-
-// Typography
-@import "snowpage/typography";
-
-// Navigation
-@import "snowpage/nav";
-
-// Sidepanel Off Canvas
-@import "snowpage/offcanvas";
-
-// Header
-@import "snowpage/header";
-
-// Messages
-@import "snowpage/messages";
+// Books
+@import "snowpage/books";
 
 // Breadcrumbs
 @import "snowpage/breadcrumbs";
 
-// Hero
-@import "snowpage/hero";
+// Breakpoints
+@import "snowpage/breakpoints";
 
-// Books
-@import "snowpage/books";
-
-// Programs
-@import "snowpage/programs";
-
-// Subscribe
-@import "snowpage/subscribe";
-
-// Resources
-@import "snowpage/resources";
-
-// Main
-@import "snowpage/main";
-
-// Footer
-@import "snowpage/footer";
+// Container
+@import "snowpage/container";
 
 // Copyright
 @import "snowpage/copyright";
 
-// Variations
-@import "snowpage/variations";
+// Footer
+@import "snowpage/footer";
 
-// Tables
-@import "snowpage/tables";
+// Header
+@import "snowpage/header";
 
-// Forms
-@import "snowpage/forms";
+// Hero
+@import "snowpage/hero";
 
-// Social
-@import "snowpage/social";
+// Messages
+@import "snowpage/messages";
 
-// Sample Content
-@import "snowpage/sample";
+// Programs
+@import "snowpage/programs";
 
-// Content Array
-@import "snowpage/contentarray";
+// Resources
+@import "snowpage/resources";
 
-// Dropdown Animations
-@import "snowpage/dropdownanimations";
-
-// Offline
-@import "snowpage/offline";
-//-------------------------------------------
-
-// BREAKPOINTS
-@import "nucleus/theme/breakpoints/base";
-
-//-------------------------------------------
+// Subscribe
+@import "snowpage/subscribe";

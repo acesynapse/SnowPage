@@ -1,19 +1,11 @@
 #g-resources {
-	background: linear-gradient(10deg, $resources-background 0%, $resources-background-2 100%);
-	color: $resources-text-color;
-	position: relative;
-	z-index: 3;
-
+	background: linear-gradient(10deg, $penta-288 0%, (darken($penta-288, 5)) 100%);
+	color: $off-white;
 	a {
-		color: $resources-link-color;
+		color: $off-white;
 		&:hover {
-			color: $resources-link-hover;
-		}
-	}
-
-	.search {
-		input {
-			color: $main-text-color;
+			color: $off-white;
+			text-decoration: underline;
 		}
 	}
 }
@@ -23,18 +15,4 @@
 		background: #fff !important;
 		color: #000 !important;
 	}
-}
-
-.sp-databases-title {
-	font-weight: 700;
-	font-size: 1.5rem;
-	margin-bottom: 1rem;
-}
-
-.sp-databases-title-icon {
-	color: $greyscale-1 !important;
-}
-
-.sp-selector-color {
-	color: $tetradic-color-3 !important;
 }
