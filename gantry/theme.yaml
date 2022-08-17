@@ -48,12 +48,10 @@ configuration:
       - gantry-engine://scss
     files:
       - snowpage
-      - snowpage-wordpress
       - custom
     persistent:
       - snowpage
     overrides:
-      - snowpage-wordpress
       - custom
 
   dependencies:
