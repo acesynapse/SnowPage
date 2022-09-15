@@ -1,0 +1,20 @@
+name: Google Analytics for SnowPage
+description: Google Analytics page atom for SnowPage on Gantry 5
+type: atom
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable atom.
+      default: true
+
+    ua.text:
+      type: input.text
+      label: UA-XXXXXXXXX-X
+      description: Input the Analytics code, UA-XXXXXXXXX-X.
+
+    g.text:
+      type: input.text
+      label: G-XXXXXXXXX
+      description: Input the GAv4 code, G-XXXXXXXXX.

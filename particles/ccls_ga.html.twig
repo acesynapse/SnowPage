@@ -1,0 +1,32 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block javascript %}
+
+  {% if particle.ua.text != '' %}
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id={{ particle.ua.text|e }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', '{{ particle.ua.text|e }}');
+    </script>
+
+  {% endif %}
+
+  {% if particle.g.text != '' %}
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id={{ particle.g.text|e }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', '{{ particle.g.text|e }}');
+    </script>
+
+  {% endif %}
+{% endblock %}
