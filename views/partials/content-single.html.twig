@@ -2,13 +2,12 @@
 
     {% block content %}
 
-        {# Begin Entry Header #}
+        {# Begin Entry Headeeeeer #}
         <section class="entry-header">
 
-          <div class="uk-height-large uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-blend" data-src="{{ post.thumbnail.src|resize(gantry.config.get('content.' ~ scope ~ '.featured-image.width', '1200'), gantry.config.get('content.' ~ scope ~ '.featured-image.height', '350')) }}" alt="{{ post.title }}" uk-img>
-            <div class="uk-background-default uk-padding uk-panel uk-border-rounded">
-              <h1 class="uk-text-bold uk-text-uppercase">{{ post.title }}</h1>
-            </div>
+          <div class="uk-height-match" uk-grid>
+              <div class="uk-width-1-2 uk-height-medium"><img src="{{ post.thumbnail.src|resize(gantry.config.get('content.' ~ scope ~ '.featured-image.width', '748'), gantry.config.get('content.' ~ scope ~ '.featured-image.height', '500px')) }}g" alt="{{ post.title }}" height="500px"></div>
+              <div class="uk-width-1-2 uk-inline sp-page-header"><h1 class="uk-heading-large uk-text-bold uk-position-bottom-right uk-padding">{{ post.title }}</h1></div>
           </div>
 
         </section>
