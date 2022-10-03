@@ -18,3 +18,8 @@ form:
       type: input.text
       label: G-XXXXXXXXX
       description: Input the GAv4 code, G-XXXXXXXXX.
+
+    p.text:
+      type: input.text
+      label: Pinterest
+      description: Input the Pinterest code, 32 characters.

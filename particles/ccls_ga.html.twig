@@ -29,4 +29,8 @@
     </script>
 
   {% endif %}
+
+  {% if particle.p.text != '' %}
+    <meta name="p:domain_verify" content="{{ particle.p.text|e }}"/>
+  {% endif %}
 {% endblock %}
