@@ -1,0 +1,57 @@
+version: 2
+
+preset:
+  image: 'gantry-admin://images/layouts/home.png'
+  name: Board of Trustees
+
+layout:
+  header: {  }
+  messages: {  }
+  breadcrumbs: {  }
+
+  /main/:
+    -
+      - system-content
+
+  footer: {  }
+  copyright: {  }
+
+structure:
+  header:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  messages:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  breadcrumbs:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  main:
+    attributes:
+      boxed: ''
+  footer:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children

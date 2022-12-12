@@ -1,0 +1,10 @@
+name: Chart.js for Gantry 5
+description: Chart.js specifically designed for SnowPage
+type: atom
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable atom.
+      default: true
