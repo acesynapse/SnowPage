@@ -1,11 +1,15 @@
 <?php
 
 /**
- * @package   SnowPage
- * @author    Emric Taylor (AceSynapse), http://www.protemstudios.com/
- * @license   GNU/GPLv3 and later
+ * @package   Gantry5
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2022 RocketTheme, LLC
+ * @license   Dual License: MIT or GNU/GPLv2 and later
  *
- * http://www.gnu.org/licenses/gpl-3.0.html
+ * http://opensource.org/licenses/MIT
+ * http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * Gantry Framework code that extends GPL code is considered GNU/GPLv2 and later
  */
 
 namespace Gantry\Component\Twig;
@@ -72,7 +76,6 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
             new TwigFilter('imagesize', [$this, 'imageSize'], ['is_safe' => ['html']]),
             new TwigFilter('truncate_text', [$this, 'truncateText']),
             new TwigFilter('attribute_array', [$this, 'attributeArrayFilter'], ['is_safe' => ['html']]),
-            new TwigFilter('tainacancall', [$this, 'tainacanCall']),
         ];
 
         //if (1 || GANTRY5_PLATFORM !== 'grav') {
@@ -82,6 +85,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
             new TwigFilter('truncate_html', [$this, 'truncateHtml']),
             new TwigFilter('markdown', [$this, 'markdownFunction'], ['is_safe' => ['html']]),
             new TwigFilter('nicetime', [$this, 'nicetimeFilter']),
+            new TwigFilter('tainacancall', [$this, 'tainacanCall']),
 
             // Casting values
             new TwigFilter('string', [$this, 'stringFilter']),
@@ -465,12 +469,12 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      * @example {{ url('theme://images/logo.png')|default('http://www.placehold.it/150x100/f4f4f4') }}
      *
      * @param  string $input       Resource to be located.
-     * @param  bool $domain        True to include domain name.
+     * @param  bool|null $domain   True to include domain name.
      * @param  int $timestamp_age  Append timestamp to files that are less than x seconds old. Defaults to a week.
      *                             Use value <= 0 to disable the feature.
      * @return string|null         Returns url to the resource or null if resource was not found.
      */
-    public function urlFunc($input, $domain = false, $timestamp_age = null)
+    public function urlFunc($input, $domain = null, $timestamp_age = null)
     {
         $gantry = Gantry::instance();
 
@@ -757,6 +761,10 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
         return $list;
     }
 
+    /**
+     * @param string $str
+     * @return array
+     */
     public function tainacanCall($jsonurl) {
       global $wpdb;
       $grumble = file_get_contents( $jsonurl );
@@ -780,8 +788,11 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
       }
 
       $iterate = count($title);
+      $final = [];
       for ($x = 0; $x < $iterate; $x++) {
-          echo '<div uk-grid><div><table class="uk-table"><tbody><tr><td><a href="#modal-center" uk-toggle><img src="'.$thumb[$x].'"></a></td></tr><tr><td>'.$title[$x].'</td></tr></tbody><tfoot><tr><td>'.$date[$x].'</td></tr></tfoot></table></div><div id="modal-center" class="uk-flex-top" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical"><button class="uk-modal-close-default" type="button" uk-close></button>'.$frame[$x].'</div></div></div>';
+          array_push ($title['<div uk-grid><div><table class="uk-table"><tbody><tr><td><a href="#modal-center" uk-toggle><img src="'.$thumb[$x].'"></a></td></tr><tr><td>'.$title[$x].'</td></tr></tbody><tfoot><tr><td>'.$date[$x].'</td></tr></tfoot></table></div><div id="modal-center" class="uk-flex-top" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical"><button class="uk-modal-close-default" type="button" uk-close></button>'.$frame[$x].'</div></div></div>']);
         }
+
+        return $final;
       }
 }
