@@ -1,0 +1,21 @@
+name: Tainacan Populator
+description: Populate Tainacan collection in Gantry5.
+type: particle
+icon: fa-database
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable the particle.
+      default: true
+
+    url.text:
+      type: input.text
+      label: Tainacan API JSON
+      description: Input the URL of the Tainacan API JSON.
