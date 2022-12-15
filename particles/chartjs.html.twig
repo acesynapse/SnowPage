@@ -1,0 +1,49 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block javascript %}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+
+{% block particle %}
+  <div>
+    <canvas id="SnowChart-{{ id }}"></canvas>
+  </div>
+{% endblock %}
+
+{% set single = random('qwertasdfgzxcvbyuiophjklnm') %}
+
+{% block javascript_footer %}
+  <script>
+    const ct{{ single }} = document.getElementById('SnowChart-{{ id }}');
+
+    new Chart(ct{{ single }}, {
+      type: 'doughnut',
+      data: {
+        labels: [
+          {% for item in particle.items %}
+            '{{ item.label|e }}',
+          {% endfor %}
+        ],
+        datasets: [
+          {
+            label: '$',
+            data: [
+              {% for item in particle.items %}
+                {{ item.value|e }},
+              {% endfor %}
+            ],
+            borderWidth: 1
+          }
+        ]
+      },
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: '{{ particle.title.text|e }}'
+          }
+        }
+      }
+    });
+  </script>
+{% endblock %}

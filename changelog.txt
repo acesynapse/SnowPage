@@ -1,8 +1,12 @@
 ***CURRENT***
 Version - 1.0.0
 
-Gantry - 5.5.12
-UIkit - 3.15.3
+Gantry - 5.5.15
+UIkit - 3.15.18
+
+***20221213***
+1. Updated uikit-3.15.18
+2. Crosschecked gantry-5.5.15
 
 ***20220816***
 1. Updated uikit-3.15.3

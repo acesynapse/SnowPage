@@ -1,10 +1,35 @@
 name: Chart.js for Gantry 5
 description: Chart.js specifically designed for SnowPage
-type: atom
+type: particle
+icon: fa-chart-pie
+
 form:
   fields:
     enabled:
       type: input.checkbox
       label: Enabled
-      description: Globally enable atom.
+      description: Globally enable the particle.
       default: true
+
+    title.text:
+      type: input.text
+      label: Chart Title
+      description: Name the Chart you are creating
+
+    items:
+      type: collection.list
+      array: true
+      label: Chart items
+      description: Create each item to display.
+      value: name
+      ajax: true
+
+      fields:
+
+        .label:
+          type: input.text
+          label: Label for Value
+
+        .value:
+          type: input.number
+          label: Value to be displayed
