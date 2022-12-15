@@ -63,3 +63,5 @@ foreach ($helpers as $file) {
 
     require $filepath;
 }
+
+require_once 'custom/src/classes/Gantry/Component/Twig/TwigExtension.php';

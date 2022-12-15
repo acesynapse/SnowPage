@@ -85,7 +85,6 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
             new TwigFilter('truncate_html', [$this, 'truncateHtml']),
             new TwigFilter('markdown', [$this, 'markdownFunction'], ['is_safe' => ['html']]),
             new TwigFilter('nicetime', [$this, 'nicetimeFilter']),
-            new TwigFilter('tainacancall', [$this, 'tainacanCall']),
 
             // Casting values
             new TwigFilter('string', [$this, 'stringFilter']),
@@ -115,6 +114,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
             new TwigFunction('imagesize', [$this, 'imageSize'], ['is_safe' => ['html']]),
             new TwigFunction('is_selected', [$this, 'is_selectedFunc']),
             new TwigFunction('url', [$this, 'urlFunc']),
+			new TwigFunction('tainacancall', [$this, 'tainacanCall']),
         ];
 
         if (GANTRY5_PLATFORM === 'grav') {
@@ -765,34 +765,38 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      * @param string $str
      * @return array
      */
-    public function tainacanCall($jsonurl) {
-      global $wpdb;
-      $grumble = file_get_contents( $jsonurl );
+     public function tainacanCall($jsonurl) {
 
-      $grumble = json_decode( $grumble, true );
+       global $wpdb;
 
-      $grumble = $grumble["items"];
+       $jsonpull = file_get_contents( $jsonurl );
 
-      $thumb = [];
-      $title = [];
-      $date = [];
-      $frame = [];
-      foreach($grumble as $value){
-        $thumbid = $value["_thumbnail_id"];
-        array_push ($title, $value["title"]);
-        array_push ($date, $value["metadata"]["date"]["date_i18n"]);
-        array_push ($frame, $value["document_as_html"]);
-        $taxidobject = $wpdb->get_results("SELECT guid FROM {$wpdb->prefix}posts WHERE ID = $thumbid");
-        $taxidarray = json_decode(json_encode($taxidobject), true);
-        array_push ($thumb, $taxidarray[0]['guid']);
-      }
+       $jsondecode = json_decode( $jsonpull, true );
 
-      $iterate = count($title);
-      $final = [];
-      for ($x = 0; $x < $iterate; $x++) {
-          array_push ($title['<div uk-grid><div><table class="uk-table"><tbody><tr><td><a href="#modal-center" uk-toggle><img src="'.$thumb[$x].'"></a></td></tr><tr><td>'.$title[$x].'</td></tr></tbody><tfoot><tr><td>'.$date[$x].'</td></tr></tfoot></table></div><div id="modal-center" class="uk-flex-top" uk-modal><div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical"><button class="uk-modal-close-default" type="button" uk-close></button>'.$frame[$x].'</div></div></div>']);
-        }
+       $jsonitems = $jsondecode["items"];
 
-        return $final;
-      }
+       $thumb = [];
+       $title = [];
+       $date = [];
+       $frame = [];
+       foreach($jsonitems as $value){
+         $thumbid = $value["_thumbnail_id"];
+         array_push ($title, $value["title"]);
+         array_push ($date, $value["metadata"]["date"]["date_i18n"]);
+         array_push ($frame, $value["document_as_html"]);
+         $thumburlget = $wpdb->get_results("SELECT guid FROM {$wpdb->prefix}posts WHERE ID = $thumbid");
+         $thumburlfix = json_decode(json_encode($thumburlget), true);
+         array_push ($thumb, $thumburlfix[0]['guid']);
+       }
+       $iterate = count($title);
+
+       $final = [];
+       $final['count'] = $iterate;
+       $final['thumb'] = $thumb;
+       $final['title'] = $title;
+       $final['date'] = $date;
+       $final['frame'] = $frame;
+
+       return $final;
+     }
 }

@@ -1,5 +1,45 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
+{% set initialpull = tainacancall(particle.url.text) %}
+
+{% set count = initialpull['count'] - 1 %}
+
+{% set thumb = initialpull['thumb'] %}
+
+{% set title = initialpull['title'] %}
+
+{% set date = initialpull['date'] %}
+
+{% set frame = initialpull['frame'] %}
+
 {% block particle %}
-    {{ tainacancall|particle.url.text|raw }}
+<div class="uk-grid-small uk-child-width-expand@s uk-text-center" uk-grid>
+  {% for i in 0..count %}
+    <div class="uk-width-1-5@xl uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s">
+      <table class="uk-table">
+        <tbody>
+          <tr>
+            <td class="uk-padding-remove">
+              <a href="#modal-center" uk-toggle><img class="uk-height-max-medium" src="{{ thumb[i] }}"></a>
+            </td>
+          </tr>
+          <tr>
+            <td class="uk-text-large uk-text-bold uk-padding-remove">{{ title[i] }}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td class="uk-padding-remove uk-text-italic">{{ date[i] }}</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div id="modal-center" class="uk-modal-container" uk-modal>
+      <div class="uk-modal-dialog">
+        <button class="uk-modal-close-outside" type="button" uk-close></button>
+        {{ frame[i]|raw }}
+      </div>
+    </div>
+  {% endfor %}
+</div>
 {% endblock %}
