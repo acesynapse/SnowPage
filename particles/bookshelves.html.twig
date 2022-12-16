@@ -117,7 +117,7 @@
             </td>
           </tr>
           <tr>
-            <td class="uk-text-large uk-text-bold uk-padding-remove">{{ alt[i]|replace({"&#039;" : "'", "." : ""})|e }}</td>
+            <td class="uk-text-large uk-text-bold uk-padding-remove">{{ alt[i]|replace({"&#039;" : "'", "." : "", "&amp;" : "&"})|e }}</td>
           </tr>
         </tbody>
       </table>
