@@ -1,0 +1,7 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+<div>
+    <span class="{{ style.modifiers }}{{ font.size }}{{ font.weight }}{{ font.style }}{{ font.transform }}{{ font.decoration }}{{ font.color }}{{ font.horizontal }}{{ font.vertical }}{{ font.wrapping }}">{{ particle.some.text|e }}</span>
+</div>
+{% endblock %}

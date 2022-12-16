@@ -15,12 +15,12 @@
 {% block particle %}
 <div class="uk-grid-small uk-child-width-expand@s uk-text-center" uk-grid>
   {% for i in 0..count %}
-    <div class="uk-width-1-5@xl uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s">
+    <div class="uk-width-1-6@xl uk-width-1-5@l uk-width-1-4@m uk-width-1-2@s">
       <table class="uk-table">
         <tbody>
           <tr>
             <td class="uk-padding-remove">
-              <a href="#modal-center" uk-toggle><img class="uk-height-max-medium" src="{{ thumb[i] }}"></a>
+              <a href="#modal-{{ i }}" uk-toggle><img class="uk-height-max-medium" src="{{ thumb[i] }}"></a>
             </td>
           </tr>
           <tr>
@@ -34,7 +34,7 @@
         </tfoot>
       </table>
     </div>
-    <div id="modal-center" class="uk-modal-container" uk-modal>
+    <div id="modal-{{ i }}" class="uk-modal-container" uk-modal>
       <div class="uk-modal-dialog">
         <button class="uk-modal-close-outside" type="button" uk-close></button>
         {{ frame[i]|raw }}

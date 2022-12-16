@@ -1,0 +1,134 @@
+name: Text
+description: Display text.
+type: particle
+icon: fa-text-size
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable the particle.
+      default: true
+
+    some.text:
+      type: input.text
+      label: Text
+      description: Input the text would you like to display.
+
+    style.modifiers:
+      type: select.select
+      label: Style Modifiers
+      description: Various text utilities to style your text.
+      default: ''
+      options:
+        '': None
+        uk-text-lead: Text Lead
+        uk-text-meta: Text Meta
+
+    font.size:
+      type: select.select
+      label: Font Size
+      description: The following classes will modify the font size of your text.
+      default: ''
+      options:
+        '': None
+        uk-text-small: Text Small
+        uk-text-default: Text Default
+        uk-text-large: Text Large
+
+    font.weight:
+      type: select.select
+      label: Font Weight
+      description: Add one of the following classes to modify the font weight of your text.
+      default: ''
+      options:
+        '': None
+        uk-text-light: 300
+        uk-text-normal: 400
+        uk-text-bold: 700
+        uk-text-lighter: Lighter
+        uk-text-bolder: Bolder
+
+    font.style:
+      type: select.select
+      label: Font Style
+      description: Add the uk-text-italic class to create italic text
+      default: ''
+      options:
+        '': None
+        uk-text-italic: Text Italic
+
+    font.transform:
+      type: select.select
+      label: Font Transform
+      description: The following classes will transform text into uppercased, capitalized or lowercased characters.
+      default: ''
+      options:
+        '': None
+        uk-text-small: Text Small
+        uk-text-default: Text Default
+        uk-text-large: Text Large
+
+    font.decoration:
+      type: select.select
+      label: Font Decoration
+      description: Add the uk-text-decoration-none class to remove any text decoration from a link.
+      default: ''
+      options:
+        '': None
+        uk-text-decoration-none: No Link Decoration
+
+    font.color:
+      type: select.select
+      label: Font Color
+      description: Use one of these classes to apply a different color to text elements.
+      default: ''
+      options:
+        '': None
+        uk-text-muted: Text Muted
+        uk-text-emphasis: Text Emphasis
+        uk-text-primary: Text Primary
+        uk-text-secondary: Text Secondary
+        uk-text-success: Text Success
+        uk-text-warning: Text Warning
+        uk-text-danger: Text Danger
+
+    font.horizontal:
+      type: select.select
+      label: Horizontal Alignment
+      description: Add one of these useful classes to align your text.
+      default: ''
+      options:
+        '': None
+        uk-text-left: Align Left
+        uk-text-right: Align Right
+        uk-text-center: Align Center
+        uk-text-justify: Justify
+
+    font.vertical:
+      type: select.select
+      label: Vertical Alignment
+      description: Add one of these classes to vertically align text to an object.
+      default: ''
+      options:
+        '': None
+        uk-text-top: Align Top
+        uk-text-middle: Align Middle
+        uk-text-bottom: Align Bottom
+        uk-text-baseline: Align Baseline
+
+    font.wrapping:
+      type: select.select
+      label: Font Wrapping
+      description: Add one of these useful classes to wrap your text.
+      default: ''
+      options:
+        '': None
+        uk-text-truncate: Truncate
+        uk-text-break: Break
+        uk-text-nowrap: Nowrap

@@ -9,9 +9,18 @@ layout:
   messages: {  }
   breadcrumbs: {  }
 
-  /main/:
+  /container-main/:
     -
-      - system-content
+      -
+        'sidebar 8':
+          -
+            - spacer-spacer
+      -
+        'mainbar 84': {  }
+      -
+        'sidebar 8':
+          -
+            - spacer-spacer
 
   footer: {  }
   copyright: {  }
