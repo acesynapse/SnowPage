@@ -9,3 +9,7 @@ home:
 page:
   title: Page
   preset: page
+
+board:
+  title: Board
+  preset: Board

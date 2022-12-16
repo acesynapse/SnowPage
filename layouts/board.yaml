@@ -2,7 +2,7 @@ version: 2
 
 preset:
   image: 'gantry-admin://images/layouts/home.png'
-  name: Board of Trustees
+  name: Board
 
 layout:
   header: {  }
