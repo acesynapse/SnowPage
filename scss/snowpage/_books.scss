@@ -1,12 +1,18 @@
 #g-books {
 	background: linear-gradient(10deg, $penta-144 0%, (darken($penta-144, 5)) 100%);
 	color: $off-white;
+	position: relative;
 	a {
 		color: $off-white;
 		&:hover {
 			color: $off-white;
 		}
 	}
+}
+
+#g-books > div {
+	z-index: 2 !important;
+	position: relative !important;
 }
 
 @media print {
@@ -26,4 +32,10 @@
 .sp-bookshelves-text {
 	line-height: 1.15 !important;
 	color: $off-white !important;
+	font-size: xxx-large !important;
+	font-weight: bold !important;
+}
+
+.particles-js-canvas-el {
+	z-index: 1 !important;
 }

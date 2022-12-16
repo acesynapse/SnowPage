@@ -87,116 +87,96 @@
   'posts_per_page': 1
 } %}
 
-{% set kohaurl = [] %}
-{% set kohaimg = [] %}
+{% set isbn = [] %}
 {% set alt = [] %}
 {% set posts = wordpress.query_posts(query_parameters) %}
 {% for column in posts | batch(1) %}
   {% for post in column %}
     {% set id = post.id %}
-    {% set kohaurl = kohaurl | merge(post.meta('kohaurl')) %}
-    {% set kohaimg = kohaimg | merge(post.meta('kohaimg')) %}
+    {% set isbn = isbn | merge(post.meta('isbn')) %}
     {% set alt = alt | merge(post.meta('alt')) %}
   {% endfor %}
 {% endfor %}
 
 {% block particle %}
-  <div class="uk-child-width-expand" uk-grid="uk-grid">
-    <div class="uk-visible@xl uk-flex uk-flex-bottom uk-flex-center">
-      <div class="uk-card uk-card-hover uk-border-rounded sp-book-title">
-        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
-
-            <a href="{{ kohaurl[0]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[0]|e }}"></a>
-
-        </div>
-        <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold" style="line-height:1.15;">{{ alt[0]|replace({"&#039;" : "'", "." : ""})|e }}</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="uk-visible@l uk-flex uk-flex-bottom uk-flex-center">
-      <div class="uk-card uk-card-hover uk-border-rounded sp-book-title">
-        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
-
-            <a href="{{ kohaurl[1]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[1]|e }}"></a>
-
-        </div>
-        <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold" style="line-height:1.15;">{{ alt[1]|replace({"&#039;" : "'", "." : ""})|e }}</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="uk-flex uk-flex-bottom uk-flex-center">
-      <div class="uk-card uk-card-hover uk-border-rounded sp-book-title">
-        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
-
-            <a href="{{ kohaurl[2]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[2]|e }}"></a>
-
-        </div>
-        <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold" style="line-height:1.15;">{{ alt[2]|replace({"&#039;" : "'", "." : ""})|e }}</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="uk-flex uk-flex-middle uk-flex-center">
-      <div class="uk-card uk-text-center uk-text-middle uk-heading-small sp-bookshelves-text">
-        <div class="uk-container uk-container-expand">
-          <span class="">{{ particle.message.text|e }}</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="uk-flex uk-flex-bottom uk-flex-center">
-      <div class="uk-card uk-card-hover uk-border-rounded sp-book-title">
-        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
-
-            <a href="{{ kohaurl[3]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[3]|e }}"></a>
-
-        </div>
-        <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold uk-flex-middle"  style="line-height:1.15;">{{ alt[3]|replace({"&#039;" : "'", "." : ""})|e }}</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="uk-visible@l uk-flex uk-flex-bottom uk-flex-center">
-      <div class="uk-card uk-card-hover uk-border-rounded sp-book-title">
-        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
-
-            <a href="{{ kohaurl[4]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[4]|e }}"></a>
-
-        </div>
-        <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold" style="line-height:1.15;">{{ alt[4]|replace({"&#039;" : "'", "." : ""})|e }}</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="uk-visible@xl uk-flex uk-flex-bottom uk-flex-center">
-      <div class="uk-card uk-card-hover uk-border-rounded sp-book-title">
-        <div class="uk-card-media-top uk-padding-small uk-inline-clip uk-transition-toggle">
-
-            <a href="{{ kohaurl[5]|e }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="{{ kohaimg[5]|e }}"></a>
-
-        </div>
-        <div class="uk-card-body uk-padding-small uk-text-center">
-          <p class="uk-text-large uk-text-bold" style="line-height:1.15;">{{ alt[5]|replace({"&#039;" : "'", "." : ""})|e }}</p>
-        </div>
-      </div>
+<div class="uk-grid-small uk-child-width-expand@s uk-text-center" uk-grid>
+  <div class="uk-width-1-6@xl uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s uk-margin-auto-vertical">
+    <div class="uk-flex">
+        <div class="uk-card uk-card-body">
+            <span class="sp-bookshelves-text">{{ particle.message.text|e }}</span>
+	    </div>
     </div>
   </div>
-
+  {% for i in 0..0 %}
+    <div class="uk-width-1-6@xl uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s">
+      <table class="uk-table">
+        <tbody>
+          <tr>
+            <td class="uk-padding-remove">
+              <a href="https://catalog.{{ title }}/cgi-bin/koha/opac-search.pl?q={{ isbn[i] }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="https://syndetics.com/index.aspx?isbn={{ isbn[i] }}/LC.GIF&client=chautauqua-cattaraugus"></a>
+            </td>
+          </tr>
+          <tr>
+            <td class="uk-text-large uk-text-bold uk-padding-remove">{{ alt[i]|replace({"&#039;" : "'", "." : ""})|e }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  {% endfor %}
+  {% for i in 1..1 %}
+    <div class="uk-visible@m uk-width-1-6@xl uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s">
+      <table class="uk-table">
+        <tbody>
+          <tr>
+            <td class="uk-padding-remove">
+              <a href="https://catalog.{{ title }}/cgi-bin/koha/opac-search.pl?q={{ isbn[i] }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="https://syndetics.com/index.aspx?isbn={{ isbn[i] }}/LC.GIF&client=chautauqua-cattaraugus"></a>
+            </td>
+          </tr>
+          <tr>
+            <td class="uk-text-large uk-text-bold uk-padding-remove">{{ alt[i]|replace({"&#039;" : "'", "." : ""})|e }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  {% endfor %}
+  {% for i in 2..2 %}
+    <div class="uk-visible@l uk-width-1-6@xl uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s">
+      <table class="uk-table">
+        <tbody>
+          <tr>
+            <td class="uk-padding-remove">
+              <a href="https://catalog.{{ title }}/cgi-bin/koha/opac-search.pl?q={{ isbn[i] }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="https://syndetics.com/index.aspx?isbn={{ isbn[i] }}/LC.GIF&client=chautauqua-cattaraugus"></a>
+            </td>
+          </tr>
+          <tr>
+            <td class="uk-text-large uk-text-bold uk-padding-remove">{{ alt[i]|replace({"&#039;" : "'", "." : ""})|e }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  {% endfor %}
+  {% for i in 3..4 %}
+    <div class="uk-visible@xl uk-width-1-6@xl uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s">
+      <table class="uk-table">
+        <tbody>
+          <tr>
+            <td class="uk-padding-remove">
+              <a href="https://catalog.{{ title }}/cgi-bin/koha/opac-search.pl?q={{ isbn[i] }}" target="_blank"><img class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" src="https://syndetics.com/index.aspx?isbn={{ isbn[i] }}/LC.GIF&client=chautauqua-cattaraugus"></a>
+            </td>
+          </tr>
+          <tr>
+            <td class="uk-text-large uk-text-bold uk-padding-remove">{{ alt[i]|replace({"&#039;" : "'", "." : ""})|e }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  {% endfor %}
+</div>
 {% endblock %}
 
-
-{#
 {% block javascript_footer %}
     <script src="{{ url('gantry-theme://uikit/js/particles.min.js') }}"></script>
     <script type="text/javascript">
         particlesJS("g-books");
     </script>
 {% endblock %}
-#}
