@@ -1,7 +1,7 @@
 name: Chart.js for Gantry 5
 description: Chart.js specifically designed for SnowPage
 type: particle
-icon: fa-chart-pie
+icon: fa-pie-chart
 
 form:
   fields:

@@ -1,7 +1,7 @@
 name: Subscribe
 description: Display newsletter subscription block.
 type: particle
-icon: fa-mailbox
+icon: fa-envelope-open
 
 configuration:
   caching:

@@ -1,7 +1,7 @@
 name: Text
 description: Display text.
 type: particle
-icon: fa-text-size
+icon: fa-text-height
 
 configuration:
   caching:
@@ -40,6 +40,11 @@ form:
         uk-text-small: Text Small
         uk-text-default: Text Default
         uk-text-large: Text Large
+        uk-heading-small: Heading Small
+        uk-heading-medium: Heading Medium
+        uk-heading-large: Heading Large
+        uk-heading-xlarge: Heading X-Large
+        uk-heading-2xlarge: Heading 2X-Large
 
     font.weight:
       type: select.select
@@ -70,9 +75,9 @@ form:
       default: ''
       options:
         '': None
-        uk-text-small: Text Small
-        uk-text-default: Text Default
-        uk-text-large: Text Large
+        uk-text-capitalize: Text Capitalize
+        uk-text-uppercase: Text Uppercase
+        uk-text-lowercase: Text Lowercase
 
     font.decoration:
       type: select.select

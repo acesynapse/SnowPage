@@ -1,0 +1,69 @@
+name: Board Members
+description: Show a list of people
+type: particle
+icon: fa-user-circle
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable the particle.
+      default: true
+
+    person:
+      type: collection.list
+      array: true
+      label: List of Board Members
+      description: Create each board member to display.
+      value: name
+      ajax: true
+
+      fields:
+
+        .first:
+          type: input.text
+          label: First name
+
+        .last:
+          type: input.text
+          label: Last name
+
+        .role:
+          type: select.select
+          label: Role of member
+          default: Trustee
+          options:
+            Trustee: Trustee
+            President: President
+            Vice-President: Vice-President
+            Secretary: Secretary
+            Treasurer: Treasurer
+
+        .termbe:
+          type: input.number
+          label: Begin of Term
+
+        .termex:
+          type: input.number
+          label: Expiration of Term
+
+        .location:
+          type: input.text
+          label: City of member
+
+        .committee1:
+          type: input.text
+          label: Committee assignment one
+
+        .committee2:
+          type: input.text
+          label: Committee assignment two
+
+        .committee3:
+          type: input.text
+          label: Committee assignment three
+
+        .committee4:
+          type: input.text
+          label: Committee assignment four
