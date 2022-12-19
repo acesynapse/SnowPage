@@ -14,13 +14,19 @@ layout:
       -
         'sidebar 8':
           -
-            - spacer-spacer
+            - spacer
       -
-        'mainbar 84': {  }
+        'mainbar 84':
+          -
+            - text
+          -
+            - board
+          -
+            - tainacan
       -
         'sidebar 8':
           -
-            - spacer-spacer
+            - spacer
 
   footer: {  }
   copyright: {  }
