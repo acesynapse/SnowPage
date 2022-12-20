@@ -2,9 +2,12 @@
 Version - 1.0.0
 
 Gantry - 5.5.15
-UIkit - 3.15.18~
+UIkit - 3.15.19
 
-***20221213***
+***20221220***
+1. Updated uikit-3.15.19, leaving broken sticky for bug resolution.
+
+***20221219***
 1. Reverted uikit-3.15.14, uk-sticky not working.
 2. Updated uikit-3.15.18~, edits to repair broken sticky until pull request is approved.
 
