@@ -1,4 +1,4 @@
-name: Tainacan Populator
+name: Tainacan
 description: Populate Tainacan collection in Gantry5.
 type: particle
 icon: fa-database
@@ -15,7 +15,15 @@ form:
       description: Globally enable the particle.
       default: true
 
-    url.text:
-      type: input.text
-      label: Tainacan API JSON
-      description: Input the URL of the Tainacan API JSON.
+    ticaid:
+      type: wordpress.posts
+      label: Tainacan Collection
+      description: Select the Tainacan Collection you would like to display.
+      post_type: tainacan-collection
+      overridable: false
+
+    limit:
+      type: input.number
+      label: Item Limit
+      description: Input the number of items you would like to display.
+      overridable: false

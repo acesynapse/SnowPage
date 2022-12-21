@@ -1,74 +1,43 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
-{% set attr_extra = particle.extra | attribute_array %}
-{% set post_settings = particle.post %}
-{% set filter = post_settings.filter %}
-{% set sort = post_settings.sort %}
-{% set limit = post_settings.limit %}
-{% set start = limit.start + max(0, ajax.start | int) %}
-{% set display = post_settings.display %}
-
-{# Sticky Posts #}
-{% set sticky_posts = filter.sticky
-  ? false
-  : true %}
-
-{# Query Posts #}
 {% set query_parameters = {
   'post_type': 'databases',
   'posts_per_page': '12',
   'orderby': 'rand'
 } %}
 
-{% if filter.posts %}
-  {% set query_parameters = query_parameters | merge({
-    'post__in': filter.posts | replace({' ': ',', ', ': ','}) | split(',')
-  }) %}
-{% else %}
-  {% set query_parameters = query_parameters | merge({
-    'cat': filter.categories | replace({' ': ',', ', ': ','})
-  }) %}
-{% endif %}
-
 {% set posts = wordpress.query_posts(query_parameters) %}
-{% set total = posts.get_pagination([]).total | abs %}
-{% set total = max(posts | length, (total * max(0, limit.total))) %}
 
 {% block particle %}
-
-{# All Posts #}
-<div class="uk-grid">
-  <div class="uk-text-lead uk-text-bold sp-white"><span uk-icon="icon: more-vertical; ratio: 2"></span>Digital Resources</div>
-</div>
-<div uk-slider="autoplay: true, autoplay-interval: 6000, pause-on-hover: true">
-  <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
-    <ul class="uk-slider-items uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-4@m">
-
-    {% for column in posts | batch (limit.columns) %}
-        {% for post in column %}
-        <li class="uk-padding-small">
-          <div class="uk-light uk-border-rounded">
-            <div class="uk-inline-clip uk-transition-toggle uk-border-rounded">
-              <a href="{{ post.link|raw }}">
-                <img class="uk-transition-scale-up uk-transition-opaque uk-border-rounded" src="{{ url(post.thumbnail.src) }}" alt="{{ display.title.limit ? post.title|raw : post.title|raw }}">
-                <div class="uk-position-cover uk-overlay-default uk-transition-slide-left-medium"></div>
-                <div class="uk-position-center">
-                  <div class="uk-overlay uk-transition-slide-left-medium uk-margin-remove-first-child">
-                    <h2 class="uk-margin-remove-bottom uk-h2 uk-margin-top uk-text-bold" style="color:black;">{{ display.title.limit ? post.title|raw : post.title|raw }}</h2>
-                    <div class="uk-panel uk-margin-top" style="color:black;">{{ post.post_excerpt }}</div>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </li>
-        {% endfor %}
-    {% endfor %}
-  </ul>
-  <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
-  <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+  <div class="uk-grid">
+    <div class="uk-text-lead uk-text-bold sp-white">
+      <span uk-icon="icon: more-vertical; ratio: 2"></span>Digital Resources</div>
   </div>
-  <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
-</div>
-
+  <div uk-slider="autoplay: true, autoplay-interval: 6000, pause-on-hover: true">
+    <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
+      <ul class="uk-slider-items uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-4@m">
+        {% for post in posts %}
+          <li class="uk-padding-small">
+            <div class="uk-light uk-border-rounded">
+              <div class="uk-inline-clip uk-transition-toggle uk-border-rounded">
+                <a href="{{ post.link|raw }}">
+                  <img class="uk-transition-scale-up uk-transition-opaque uk-border-rounded" src="{{ url(post.thumbnail.src) }}" alt="{{ display.title.limit ? post.title|raw : post.title|raw }}">
+                  <div class="uk-position-cover uk-overlay-default uk-transition-slide-left-medium"></div>
+                  <div class="uk-position-center">
+                    <div class="uk-overlay uk-transition-slide-left-medium uk-margin-remove-first-child">
+                      <h2 class="uk-margin-remove-bottom uk-h2 uk-margin-top uk-text-bold" style="color:black;">{{ display.title.limit ? post.title|raw : post.title|raw }}</h2>
+                      <div class="uk-panel uk-margin-top" style="color:black;">{{ post.post_excerpt }}</div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+      <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous="uk-slidenav-previous" uk-slider-item="previous"></a>
+      <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next="uk-slidenav-next" uk-slider-item="next"></a>
+    </div>
+    <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+  </div>
 {% endblock %}

@@ -18,6 +18,13 @@ form:
       description: Globally enable the particle.
       default: true
 
+    bookid:
+      type: wordpress.posts
+      label: Bookshelf
+      description: Select the Bookshelf you would like to display.
+      post_type: bookshelves
+      overridable: false
+
     message.text:
       type: input.text
       label: Message Text

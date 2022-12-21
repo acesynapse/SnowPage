@@ -1,6 +1,10 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
-{% set initialpull = tainacancall(particle.url.text) %}
+{% set url = site.url|replace({"http://": "https://", "http://www.": "https://www."})|e %}
+
+{% set tica = url ~ '/wp-json/tainacan/v2/collection/' ~ particle.ticaid ~ '/items/?perpage=' ~ particle.limit ~ '&order=DESC&orderby=date' %}
+
+{% set initialpull = tainacancall(tica) %}
 
 {% set count = initialpull['count'] - 1 %}
 

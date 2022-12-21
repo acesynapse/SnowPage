@@ -52,7 +52,7 @@
         <div class="uk-width-1-1 uk-width-1-4@l uk-width-1-2@m uk-active">
           <a class="uk-card uk-card-default uk-card-small uk-card-body uk-margin-remove-first-child uk-card-hover uk-transition-toggle uk-link-toggle uk-display-block" href="{{ post.link|raw }}" target="_self">
             <div class="uk-inline-clip uk-border-rounded">
-              <img class="uk-transition-scale-up uk-transition-opaque uk-border-rounded" src="{{ url(post.thumbnail.src) }}" alt="{{ display.title.limit ? post.title|raw : post.title|raw }}" style="aspect-ratio: 3 / 2">
+              <img class="uk-transition-scale-up uk-transition-opaque uk-border-rounded" src="{{ url(post.thumbnail.src) }}" alt="{{ display.title.limit ? post.title|raw : post.title|raw }}" style="aspect-ratio: 3 / 2; overflow: hidden; object-fit: cover;">
             </div>
             <h3 class="uk-margin-remove-bottom uk-margin-top uk-h3 uk-text-bold sp-color-2-5">
               {{ display.title.limit ? post.title|raw : post.title|raw }}
