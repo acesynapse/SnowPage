@@ -1,9 +1,83 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
-{% set title = site.url|replace({"http://": "", "https://": "", "http://www.": "", "https://www.": ""})|e %}
-{% if title = 'wnyls.org' %}
-  {% set title = 'cclsny.org' %}
-{% endif %}
+{% set url = site.url|replace({"http://": "", "https://": "", "http://www.": "", "https://www.": ""})|e %}
+{% set title = '' %}
+{% switch url %}
+  {% case 'ahirahall.org' %}
+    {% set title = 'ahirahall.org' %}
+  {% case 'alleganylibrary.org' %}
+    {% set title = 'alleganylibrary.org' %}
+  {% case 'andersonleelibrary.org' %}
+    {% set title = 'andersonleelibrary.org' %}
+  {% case 'ashvillelibrary.com' %}
+    {% set title = 'ashvillelibrary.com' %}
+  {% case 'barkerlibrary.org' %}
+    {% set title = 'barkerlibrary.org' %}
+  {% case 'http://bemuspointlibrary.org' or 'https://bemuspointlibrary.org' %}
+    {% set title = 'bemuspointlibrary.org' %}
+  {% case 'http://cattarauguslibrary.org' or 'https://cattarauguslibrary.org' %}
+    {% set title = 'cattarauguslibrary.org' %}
+  {% case 'http://cfclibrary.org' or 'https://cfclibrary.org' %}
+    {% set title = 'cfclibrary.org' %}
+  {% case 'http://delevanlibrary.org' or 'https://delevanlibrary.org' %}
+    {% set title = 'delevanlibrary.org' %}
+  {% case 'http://dunkirklibrary.org' or 'https://dunkirklibrary.org' %}
+    {% set title = 'dunkirklibrary.org' %}
+  {% case 'http://ellicottvillelibrary.org' or 'https://ellicottvillelibrary.org' %}
+    {% set title = 'ellicottvillelibrary.org' %}
+  {% case 'http://ellingtonlibrary.org' or 'https://ellingtonlibrary.org' %}
+    {% set title = 'ellingtonlibrary.org' %}
+  {% case 'http://falconerlibrary.org' or 'https://falconerlibrary.org' %}
+    {% set title = 'falconerlibrary.org' %}
+  {% case 'http://findleylibrary.org' or 'https://findleylibrary.org' %}
+    {% set title = 'findleylibrary.org' %}
+  {% case 'http://fluvannalibrary.org' or 'https://fluvannalibrary.org' %}
+    {% set title = 'fluvannalibrary.org' %}
+  {% case 'http://franklinvillelibrary.org' or 'https://franklinvillelibrary.org' %}
+    {% set title = 'franklinvillelibrary.org' %}
+  {% case 'http://gowandalibrary.org' or 'https://gowandalibrary.org' %}
+    {% set title = 'gowandalibrary.org' %}
+  {% case 'http://hazeltinelibrary.org' or 'https://hazeltinelibrary.org' %}
+    {% set title = 'hazeltinelibrary.org' %}
+  {% case 'http://kennedyfreelibrary.org' or 'https://kennedyfreelibrary.org' %}
+    {% set title = 'kennedyfreelibrary.org' %}
+  {% case 'http://lakewoodlibrary.org' or 'https://lakewoodlibrary.org' %}
+    {% set title = 'lakewoodlibrary.org' %}
+  {% case 'http://littlevalleylibrary.org' or 'https://littlevalleylibrary.org' %}
+    {% set title = 'littlevalleylibrary.org' %}
+  {% case 'http://machiaslibrary.org' or 'https://machiaslibrary.org' %}
+    {% set title = 'machiaslibrary.org' %}
+  {% case 'http://mayvillelibrary.com' or 'https://mayvillelibrary.com' %}
+    {% set title = 'mayvillelibrary.com' %}
+  {% case 'http://minervalibrary.org' or 'https://minervalibrary.org' %}
+    {% set title = 'minervalibrary.org' %}
+  {% case 'http://myerslibrary.org' or 'https://myerslibrary.org' %}
+    {% set title = 'myerslibrary.org' %}
+  {% case 'http://oleanlibrary.org' or 'https://oleanlibrary.org' %}
+    {% set title = 'oleanlibrary.org' %}
+  {% case 'http://pattersonlibrary.org' or 'https://pattersonlibrary.org' %}
+    {% set title = 'pattersonlibrary.org' %}
+  {% case 'http://portvillelibrary.org' or 'https://portvillelibrary.org' %}
+    {% set title = 'portvillelibrary.org' %}
+  {% case 'http://prendergastlibrary.org' or 'https://prendergastlibrary.org' %}
+    {% set title = 'prendergastlibrary.org' %}
+  {% case 'http://randolphlibrary.info' or 'https://randolphlibrary.info' %}
+    {% set title = 'randolphlibrary.info' %}
+  {% case 'http://ripleylibrary.org' or 'https://ripleylibrary.org' %}
+    {% set title = 'ripleylibrary.org' %}
+  {% case 'http://salamancalibrary.org' or 'https://salamancalibrary.org' %}
+    {% set title = 'salamancalibrary.org' %}
+  {% case 'http://senecalibraries.org' or 'https://senecalibraries.org' %}
+    {% set title = 'senecalibraries.org' %}
+  {% case 'http://sinclairvillelibrary.org' or 'https://sinclairvillelibrary.org' %}
+    {% set title = 'sinclairvillelibrary.org' %}
+  {% case 'http://stocktonlibraries.org' or 'https://stocktonlibraries.org' %}
+    {% set title = 'stocktonlibraries.org' %}
+  {% case 'wnyls.org' %}
+    {% set title = 'oleanlibrary.org' %}
+  {% default %}
+    {% set title = 'cclsny.org' %}
+{% endswitch %}
 
 {% block particle %}
 <div>
