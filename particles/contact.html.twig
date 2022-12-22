@@ -416,13 +416,13 @@
     <div class="uk-visible@m">
       <br>
       {% if street != '' %}
-        <a href="https://www.google.com/maps/place/{{ google|e }}" target="_blank"><p class="uk-margin-remove uk-text-right">{{ street|e }}</p></a>
+        <a href="https://www.google.com/maps/place/{{ google|e }}" target="_blank"><p class="uk-margin-remove uk-text-right uk-text-decoration-none" style="color:white;">{{ street|e }}</p></a>
       {% endif %}
       {% if pobox != '' %}
-        <a href="https://www.google.com/maps/place/{{ google|e }}" target="_blank"><p class="uk-margin-remove uk-text-right">{{ pobox|e }}</p></a>
+        <a href="https://www.google.com/maps/place/{{ google|e }}" target="_blank"><p class="uk-margin-remove uk-text-right uk-text-decoration-none" style="color:white;">{{ pobox|e }}</p></a>
       {% endif %}
       {% if csz != '' %}
-        <a href="https://www.google.com/maps/place/{{ google|e }}" target="_blank"><p class="uk-margin-remove uk-text-right">{{ csz|e }}</p></a>
+        <a href="https://www.google.com/maps/place/{{ google|e }}" target="_blank"><p class="uk-margin-remove uk-text-right uk-text-decoration-none" style="color:white;">{{ csz|e }}</p></a>
       {% endif %}
     </div>
 </div>

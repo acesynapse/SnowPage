@@ -19,24 +19,36 @@
           <tr>
             <td class="uk-padding-remove uk-text-small uk-text-bold">{{ person.role|e }}</td>
           </tr>
+          {% if person.termbe != '' %}
           <tr>
             <td class="uk-padding-remove uk-text-small">Term: {{ person.termbe|e }}-{{ person.termex|e }}</td>
           </tr>
+          {% endif %}
+          {% if person.location != '' %}
           <tr>
             <td class="uk-padding-remove uk-text-small uk-text-italic">{{ person.location|e }}</td>
           </tr>
+          {% endif %}
+          {% if person.committee1 != '' %}
           <tr>
             <td class="uk-padding-remove uk-text-small">{{ person.committee1|e }}</td>
           </tr>
+          {% endif %}
+          {% if person.committee2 != '' %}
           <tr>
             <td class="uk-padding-remove uk-text-small">{{ person.committee2|e }}</td>
           </tr>
+          {% endif %}
+          {% if person.committee3 != '' %}
           <tr>
             <td class="uk-padding-remove uk-text-small">{{ person.committee3|e }}</td>
           </tr>
+          {% endif %}
+          {% if person.committee4 != '' %}
           <tr>
             <td class="uk-padding-remove uk-text-small">{{ person.committee4|e }}</td>
           </tr>
+          {% endif %}
         </tfoot>
       </table>
     </div>

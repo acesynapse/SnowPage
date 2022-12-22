@@ -41,7 +41,11 @@
     <div id="modal-{{ i }}" class="uk-modal-container" uk-modal>
       <div class="uk-modal-dialog">
         <button class="uk-modal-close-outside" type="button" uk-close></button>
+        {% if '<iframe>' in frame[i] %}
         {{ frame[i]|raw }}
+        {% else %}
+        <iframe src="{{ site.url ~ '/wp-content/plugins/tainacan/views/libs/pdf-viewer/pdfjs-dist/web/viewer.html?file=' ~ site.url ~ frame[i] }}" width="100%" height="640px" allowfullscreen=""></iframe>
+        {% endif %}
       </div>
     </div>
   {% endfor %}

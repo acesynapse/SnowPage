@@ -1,13 +1,9 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
-{% set url = site.url|replace({"http://": "", "https://": "", "http://www.": "", "https://www.": ""})|e %}
-{% set title = url %}
-{% switch title %}
-  {% case 'wnyls.org' %}
-    {% set title = 'oleanlibrary.org' %}
-  {% default %}
-    {% set title = 'cclsny.org' %}
-{% endswitch %}
+{% set title = site.url|replace({"http://": "", "https://": "", "http://www.": "", "https://www.": ""})|e %}
+{% if title = 'wnyls.org' %}
+  {% set title = 'cclsny.org' %}
+{% endif %}
 
 {# Query Posts #}
 {% set query_parameters = {
