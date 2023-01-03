@@ -114,7 +114,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
             new TwigFunction('imagesize', [$this, 'imageSize'], ['is_safe' => ['html']]),
             new TwigFunction('is_selected', [$this, 'is_selectedFunc']),
             new TwigFunction('url', [$this, 'urlFunc']),
-			new TwigFunction('tainacancall', [$this, 'tainacanCall']),
+            new TwigFunction('tainacancall', [$this, 'tainacanCall']),
         ];
 
         if (GANTRY5_PLATFORM === 'grav') {
