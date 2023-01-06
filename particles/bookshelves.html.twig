@@ -95,6 +95,12 @@
   {% endfor %}
 {% endfor %}
 
+{% set counts = (alt|length)-1 %}
+{% set shuff = counts|shuffle %}
+
+{% set isbn = bookshelf(shuff, isbn) %}
+{% set alt = bookshelf(shuff, alt) %}
+
 {% block particle %}
 <div class="uk-grid-small uk-child-width-expand@s uk-text-center" uk-grid>
   <div class="uk-width-1-6@xl uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s uk-margin-auto-vertical">

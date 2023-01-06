@@ -76,6 +76,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
             new TwigFilter('imagesize', [$this, 'imageSize'], ['is_safe' => ['html']]),
             new TwigFilter('truncate_text', [$this, 'truncateText']),
             new TwigFilter('attribute_array', [$this, 'attributeArrayFilter'], ['is_safe' => ['html']]),
+            new TwigFilter('shuffle', [$this, 'spShuffle'])
         ];
 
         //if (1 || GANTRY5_PLATFORM !== 'grav') {
@@ -115,6 +116,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
             new TwigFunction('is_selected', [$this, 'is_selectedFunc']),
             new TwigFunction('url', [$this, 'urlFunc']),
             new TwigFunction('tainacancall', [$this, 'tainacanCall']),
+            new TwigFunction('bookshelf', [$this, 'spBookshelf'])
         ];
 
         if (GANTRY5_PLATFORM === 'grav') {
@@ -799,4 +801,27 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
 
        return $final;
      }
+
+     /**
+      * @param string $number
+      * @return array $numbers
+      */
+      public function spShuffle($number) {
+        $numbers = range(0, $number);
+        shuffle($numbers);
+        return $numbers;
+      }
+
+      /**
+       * @param array $numbers
+       * @param array $books
+       * @return array $book
+       */
+       public function spBookshelf($numbers, $books) {
+         $book = array();
+         foreach ($numbers as $i) {
+           array_push($book, $books[$i]);
+         }
+         return $book;
+       }
 }
