@@ -1,10 +1,14 @@
 ***CURRENT***
-Version - 1.0.0
+Version - 1.1.9
 
 Gantry - 5.5.15
-UIkit - 3.15.19
+UIkit - 3.15.23
 
-***20210106***
+***20230201***
+1. Updated uikit-3.15.23.
+2. Checked Gantry update 5.5.15 for changes to Hydrogen theme. None found.
+
+***20230106***
 1. Added TwigExtensions shuffle and bookshelf.
 2. Updated Bookshelves particle to randomize books.
 
@@ -40,7 +44,6 @@ UIkit - 3.15.19
 1. Updated uikit-3.14.3
 2. Updated views/single.html.twig, gantry-5.5.13
 3. Rejected remaining views/ gantry-5.5.13 updates as superfluous
-
 
 ***20220411***
 1. Updated uikit-3.13.7

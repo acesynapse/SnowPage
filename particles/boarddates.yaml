@@ -1,0 +1,12 @@
+name: Board Dates
+description: Show a list of upcoming board dates
+type: particle
+icon: fa-calendar
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable the particle.
+      default: true

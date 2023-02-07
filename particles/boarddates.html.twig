@@ -1,0 +1,29 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% set seqc = [0, 2, 4, 6, 8, 10] %}
+{% set monthcc = date("m") %}
+{% set daycc = date("d") %}
+{% set yearcc = date("Y") %}
+
+{% block particle %}
+<div class="uk-grid-small uk-child-width-expand@s uk-text-center uk-margin-bottom" uk-grid>
+    <div>
+      <table class="uk-table uk-table-divider">
+        <caption>Table Caption</caption>
+        <tbody>
+          {% for num in seqc %}
+          <tr>
+            <td><span uk-icon="icon: calendar"></span></td>
+            <td>{{ boardmeet(monthcc + num, daycc, yearcc)|e }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+        <tfoot>
+          <tr>
+            <td class="uk-padding-remove uk-text-small uk-text-bold">maybe</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+</div>
+{% endblock %}

@@ -116,7 +116,8 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
             new TwigFunction('is_selected', [$this, 'is_selectedFunc']),
             new TwigFunction('url', [$this, 'urlFunc']),
             new TwigFunction('tainacancall', [$this, 'tainacanCall']),
-            new TwigFunction('bookshelf', [$this, 'spBookshelf'])
+            new TwigFunction('bookshelf', [$this, 'spBookshelf']),
+            new TwigFunction('boardmeet', [$this, 'boardMeet'])
         ];
 
         if (GANTRY5_PLATFORM === 'grav') {
@@ -824,4 +825,93 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
          }
          return $book;
        }
+
+       /**
+        * @param string $monthcc
+        * @param string $daycc
+        * @param string $yearcc
+        * @return string $date
+        */
+        public function boardMeet($monthcc, $daycc, $yearcc) {
+          if ($daycc > 14) {
+            $monthcc++;
+            if ($monthcc == 13) {
+              $monthcc = 1;
+              $yearcc++;
+            }
+          }
+          switch ($monthcc) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 9:
+            case 11:
+              $monthcc++;
+              $jd = gregoriantojd($monthcc, 1, $yearcc);
+              $dayweek = jddayofweek($jd, 0);
+              switch ($dayweek) {
+                case 0:
+                  $daycc = 11;
+                  break;
+                case 1:
+                  $daycc = 10;
+                  break;
+                case 2:
+                  $daycc = 9;
+                  break;
+                case 3:
+                  $daycc = 8;
+                  break;
+                case 4:
+                  $daycc = 14;
+                  break;
+                case 5:
+                  $daycc = 13;
+                  break;
+                case 6:
+                  $daycc = 12;
+                  break;
+              }
+              $jd = gregoriantojd($monthcc, $daycc, $yearcc);
+              $date = date_create(jdtogregorian($jd));
+              return date_format($date, "F jS, Y");
+              break;
+            case 2:
+            case 4:
+            case 6:
+            case 8:
+            case 10:
+            case 12:
+              $jd = gregoriantojd($monthcc, 1, $yearcc);
+              $dayweek = jddayofweek($jd, 0);
+              switch ($dayweek) {
+                case 0:
+                  $daycc = 11;
+                  break;
+                case 1:
+                  $daycc = 10;
+                  break;
+                case 2:
+                  $daycc = 9;
+                  break;
+                case 3:
+                  $daycc = 8;
+                  break;
+                case 4:
+                  $daycc = 14;
+                  break;
+                case 5:
+                  $daycc = 13;
+                  break;
+                case 6:
+                  $daycc = 12;
+                  break;
+              }
+              $jd = gregoriantojd($monthcc, $daycc, $yearcc);
+              $date = date_create(jdtogregorian($jd));
+              return date_format($date, "F jS, Y");
+              break;
+            }
+          }
 }
