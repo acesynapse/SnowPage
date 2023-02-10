@@ -4,6 +4,9 @@ Version - 1.1.9
 Gantry - 5.5.15
 UIkit - 3.15.23
 
+***20230210***
+1. Added Public Sans font.
+
 ***20230201***
 1. Updated uikit-3.15.23.
 2. Checked Gantry update 5.5.15 for changes to Hydrogen theme. None found.

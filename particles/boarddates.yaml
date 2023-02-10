@@ -10,3 +10,16 @@ form:
       label: Enabled
       description: Globally enable the particle.
       default: true
+
+    ticaid:
+      type: wordpress.posts
+      label: Tainacan Collection
+      description: Select the Tainacan Collection you would like to display.
+      post_type: tainacan-collection
+      overridable: false
+
+    limit:
+      type: input.number
+      label: Item Limit
+      description: Input the number of items you would like to display.
+      overridable: false

@@ -8,8 +8,8 @@ form:
     body-font:
       type: input.fonts
       label: Body Font
-      default: 'roboto, sans-serif'
+      default: 'publicsans, sans-serif'
     heading-font:
       type: input.fonts
       label: Heading Font
-      default: 'roboto, sans-serif'
+      default: 'publicsans, sans-serif'

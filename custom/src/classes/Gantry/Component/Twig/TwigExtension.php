@@ -117,7 +117,8 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
             new TwigFunction('url', [$this, 'urlFunc']),
             new TwigFunction('tainacancall', [$this, 'tainacanCall']),
             new TwigFunction('bookshelf', [$this, 'spBookshelf']),
-            new TwigFunction('boardmeet', [$this, 'boardMeet'])
+            new TwigFunction('boardmeet', [$this, 'boardMeet']),
+            new TwigFunction('leapyear', [$this, 'leapYear'])
         ];
 
         if (GANTRY5_PLATFORM === 'grav') {
@@ -832,7 +833,11 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
         * @param string $yearcc
         * @return string $date
         */
-        public function boardMeet($monthcc, $daycc, $yearcc) {
+        public function boardMeet($datey) {
+          $dateyex = explode(",",$datey);
+          $monthcc = $dateyex[0];
+          $daycc = $dateyex[1];
+          $yearcc = $dateyex[2];
           if ($daycc > 14) {
             $monthcc++;
             if ($monthcc == 13) {
@@ -914,4 +919,29 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
               break;
             }
           }
+
+          /**
+           * @return bool $date
+           */
+           public function leapYear() {
+             $monthcc = date("m");
+             switch ($monthcc) {
+               case 4:
+               case 6:
+               case 9:
+               case 11:
+                echo 30;
+                break;
+               case 2:
+                if (date("Y") % 4 == 0) {
+                  echo 29;
+                } else {
+                  echo 28;
+                }
+                break;
+               default:
+                echo 31;
+                break;
+             }
+           }
 }

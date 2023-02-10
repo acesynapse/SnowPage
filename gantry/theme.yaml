@@ -30,10 +30,16 @@ configuration:
     textdomain: snowpage
 
   fonts:
-    roboto:
-      400: 'gantry-theme://fonts/roboto_regular_macroman/Roboto-Regular-webfont'
-      500: 'gantry-theme://fonts/roboto_medium_macroman/Roboto-Medium-webfont'
-      700: 'gantry-theme://fonts/roboto_bold_macroman/Roboto-Bold-webfont'
+    publicsans:
+      100: 'gantry-theme://fonts/public-sans_thin_uswds/PublicSans-Thin'
+      200: 'gantry-theme://fonts/public-sans_extralight_uswds/PublicSans-ExtraLight'
+      300: 'gantry-theme://fonts/public-sans_light_uswds/PublicSans-Light'
+      400: 'gantry-theme://fonts/public-sans_regular_uswds/PublicSans-Regular'
+      500: 'gantry-theme://fonts/public-sans_medium_uswds/PublicSans-Medium'
+      600: 'gantry-theme://fonts/public-sans_semibold_uswds/PublicSans-SemiBold'
+      700: 'gantry-theme://fonts/public-sans_bold_uswds/PublicSans-Bold'
+      800: 'gantry-theme://fonts/public-sans_extrabold_uswds/PublicSans-ExtraBold'
+      900: 'gantry-theme://fonts/public-sans_black_uswds/PublicSans-Black'
     opendyslexic:
       400: 'gantry-theme://fonts/opendyslexic_regular_antijingoist/OpenDyslexic-Regular-webfont'
       700: 'gantry-theme://fonts/opendyslexic_regular_antijingoist/OpenDyslexic-Bold-webfont'

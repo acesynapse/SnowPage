@@ -28,7 +28,7 @@
             </td>
           </tr>
           <tr>
-            <td class="uk-text-large uk-text-bold uk-padding-remove">{{ title[i] }}</td>
+            <td class="uk-text-large uk-text-bold uk-padding-remove"{% set titleMain = title[i] %}{% if titleMain == "Annual Meeting Minutes" %} style="color: #00559f;"{% endif %}>{{ titleMain }}</td>
           </tr>
         </tbody>
         <tfoot>
@@ -41,7 +41,10 @@
     <div id="modal-{{ i }}" class="uk-modal-container" uk-modal>
       <div class="uk-modal-dialog">
         <button class="uk-modal-close-outside" type="button" uk-close></button>
-        {{ frame[i]|raw }}
+        {% set frameurl1 = frame[i]|split('>') %}
+        {% set frameurl2 = frameurl1[1]|split('<') %}
+        {% set frameurl3 = '<iframe class="uk-height-1-1" src="' ~ frameurl2[0] ~ '" width="100%" height="100%"></iframe>' %}
+        <div uk-height-viewport>{{ frameurl3|raw }}</div>
       </div>
     </div>
   {% endfor %}
