@@ -41,8 +41,8 @@ configuration:
       800: 'gantry-theme://fonts/public-sans_extrabold_uswds/PublicSans-ExtraBold'
       900: 'gantry-theme://fonts/public-sans_black_uswds/PublicSans-Black'
     opendyslexic:
-      400: 'gantry-theme://fonts/opendyslexic_regular_antijingoist/OpenDyslexic-Regular-webfont'
-      700: 'gantry-theme://fonts/opendyslexic_regular_antijingoist/OpenDyslexic-Bold-webfont'
+      400: 'gantry-theme://fonts/opendyslexic_regular_antijingoist/OpenDyslexic-Regular'
+      700: 'gantry-theme://fonts/opendyslexic_regular_antijingoist/OpenDyslexic-Bold'
 
   css:
     compiler: \Gantry\Component\Stylesheet\ScssCompiler
