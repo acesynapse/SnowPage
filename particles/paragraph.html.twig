@@ -1,0 +1,19 @@
+{% extends '@nucleus/partials/particle.html.twig' %}f
+
+{% block particle %}
+<div class="uk-grid-small uk-child-width-expand@s uk-text-center uk-margin-bottom" uk-grid>
+  {% for paragraph in particle.paragraph %}
+      <table class="uk-table">
+        <tbody>
+          <tr>
+            <td>
+              <div class="uk-margin-bottom">
+                  {% if paragraph.url.option %}<a href="{{ paragraph.url.option }}">{% endif %}<span class="{{ paragraph.style.modifiers }} {{ paragraph.font.size }} {{ paragraph.font.weight }} {{ paragraph.font.style }} {{ paragraph.font.transform }} {{ paragraph.font.decoration }} {{ paragraph.font.color }} {{ paragraph.font.horizontal }} {{ paparagraphrticle.font.vertical }} {{ paragraph.font.wrapping }}">{{ paragraph.some.text|e }}</span>{% if paragraph.url.option %}</a>{% endif %}
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,18 +1,26 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
-{% set seqc = [0, 2, 4, 6, 8, 10] %}
+{% set query_parameters = {
+  'post_type': 'attachment',
+  'post_status': 'inherit',
+  'post_mime_type': 'application/pdf',
+  's': 'bmd',
+  'posts_per_page': 1,
+} %}
+
+{% set posts = wordpress.query_posts(query_parameters) %}
+
+{% set dateys = boardmeet(particle.freq, particle.dayofweek, particle.evenodd, particle.excep) %}
 
 {% block particle %}
 <div class="uk-grid-small uk-child-width-expand@s uk-text-center uk-margin-bottom" uk-grid>
     <div>
       <table class="uk-table uk-table-divider">
         <tbody>
-          {% for num in seqc %}
-          {% set amount = '+' ~ num ~ ' month' %}
-          {% set datecc = "now"|date_modify(amount)|date("n,j,Y") %}
+          {% for value in dateys %}
           <tr>
             <td><span uk-icon="icon: calendar"></span></td>
-            <td>{{ boardmeet(datecc) }}{% set findmon = boardmeet(datecc)|split(' ') %}{% if findmon[0] == "October" %}<br><span class="uk-text-meta uk-text-bold">Annual Meeting (tentative)</span>{% endif %}</td>
+            <td>{{ value }}{% if particle.addmonth and value starts with particle.addtext %}<br><span class="uk-text-meta uk-text-bold">{{ particle.addtext }}</span>{% endif %}</td>
             <td class="uk-padding-remove uk-text-small uk-text-bold"></td>
           </tr>
         {% endfor %}

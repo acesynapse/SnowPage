@@ -12,6 +12,20 @@
  * Gantry Framework code that extends GPL code is considered GNU/GPLv2 and later
  */
 
+ /**
+  * @param string $freq
+  * @param string $dayoweek
+  * @return string dateperiod
+  * Outside class TwigExtension, DatePeriod cannot be called inside class
+  */
+  function getInterval($freq, $dayoweek) {
+    return new DatePeriod(
+      new DateTime("$freq $dayoweek of now"),
+      DateInterval::createFromDateString("$freq $dayoweek of next month"),
+      16
+    );
+  }
+
 namespace Gantry\Component\Twig;
 
 use Gantry\Component\Content\Document\HtmlDocument;
@@ -117,8 +131,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
             new TwigFunction('url', [$this, 'urlFunc']),
             new TwigFunction('tainacancall', [$this, 'tainacanCall']),
             new TwigFunction('bookshelf', [$this, 'spBookshelf']),
-            new TwigFunction('boardmeet', [$this, 'boardMeet']),
-            new TwigFunction('leapyear', [$this, 'leapYear'])
+            new TwigFunction('boardmeet', [$this, 'boardMeet'])
         ];
 
         if (GANTRY5_PLATFORM === 'grav') {
@@ -783,10 +796,18 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
        $title = [];
        $date = [];
        $frame = [];
+       $datekeys = [];
+       $datemeta = [];
+
+       $datekeys = (array_keys($jsonitems[0]['metadata']));
+       $dmimp = implode(',', $datekeys);
+       preg_match('/date.*/', $dmimp, $datemeta);
+       $dmimp = $datemeta[0];
+
        foreach($jsonitems as $value){
          $thumbid = $value["_thumbnail_id"];
          array_push ($title, $value["title"]);
-         array_push ($date, $value["metadata"]["date"]["date_i18n"]);
+         array_push ($date, $value["metadata"][$dmimp]["date_i18n"]);
          array_push ($frame, $value["document_as_html"]);
          $thumburlget = $wpdb->get_results("SELECT guid FROM {$wpdb->prefix}posts WHERE ID = $thumbid");
          $thumburlfix = json_decode(json_encode($thumburlget), true);
@@ -828,120 +849,74 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
        }
 
        /**
-        * @param string $monthcc
-        * @param string $daycc
-        * @param string $yearcc
+        * @param string $freq
+        * @param string $dayoweek
+        * @param string $evenoddevery
+        * @param string $excep
         * @return string $date
         */
-        public function boardMeet($datey) {
-          $dateyex = explode(",",$datey);
-          $monthcc = $dateyex[0];
-          $daycc = $dateyex[1];
-          $yearcc = $dateyex[2];
-          if ($daycc > 14) {
-            $monthcc++;
-            if ($monthcc == 13) {
-              $monthcc = 1;
-              $yearcc++;
-            }
+        public function boardMeet($freq, $dayoweek, $evenoddevery, $excep) {
+          $dateret = [];
+          $datacheck = [];
+          foreach (getInterval($freq, $dayoweek) as $interval) {
+             array_push ($dateret, $interval->format("F jS, Y"));
+             array_push ($datacheck, $interval->format("Ymd"));
           }
-          switch ($monthcc) {
-            case 1:
-            case 3:
-            case 5:
-            case 7:
-            case 9:
-            case 11:
-              $monthcc++;
-              $jd = gregoriantojd($monthcc, 1, $yearcc);
-              $dayweek = jddayofweek($jd, 0);
-              switch ($dayweek) {
-                case 0:
-                  $daycc = 11;
-                  break;
-                case 1:
-                  $daycc = 10;
-                  break;
-                case 2:
-                  $daycc = 9;
-                  break;
-                case 3:
-                  $daycc = 8;
-                  break;
-                case 4:
-                  $daycc = 14;
-                  break;
-                case 5:
-                  $daycc = 13;
-                  break;
-                case 6:
-                  $daycc = 12;
-                  break;
+          $i = -1;
+          foreach ($datacheck as &$fixit) {
+            ++$i;
+            if (date("Ymd") > $fixit) {
+              unset($dateret[$i]);
+              unset($datacheck[$i]);
+            } elseif ($evenoddevery == "even") {
+              if ((date("n", strtotime($fixit))) % 2 != 0) {
+                unset($dateret[$i]);
+                unset($datacheck[$i]);
               }
-              $jd = gregoriantojd($monthcc, $daycc, $yearcc);
-              $date = date_create(jdtogregorian($jd));
-              return date_format($date, "F jS, Y");
-              break;
-            case 2:
-            case 4:
-            case 6:
-            case 8:
-            case 10:
-            case 12:
-              $jd = gregoriantojd($monthcc, 1, $yearcc);
-              $dayweek = jddayofweek($jd, 0);
-              switch ($dayweek) {
-                case 0:
-                  $daycc = 11;
-                  break;
-                case 1:
-                  $daycc = 10;
-                  break;
-                case 2:
-                  $daycc = 9;
-                  break;
-                case 3:
-                  $daycc = 8;
-                  break;
-                case 4:
-                  $daycc = 14;
-                  break;
-                case 5:
-                  $daycc = 13;
-                  break;
-                case 6:
-                  $daycc = 12;
-                  break;
+            } elseif ($evenoddevery == "odd") {
+              if ((date("n", strtotime($fixit))) % 2 == 0) {
+                unset($dateret[$i]);
+                unset($datacheck[$i]);
               }
-              $jd = gregoriantojd($monthcc, $daycc, $yearcc);
-              $date = date_create(jdtogregorian($jd));
-              return date_format($date, "F jS, Y");
-              break;
             }
-          }
+            switch ($excep) {
+              case "D":
+              if ((date("n", strtotime($fixit))) == 12) {
+                unset($dateret[$i]);
+                unset($datacheck[$i]);
+              }
+              break;
 
-          /**
-           * @return bool $date
-           */
-           public function leapYear() {
-             $monthcc = date("m");
-             switch ($monthcc) {
-               case 4:
-               case 6:
-               case 9:
-               case 11:
-                echo 30;
-                break;
-               case 2:
-                if (date("Y") % 4 == 0) {
-                  echo 29;
-                } else {
-                  echo 28;
-                }
-                break;
-               default:
-                echo 31;
-                break;
-             }
-           }
+              case "AD":
+              if ((date("n", strtotime($fixit))) == 12) {
+                unset($dateret[$i]);
+                unset($datacheck[$i]);
+              }
+              if ((date("n", strtotime($fixit))) == 8) {
+                unset($dateret[$i]);
+                unset($datacheck[$i]);
+              }
+              break;
+
+              case "JA":
+              if ((date("n", strtotime($fixit))) == 8) {
+                unset($dateret[$i]);
+                unset($datacheck[$i]);
+              }
+              if ((date("n", strtotime($fixit))) == 7) {
+                unset($dateret[$i]);
+                unset($datacheck[$i]);
+              }
+              break;
+            }
+          }
+          $numm = count($dateret);
+          $repo = $numm - 6;
+          while ($repo > 0) {
+            array_pop($dateret);
+            --$repo;
+          }
+          $dateret = array_values($dateret);
+          return $dateret;
+        }
 }

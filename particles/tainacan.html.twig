@@ -2,7 +2,7 @@
 
 {% set url = site.url|replace({"http://": "https://", "http://www.": "https://www."})|e %}
 
-{% set tica = url ~ '/wp-json/tainacan/v2/collection/' ~ particle.ticaid ~ '/items/?perpage=' ~ particle.limit ~ '&order=DESC&orderby=date' %}
+{% set tica = url ~ '/wp-json/tainacan/v2/collection/' ~ particle.ticaid ~ '/items/?perpage=' ~ particle.limit ~ '&order=' ~ particle.order ~ '&orderby=' ~ particle.orderby %}
 
 {% set initialpull = tainacancall(tica) %}
 
@@ -43,7 +43,7 @@
         <button class="uk-modal-close-outside" type="button" uk-close></button>
         {% set frameurl1 = frame[i]|split('>') %}
         {% set frameurl2 = frameurl1[1]|split('<') %}
-        {% set frameurl3 = '<iframe class="uk-height-1-1" src="' ~ frameurl2[0] ~ '" width="100%" height="100%"></iframe>' %}
+        {% set frameurl3 = '<iframe src="' ~ frameurl2[0] ~ '" width="100%" height="1000px"></iframe>' %}
         <div uk-height-viewport>{{ frameurl3|raw }}</div>
       </div>
     </div>

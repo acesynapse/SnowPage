@@ -1,0 +1,44 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+<div class="uk-grid-small uk-child-width-expand@s uk-text-center uk-margin-bottom" uk-grid>
+  {% for person in particle.library %}
+    <div class="uk-width-1-6@xl uk-width-1-5@l uk-width-1-4@m uk-width-1-2@s">
+      <table class="uk-table">
+        <tbody>
+          <tr>
+            <td>
+              <img class="uk-padding-small" src="{{ library.image }}" />
+            </td>
+          </tr>
+          <tr>
+            <td class="uk-text-large uk-text-bold uk-padding-remove" style="line-height: 1.15;"><a href="{{ library.url|e }}">{{ library.name|e }}</a></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td class="uk-padding-remove uk-text-small">{{ library.address-l1|e }}</td>
+          </tr>
+          <tr>
+            <td class="uk-padding-remove uk-text-small">{{ library.address-l2|e }}</td>
+          </tr>
+          {% if library.address-l3 %}
+          <tr>
+            <td class="uk-padding-remove uk-text-small">{{ library.address-l3|e }}</td>
+          </tr>
+          {% endif %}
+          <tr>
+            <td class="uk-padding-remove uk-text-small">{{ library.county|e }}</td>
+          </tr>
+          <tr>
+            <td class="uk-padding-remove uk-text-small"><a href="tel:{{ library.phone|e }}">{{ library.phone|e }}</a></td>
+          </tr>
+          <tr>
+            <td class="uk-padding-remove uk-text-small">[op-overview set_id="{{ library.ohid|e }}" short="true" include_io="true" include_holidays="true"]</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

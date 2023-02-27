@@ -16,7 +16,7 @@ form:
       default: true
 
     some.text:
-      type: input.text
+      type: textarea.textarea
       label: Text
       description: Input the text would you like to display.
 

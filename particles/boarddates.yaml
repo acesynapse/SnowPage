@@ -11,15 +11,74 @@ form:
       description: Globally enable the particle.
       default: true
 
-    ticaid:
-      type: wordpress.posts
-      label: Tainacan Collection
-      description: Select the Tainacan Collection you would like to display.
-      post_type: tainacan-collection
-      overridable: false
+    freq:
+      type: select.select
+      label: Week
+      description: Choose the frequency of the week
+      default: first
+      options:
+        first: First
+        second: Second
+        thrid: Third
+        fourth: Fourth
+        last: Last
 
-    limit:
-      type: input.number
-      label: Item Limit
-      description: Input the number of items you would like to display.
-      overridable: false
+    dayofweek:
+      type: select.select
+      label: Day of Week
+      description: Choose the day of the week
+      default: monday
+      options:
+        monday: Monday
+        tuesday: Tuesday
+        wednesday: Wednesday
+        thursday: Thursday
+        friday: Friday
+        saturday: Saturday
+        sunday: Sunday
+
+    evenodd:
+      type: select.select
+      label: Months
+      description: Even, Odd, or Every Month
+      default: Every
+      options:
+        every: Every
+        even: Even
+        off: Odd
+
+    excep:
+      type: select.select
+      label: Exceptions
+      description: Exception months
+      default: ''
+      options:
+        '': None
+        D: December
+        JA: July/August
+        AD: August/December
+
+    addtext:
+      type: input.text
+      label: Additional Text
+      description: Text that will appear under select months
+
+    addmonth:
+      type: select.select
+      label: Additional Text Month
+      description: What month will the additional text appear under
+      default: ''
+      options:
+        '': None
+        Jan: January
+        Feb: February
+        Mar: March
+        Apr: April
+        May: May
+        Jun: June
+        Jul: July
+        Aug: August
+        Sep: September
+        Oct: October
+        Nov: November
+        Dec: December

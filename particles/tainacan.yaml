@@ -27,3 +27,23 @@ form:
       label: Item Limit
       description: Input the number of items you would like to display.
       overridable: false
+
+    orderby:
+      type: select.select
+      label: Order By
+      description: Select what order your tainacan list shows.
+      placeholder: 'Select...'
+      default: date
+      options:
+          date: Date
+          title: Title
+
+    order:
+      type: select.select
+      label: Order
+      description: Select ascending or decending
+      placeholder: 'Select...'
+      default: date
+      options:
+          DESC: Decending
+          ASC: Ascending

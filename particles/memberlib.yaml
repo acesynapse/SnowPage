@@ -1,0 +1,65 @@
+name: Member Libraries
+description: Show a list of our member libraries
+type: particle
+icon: fa-building
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable the particle.
+      default: true
+
+    library:
+      type: collection.list
+      array: true
+      label: List of Member Libraries
+      description: Create each library to display.
+      value: name
+      ajax: true
+
+      fields:
+
+        .image:
+          type: input.imagepicker
+          label: Library Image
+
+        .name:
+          type: input.text
+          label: Library name
+
+        .url:
+          type: input.text
+          label: Library URL
+
+        .address-l1:
+          type: input.text
+          label: Address Line 1
+
+        .address-l2:
+          type: input.text
+          label: Address Line 2
+
+        .address-l3:
+          type: input.text
+          label: Address Line 3
+
+        .county:
+          type: select.select
+          label: County of Library
+          default: Chautauqua
+          options:
+            Chautauqua: Chautauqua
+            Cattaraugus: Cattaraugus
+
+        .phone:
+          type: input.tel
+          label: Phone Number
+
+        .ohid:
+          type: wordpress.posts
+          label: Hours List
+          description: Select the Opening Hours you would like to display.
+          post_type: opening-hours
+          overridable: false
