@@ -1,0 +1,33 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+<div class="uk-grid-small uk-child-width-expand@s uk-text-center uk-margin-bottom" uk-grid>
+  {% for person in particle.person %}
+    <div class="uk-width-1-6@xl uk-width-1-5@l uk-width-1-4@m uk-width-1-2@s">
+      <table class="uk-table">
+        <tbody>
+          <tr>
+            <td>
+              <svg width="200" height="200" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle class="{% if person.role == 'None' %}sp-fill-1-5{% else %}sp-fill-2-5{% endif %}" fill="#000" cx="10" cy="10" r="10"></circle><circle class="sp-fill-1-5" fill="#000" cx="10" cy="10" r="9.25"></circle><circle fill="#fff" cx="10" cy="7.5" r="2.5"></circle><path fill="#fff" d="M5.7,14.1 C5.7,14.6 6,15 6.5,15 L13.5,15 C14,15 14.4,14.6 14.4,14.1 L14.4,12.7 C14.4,11.5 13.2,10.5 11.6,10.5 L11.5,10.5 C11.5,10.5 10.6,10.8 10.1,10.8 C9.6,10.8 9.1,10.7, 8.6,10.5 L8.5,10.5 C6.9,10.5 5.7,11.5 5.7,12.7"></path></svg>
+            </td>
+          </tr>
+          <tr>
+            <td class="uk-text-large uk-text-bold uk-padding-remove" style="line-height: 1.15;">{{ person.first|e }}<br>{{ person.last|e }}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td class="uk-padding-remove uk-text-small uk-text-bold">{{ person.title|e }}</td>
+          </tr>
+          <tr>
+            <td class="uk-padding-remove uk-text-small">(716)664-6675, x{{ person.ext|e }}</td>
+          </tr>
+          <tr>
+            <td class="uk-padding-remove"><a id="sp-te" href="tel:+7166646675,{{ person.ext|e }}" target="_blank" class="uk-icon-button"><i class="fa fa-phone fa-lg"></i></a><a id="sp-em" href="mailto:{{ person.email|e }}" target="_blank" class="uk-icon-button"><i class="fa fa-at fa-lg"></i></a></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

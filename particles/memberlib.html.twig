@@ -1,44 +1,56 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
 {% block particle %}
-<div class="uk-grid-small uk-child-width-expand@s uk-text-center uk-margin-bottom" uk-grid>
-  {% for person in particle.library %}
-    <div class="uk-width-1-6@xl uk-width-1-5@l uk-width-1-4@m uk-width-1-2@s">
-      <table class="uk-table">
-        <tbody>
-          <tr>
-            <td>
-              <img class="uk-padding-small" src="{{ library.image }}" />
-            </td>
-          </tr>
-          <tr>
-            <td class="uk-text-large uk-text-bold uk-padding-remove" style="line-height: 1.15;"><a href="{{ library.url|e }}">{{ library.name|e }}</a></td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td class="uk-padding-remove uk-text-small">{{ library.address-l1|e }}</td>
-          </tr>
-          <tr>
-            <td class="uk-padding-remove uk-text-small">{{ library.address-l2|e }}</td>
-          </tr>
-          {% if library.address-l3 %}
-          <tr>
-            <td class="uk-padding-remove uk-text-small">{{ library.address-l3|e }}</td>
-          </tr>
-          {% endif %}
-          <tr>
-            <td class="uk-padding-remove uk-text-small">{{ library.county|e }}</td>
-          </tr>
-          <tr>
-            <td class="uk-padding-remove uk-text-small"><a href="tel:{{ library.phone|e }}">{{ library.phone|e }}</a></td>
-          </tr>
-          <tr>
-            <td class="uk-padding-remove uk-text-small">[op-overview set_id="{{ library.ohid|e }}" short="true" include_io="true" include_holidays="true"]</td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
+<div class="uk-grid-small uk-child-width-expand@s uk-text-left uk-margin-bottom uk-grid-match" uk-grid>
+<div class="uk-card uk-card-small uk-width-1-3@xl uk-width-2-5@l uk-width-1-2@m uk-width-1-1@s uk-flex-bottom" style="border: 1px solid lightgray;">
+<iframe src="{{ particle.iframe|e }}" height="100%" width="100%" style="min-height: 300px;"></iframe>
+</div>
+  {% for memlib in particle.library %}
+  {% set opsc = "[op-overview set_id='" ~ memlib.ohid|e ~ "' short='true' include_io='true' include_holidays='true' show_closed_days='true']" %}
+    <div class="uk-card uk-card-small uk-width-1-6@xl uk-width-1-5@l uk-width-1-4@m uk-width-1-2@s uk-flex-bottom" style="border: 1px solid lightgray;">
+      <div class="uk-card-media-top">
+              <a href="{{ memlib.url|e }}"><img class="uk-padding-small" src="{{ url(memlib.image) }}" /></a>
+      </div>
+	  <div class="uk-card-body">
+	  	<h3 class="uk-text-large uk-text-bold" style="line-height: 1.15;"><a href="{{ memlib.url|e }}">{{ memlib.name|e }}</a></h3>
+        <span class="uk-text-small uk-padding-remove-vertical">{{ memlib.addressfl|e }}</span><br />
+		<span class="uk-text-small uk-padding-remove-vertical">{{ memlib.addresssl|e }}</span>
+		{% if memlib.addresstl %}
+		  <br /><span class="uk-text-small uk-padding-remove-vertical">{{ memlib.addresstl|e }}</span>
+		{% endif %}
+		<p class="uk-text-small uk-text-danger uk-text-italic">{{ memlib.county|e }} County</p>
+		<p class="uk-padding-remove-vertical"><a href="tel:{{ memlib.phone|e }}">{{ memlib.phone|e }}</a></p>
+		<br />
+		<span>{{ gantry.platform.filter(opsc)|html|raw }}</span>
+      </div>
+	  <div class="uk-card-footer">
+	    {% if memlib.facebook %}
+		  <a id="sp-fb" href="https://www.facebook.com/{{ facebook|e }}" target="_blank" class="uk-icon-button" uk-icon="facebook"></a>
+        {% endif %}
+        {% if memlib.instagram %}
+          <a id="sp-in" href="https://www.instagram.com/{{ instagram|e }}" target="_blank" class="uk-icon-button" uk-icon="instagram"></a>
+        {% endif %}
+        {% if memlib.twitter %}
+          <a id="sp-tw" href="https://www.twitter.com/{{ twitter|e }}" class="uk-icon-button" uk-icon="twitter"></a>
+        {% endif %}
+        {% if memlib.youtube %}
+          <a id="sp-yt" href="https://www.youtube.com/channel/{{ youtube|e }}" target="_blank" class="uk-icon-button" uk-icon="youtube"></a>
+        {% endif %}
+        {% if memlib.pinterest %}
+          <a id="sp-pi" href="https://www.pinterest.com/{{ pinterest|e }}" target="_blank" class="uk-icon-button" uk-icon="pinterest"></a>
+        {% endif %}
+        {% if memlib.snapchat %}
+          <a id="sp-sn" href="https://www.snapchat.com/add/{{ snapchat|e }}" target="_blank" class="uk-icon-button"><i class="fa fa-snapchat fa-lg"></i></a>
+        {% endif %}
+        {% if memlib.flickr %}
+          <a id="sp-fl" href="https://www.flickr.com/{{ flickr|e }}" target="_blank" class="uk-icon-button" uk-icon="flickr"></a>
+        {% endif %}
+        {% if memlib.goodreads %}
+          <a id="sp-gr" href="https://www.goodreads.com/group/show/{{ goodreads|e }}" target="_blank" class="uk-icon-button"><i class="fab fa-goodreads fa-lg"></i></a>
+        {% endif %}
+	  </div>
+	 </div>
+
   {% endfor %}
 </div>
 {% endblock %}

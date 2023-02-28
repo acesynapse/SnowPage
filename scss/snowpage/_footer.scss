@@ -10,8 +10,12 @@
 	}
 }
 
-.op-overview-title, .op-closed {
+.op-overview-title {
 	color: $off-white !important;
+}
+
+.op-closed {
+	color: #bbbbbb !important;
 }
 
 .op-table-overview, .op-cell-heading, .op-cell-periods {

@@ -1,0 +1,50 @@
+name: Staff Members
+description: Show a list of people
+type: particle
+icon: fa-user-circle
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable the particle.
+      default: true
+
+    person:
+      type: collection.list
+      array: true
+      label: List of Staff Members
+      description: Create each staff member to display.
+      value: name
+      ajax: true
+
+      fields:
+
+        .first:
+          type: input.text
+          label: First name
+
+        .last:
+          type: input.text
+          label: Last name
+
+        .role:
+          type: select.select
+          label: MLIS
+          default: None
+          options:
+            None: ''
+            MLIS: MLIS
+
+        .title:
+          type: input.text
+          label: Title
+
+        .ext:
+          type: input.num
+          label: Extension
+
+        .email:
+          type: input.text
+          label: Email

@@ -11,6 +11,10 @@ form:
       description: Globally enable the particle.
       default: true
 
+    iframe:
+      type: input.text
+      label: Google Map iframe Link
+
     library:
       type: collection.list
       array: true
@@ -33,15 +37,15 @@ form:
           type: input.text
           label: Library URL
 
-        .address-l1:
+        .addressfl:
           type: input.text
           label: Address Line 1
 
-        .address-l2:
+        .addresssl:
           type: input.text
           label: Address Line 2
 
-        .address-l3:
+        .addresstl:
           type: input.text
           label: Address Line 3
 
@@ -61,5 +65,37 @@ form:
           type: wordpress.posts
           label: Hours List
           description: Select the Opening Hours you would like to display.
-          post_type: opening-hours
+          post_type: op-set
           overridable: false
+
+        .facebook:
+          type: input.text
+          label: Library Facebook
+
+        .twitter:
+          type: input.text
+          label: Library Twitter
+
+        .youtube:
+          type: input.text
+          label: Library Youtube
+
+        .instagram:
+          type: input.text
+          label: Library Instagram
+
+        .pinterest:
+          type: input.text
+          label: Library Pinterest
+
+        .snapchat:
+          type: input.text
+          label: Library Snapchat
+
+        .flickr:
+          type: input.text
+          label: Library Flickr
+
+        .goodreads:
+          type: input.text
+          label: Library Goodreads
